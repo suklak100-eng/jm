@@ -3,7 +3,7 @@
    Pristine Minimalist Luxury Design System (Zero Clutter, Full Image Optics)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Italiana&family=Montserrat:wght@200;300;400;500;600&display=swap');
 
 :root {
   /* Obsidian Caviar Palette */
@@ -13,25 +13,25 @@
 
   /* Royal Champagne Gold */
   --gold-300: #fbf5e2;
-  --gold-400: #e5c47a;
+  --gold-400: #e2c079;
   --gold-500: #c9a456;
   --gold-600: #93732b;
-  --gold-border: rgba(229, 196, 122, 0.22);
-  --gold-glow: rgba(229, 196, 122, 0.35);
+  --gold-border: rgba(226, 192, 121, 0.2);
+  --gold-glow: rgba(226, 192, 121, 0.28);
 
-  /* Diamond Shimmer */
-  --diamond-white: #ffffff;
-  --text-primary: #f2f2f7;
-  --text-secondary: #c2c2cf;
-  --text-muted: #808092;
+  /* Soft Silk & Ivory Tones (Comfortable & Soothing on the Eyes) */
+  --diamond-white: #fcfbfa;
+  --text-primary: #f3efe8;
+  --text-secondary: #c2becc;
+  --text-muted: #848392;
 
-  /* Typography */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-display: 'Cinzel', serif;
+  /* Typography: Light, Airy, Aristocratic (Zero Visual Clutter) */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Italiana', 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Montserrat', -apple-system, sans-serif;
 
-  /* Layout */
+  /* Layout & Negative Space */
   --container-max: 1360px;
   --header-height: 84px;
   --transition-fluid: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -280,16 +280,16 @@ body {
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
-  padding: 64px 0 96px;
+  padding: 80px 0 110px;
   overflow: hidden;
-  background: radial-gradient(circle at 65% 45%, #161622 0%, var(--bg-deep) 65%);
+  background: radial-gradient(circle at 65% 45%, #151520 0%, var(--bg-deep) 65%);
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   align-items: center;
-  gap: 64px;
+  gap: 72px;
   position: relative;
   z-index: 2;
 }
@@ -304,28 +304,28 @@ body {
   align-items: center;
   gap: 14px;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.38em;
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
   color: var(--gold-400);
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .hero-meta-tag::before {
   content: '';
-  width: 32px;
+  width: 28px;
   height: 1px;
   background: var(--gold-400);
 }
 
 .hero-title-main {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
-  font-weight: 400;
-  line-height: 1.1;
-  color: #fff;
-  margin-bottom: 24px;
-  letter-spacing: 0.05em;
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 22px;
+  letter-spacing: 0.08em;
 }
 
 .hero-title-main em {
@@ -336,12 +336,13 @@ body {
 }
 
 .hero-poetic-sub {
-  font-family: var(--font-body);
-  font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
   color: var(--text-secondary);
-  margin-bottom: 40px;
-  max-width: 500px;
-  line-height: 1.55;
+  margin-bottom: 36px;
+  max-width: 460px;
+  line-height: 1.65;
+  font-weight: 300;
 }
 
 .hero-cta-row {
@@ -523,38 +524,40 @@ body {
    THE MASTERWORK EXHIBITION — FULL IMAGE CLARITY & CLEAN AIRY SPACING
    ========================================================================== */
 .exhibition-section {
-  padding: 110px 0 90px;
+  padding: 140px 0 110px;
 }
 
 .section-head-center {
   text-align: center;
-  max-width: 620px;
-  margin: 0 auto 72px;
+  max-width: 580px;
+  margin: 0 auto 84px;
 }
 
 .section-kicker {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.36em;
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
   color: var(--gold-400);
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   display: block;
 }
 
 .section-serif-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 14px;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.06em;
 }
 
 .section-curator-note {
-  font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
   color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 /* Individual Exhibition Showcase Blocks */
@@ -562,10 +565,10 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 72px;
-  margin-bottom: 110px;
-  padding-bottom: 70px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 84px;
+  margin-bottom: 140px;
+  padding-bottom: 90px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .exhibit-salon-block.reverse {
@@ -578,7 +581,7 @@ body {
   order: 1;
 }
 
-/* Image Stage: Perfectly Framed, Whole Jewelry Visible! */
+/* Image Stage: Perfectly Framed, Whole Jewelry Visible with Museum Breathing Room */
 .exhibit-visual-col {
   position: relative;
 }
@@ -587,24 +590,12 @@ body {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  max-height: 520px;
-  border-radius: 6px;
+  max-height: 540px;
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--gold-border);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
-  background: radial-gradient(circle at center, #181822 0%, #0a0a0f 80%);
-}
-
-.exhibit-num-watermark {
-  position: absolute;
-  top: 18px;
-  left: 22px;
-  font-family: var(--font-display);
-  font-size: 3.2rem;
-  color: rgba(229, 196, 122, 0.15);
-  line-height: 1;
-  pointer-events: none;
-  z-index: 2;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(226, 192, 121, 0.08);
+  background: radial-gradient(circle at center, #15151e 0%, #08080c 85%);
 }
 
 .exhibit-primary-img {
@@ -616,7 +607,7 @@ body {
 }
 
 .exhibit-image-stage:hover .exhibit-primary-img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 /* Clean, Non-Messy Text Column */
@@ -628,85 +619,73 @@ body {
 .exhibit-meta-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .exhibit-tag-pill {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold-400);
 }
 
-.exhibit-num-label {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: var(--gold-300);
-}
-
 .exhibit-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 8px;
-  line-height: 1.18;
+  font-size: clamp(2.2rem, 3.2vw, 2.9rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.2;
 }
 
 .exhibit-stone-line {
-  font-size: 1.2rem;
-  color: var(--gold-300);
-  margin-bottom: 12px;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--gold-400);
+  margin-bottom: 14px;
+  font-weight: 300;
 }
 
 .exhibit-carat-badge {
   display: inline-block;
   padding: 5px 14px;
-  background: rgba(229, 196, 122, 0.08);
+  background: rgba(226, 192, 121, 0.06);
   border: 1px solid var(--gold-border);
-  border-radius: 4px;
+  border-radius: 20px;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  color: var(--gold-400);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: var(--gold-300);
   text-transform: uppercase;
-  margin-bottom: 22px;
-  max-width: max-content;
-}
-
-.exhibit-curator-quote {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--text-secondary);
-  border-left: 2px solid var(--gold-400);
-  padding-left: 18px;
   margin-bottom: 28px;
-  line-height: 1.55;
+  max-width: max-content;
 }
 
 .exhibit-actions-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 20px;
   flex-wrap: wrap;
-  gap: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .exhibit-price-val {
   font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 600;
+  font-size: 1.65rem;
+  font-weight: 300;
   color: var(--gold-300);
+  letter-spacing: 0.06em;
 }
 
 .exhibit-btns-group {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 /* ==========================================================================
@@ -874,13 +853,13 @@ body {
    SOVEREIGN UNIVERSE & PRIVATE SALON
    ========================================================================== */
 .universe-section {
-  padding: 100px 0;
+  padding: 130px 0;
 }
 
 .universe-editorial-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  gap: 72px;
   align-items: center;
 }
 
@@ -888,7 +867,7 @@ body {
   position: relative;
   aspect-ratio: 4 / 5;
   max-height: 560px;
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--gold-border);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
@@ -907,8 +886,8 @@ body {
 
 .universe-kicker {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.35em;
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
   color: var(--gold-400);
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -917,30 +896,32 @@ body {
 
 .universe-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
-  font-weight: 400;
-  line-height: 1.18;
-  color: #fff;
-  margin-bottom: 20px;
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 18px;
 }
 
 .universe-text {
-  font-size: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 300;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.7;
   margin-bottom: 30px;
 }
 
 .salon-booking-section {
-  padding: 90px 0;
+  padding: 130px 0;
   background: radial-gradient(circle at center, #151520 0%, var(--bg-deep) 70%);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   text-align: center;
 }
 
 .salon-booking-inner {
-  max-width: 640px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
@@ -952,17 +933,19 @@ body {
 
 .salon-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.6vw, 3rem);
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 14px;
-  letter-spacing: 0.06em;
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.08em;
 }
 
 .salon-body {
-  font-size: 1.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 300;
   color: var(--text-muted);
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   line-height: 1.6;
 }
 

@@ -232,28 +232,22 @@ function renderExhibition() {
       return `
       <section class="exhibit-salon-block ${isReverse} reveal-on-scroll" data-id="${piece.id}">
         
-        <!-- Left Showcase Visual (Full Piece Visible) -->
+        <!-- Left Showcase Visual (Spacious, Full Piece Visible with Breathing Room) -->
         <div class="exhibit-visual-col">
           <div class="exhibit-image-stage">
-            <span class="exhibit-num-watermark">${piece.num}</span>
             <img src="${piece.image}" alt="${piece.name}" class="exhibit-primary-img" loading="lazy" />
           </div>
         </div>
 
-        <!-- Right Curatorial Dossier -->
+        <!-- Right Minimalist Curatorial Column (Clean, Uncluttered, Pure Focus) -->
         <div class="exhibit-text-col">
           <div class="exhibit-meta-row">
-            <span class="exhibit-tag-pill">${piece.provenance}</span>
-            <span class="exhibit-num-label">${piece.num}</span>
+            <span class="exhibit-tag-pill">${piece.num} • ${piece.provenance}</span>
           </div>
 
           <h2 class="exhibit-title">${piece.name}</h2>
           <p class="exhibit-stone-line">${piece.stone}</p>
           <div class="exhibit-carat-badge">${piece.carat}</div>
-
-          <blockquote class="exhibit-curator-quote">
-            "${piece.quote}"
-          </blockquote>
 
           <div class="exhibit-actions-row">
             <div class="exhibit-price-val">${piece.priceFormatted}</div>
@@ -263,7 +257,7 @@ function renderExhibition() {
                 Examine Dossier ✦
               </button>
               <button class="ghost-btn acquire-btn" data-id="${piece.id}">
-                Acquire into Vault
+                Acquire Piece
               </button>
             </div>
           </div>

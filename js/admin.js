@@ -840,3 +840,4 @@ function showAdminToast(msg, isError = false) {
     setTimeout(() => toast.remove(), 350);
   }, 3400);
 }
+

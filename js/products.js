@@ -96,14 +96,14 @@ export const DEFAULT_SITE_SETTINGS = {
 };
 
 export const DEFAULT_SITE_CONTENT = {
-  heroMetaTag: "L'Empire de la Haute Joaillerie",
+  heroMetaTag: "HAUTE JOAILLERIE • PLACE VENDÔME",
   heroTitle: "Sculpting<br /><em>The Stars</em>",
-  heroSubtitle: "Where primordial light crystallizes into wearable eternity. Rare untreated Colombian emeralds, D-Flawless solitaires, and ancestral Basra pearls.",
+  heroSubtitle: "Where primordial light crystallizes into timeless wearable art.",
   heroImage: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85",
   heroTagTitle: "The Royal Nizam Choker",
-  heroTagSub: "Untreated Zambian Royal Emeralds & Basra Pearls",
+  heroTagSub: "Untreated Zambian Royal Emeralds",
   heroTagCarat: "18.40 cts",
-  marqueeText: "✦ RARE NATURAL UNTREATED GEMSTONES ✦ GIA HERITAGE CERTIFIED ✦ BESPOKE PRIVATE COMMISSIONS ✦ PLACE VENDÔME PARIS • LONDON MAYFAIR • GENEVA • MUMBAI",
+  marqueeText: "HAUTE JOAILLERIE ✦ D-FLAWLESS SOLITAIRES ✦ NATURAL UNTREATED GEMSTONES ✦ PLACE VENDÔME • LONDON • GENEVA • MUMBAI ✦ GIA HERITAGE CERTIFIED",
   salonsList: "Paris Place Vendôme • London Mayfair • Geneva • Mumbai Taj Mahal • Dubai Mall"
 };
 
