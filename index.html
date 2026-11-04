@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAHIRA SELECT — Tradition Meets Tomorrow | Haute Couture & Handloom Sarees</title>
+  
+  <meta name="description" content="Discover Mahira Select: High-end luxury Indian couture, hand-painted Kalamkari sarees, Banarasi weaves, and bespoke artisanal ensembles." />
+  <meta name="theme-color" content="#091510" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/curtain.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23091510' stroke='%23d4af37' stroke-width='3'/><path d='M30 70 L30 30 L50 55 L70 30 L70 70' fill='none' stroke='%23f3e4b7' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+
+<body class="curtain-active">
+
+  <!-- ==========================================================================
+       1. ROYAL SATIN CURTAIN OVERLAY (CINEMATIC UNVEIL)
+       ========================================================================== -->
+  <div id="curtain-overlay" role="dialog" aria-modal="true" aria-label="Welcome Curtain">
+    <div id="curtain-left" class="curtain-panel"></div>
+    <div id="curtain-right" class="curtain-panel"></div>
+
+    <div id="curtain-center">
+      <div class="curtain-crest-wrap">
+        <!-- Royal Baroque Gold Crest Monogram -->
+        <svg class="curtain-crest-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="92" stroke="url(#goldGradientCurtain)" stroke-width="2" stroke-dasharray="4 3"/>
+          <circle cx="100" cy="100" r="82" stroke="url(#goldGradientCurtain)" stroke-width="1.2"/>
+          <!-- Ornate Filigree Crown -->
+          <path d="M72 65 C85 45, 115 45, 128 65 C138 52, 155 60, 150 78 C135 75, 120 85, 100 82 C80 85, 65 75, 50 78 C45 60, 62 52, 72 65 Z" fill="url(#goldGradientCurtain)" opacity="0.85"/>
+          <!-- Royal 'M' Monogram -->
+          <path d="M68 142 L68 85 L100 118 L132 85 L132 142" stroke="url(#goldGradientCurtain)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M62 142 L74 142 M126 142 L138 142 M62 85 L74 85 M126 85 L138 85" stroke="url(#goldGradientCurtain)" stroke-width="4" stroke-linecap="round"/>
+          <!-- Filigree Flourishes -->
+          <path d="M38 100 C48 90, 52 110, 62 100 C52 105, 48 115, 38 100 Z" fill="url(#goldGradientCurtain)"/>
+          <path d="M162 100 C152 90, 148 110, 138 100 C148 105, 152 115, 162 100 Z" fill="url(#goldGradientCurtain)"/>
+          <!-- Base Wreath -->
+          <path d="M60 152 C85 168, 115 168, 140 152" stroke="url(#goldGradientCurtain)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="100" cy="164" r="3" fill="url(#goldGradientCurtain)"/>
+          <defs>
+            <linearGradient id="goldGradientCurtain" x1="20" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff4d0"/>
+              <stop offset="35%" stop-color="#e5c365"/>
+              <stop offset="70%" stop-color="#d4af37"/>
+              <stop offset="100%" stop-color="#8c6d1f"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h1 class="curtain-brand-title">MAHIRA</h1>
+      <p class="curtain-brand-sub">SELECT</p>
+      <p class="curtain-tagline">Tradition Meets Tomorrow</p>
+
+      <button id="unveil-btn" class="unveil-btn" aria-label="Unveil the collection">
+        <span class="sparkle">✦</span>
+        <span>Enter Experience</span>
+        <span class="sparkle">✦</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Re-draw Curtain Floating Pill -->
+  <button id="redraw-curtain-btn" aria-label="Re-draw Satin Curtain">
+    <span>✦</span>
+    <span>Curtain View</span>
+  </button>
+
+  <!-- ==========================================================================
+       2. TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <div class="announcement-bar">
+    <span>✦</span>
+    <p>Complimentary Worldwide Heritage Shipping on Orders Above ₹15,000 • Code: <strong>MAHIRA10</strong></p>
+    <span>✦</span>
+  </div>
+
+  <!-- ==========================================================================
+       3. SITE HEADER & NAVIGATION
+       ========================================================================== -->
+  <header id="site-header" class="site-header">
+    <div class="nav-inner">
+      <!-- Left Menu Links -->
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#women-section" class="nav-link">Women</a></li>
+        <li>
+          <a href="#accordion-section" id="nav-kalakaari-link" class="nav-link">
+            Kalakaari ▾
+          </a>
+        </li>
+      </ul>
+
+      <!-- Center Royal Brand Identity -->
+      <a href="#" class="nav-brand-center" aria-label="Mahira Select Home">
+        <svg class="brand-crest-svg-small" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#d4af37" stroke-width="1.8" stroke-dasharray="3 2"/>
+          <path d="M35 70 L35 34 L50 52 L65 34 L65 70" stroke="url(#navGold)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="navGold" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff2c8"/>
+              <stop offset="50%" stop-color="#d4af37"/>
+              <stop offset="100%" stop-color="#91721e"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="brand-text-name">MAHIRA</span>
+        <span class="brand-text-sub">SELECT</span>
+      </a>
+
+      <!-- Right Menu Links -->
+      <ul class="nav-menu">
+        <li><a href="#new-arrivals" class="nav-link">New Arrivals</a></li>
+        <li><a href="#bestsellers" class="nav-link">Best Sellers</a></li>
+        <li><a href="#our-story" class="nav-link">Our Story</a></li>
+      </ul>
+
+      <!-- Right Utilities -->
+      <div class="nav-utilities">
+        <!-- Ambient Sitar/Tanpura Audio Toggle -->
+        <button id="audio-toggle-btn" class="audio-header-pill" aria-label="Toggle Indian Classical Acoustic Atmosphere" title="Toggle Heritage Music">
+          <div class="sound-bars-mini">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="audio-label-text">Ambiance</span>
+        </button>
+
+        <!-- Search Button -->
+        <button id="search-trigger-btn" class="nav-icon-btn" aria-label="Search Collections">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Bag / Cart Trigger -->
+        <button id="cart-trigger-btn" class="nav-icon-btn" aria-label="View Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span id="cart-count-badge" class="badge-count">1</span>
+        </button>
+
+        <!-- Mobile Burger Menu Button -->
+        <button id="mobile-menu-burger" class="nav-mobile-burger" aria-label="Open Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         MEGA MENU DROPDOWN (ON HOVER 'KALAKAARI')
+         ========================================================================== -->
+    <div id="kalakaari-mega-menu" class="mega-menu-wrapper">
+      <div class="mega-menu-grid">
+        <!-- Col 1: Sarees -->
+        <div class="mega-col">
+          <h4 class="mega-col-title">Sarees</h4>
+          <ul class="mega-links-list">
+            <li class="mega-link-item"><a href="#bestsellers">Kalamkari Sarees</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Printed Sarees</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Handcrafted Sarees</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Banarasi Kadwa Silk</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Chanderi Tissue Drape</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Dress Sets -->
+        <div class="mega-col">
+          <h4 class="mega-col-title">Dress Sets</h4>
+          <ul class="mega-links-list">
+            <li class="mega-link-item"><a href="#bestsellers">Kalamkari Dress Sets</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Kurta Sets</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Anarkali Ensembles</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Angrakha Sets</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Co-ord Silhouettes</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Fabric -->
+        <div class="mega-col">
+          <h4 class="mega-col-title">Fabric</h4>
+          <ul class="mega-links-list">
+            <li class="mega-link-item"><a href="#bestsellers">Kalamkari Fabric</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Printed Mulberry Silk</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Handcrafted Cotton</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Raw Wild Tussar</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Organza by the Yard</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Dupattas -->
+        <div class="mega-col">
+          <h4 class="mega-col-title">Dupattas</h4>
+          <ul class="mega-links-list">
+            <li class="mega-link-item"><a href="#bestsellers">Kalamkari Dupattas</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Vintage Weaves</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Pure Zari Kiran Drapes</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Bandhani Silk Dupatta</a></li>
+            <li class="mega-link-item"><a href="#bestsellers">Hand-embroidered Shawls</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Featured Card -->
+        <div class="mega-featured-card">
+          <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Kalakaari Craftsmanship" />
+          <div class="mega-featured-overlay">
+            <h4>Kalakaari Edition</h4>
+            <p>Pen-drawn mythology in natural dyes</p>
+            <a href="#accordion-section" class="gold-pill-btn" style="padding: 6px 16px; font-size: 0.68rem;">Explore Craft →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       4. HERO SECTION ("MORE THAN FASHION")
+       ========================================================================== -->
+  <main>
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Left Column: Typography & CTAs -->
+          <div class="hero-left reveal-on-scroll">
+            <div class="hero-tagline-wrap">
+              <span class="hero-tagline-line"></span>
+              <span class="hero-tagline">Tradition Meets Tomorrow</span>
+            </div>
+
+            <h1 class="hero-title">
+              More Than<br />
+              <em>Fashion</em>
+            </h1>
+
+            <p class="hero-subtitle">
+              A story in every drape. Handcrafted heirlooms woven for the modern sovereign.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#bestsellers" class="gold-cta-btn">
+                <span>Explore Collections</span>
+                <span>→</span>
+              </a>
+              <a href="#new-arrivals" class="gold-outline-btn">
+                <span>New Arrivals</span>
+                <span>→</span>
+              </a>
+            </div>
+
+            <!-- Hero Acoustic Soundscape Player -->
+            <div id="hero-audio-widget" class="hero-audio-bar">
+              <button id="hero-audio-play-btn" class="hero-play-circle" aria-label="Play Classical Indian Soundscape">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </button>
+
+              <div class="hero-audio-meta">
+                <div class="audio-track-title">Sound of the Loom & Raag</div>
+                <div class="audio-track-sub">
+                  <span id="audio-status-label">Ambient Sitar & Tanpura Drone</span>
+                  <span id="audio-timer">00:00</span>
+                </div>
+              </div>
+
+              <!-- Live Waveform Visualizer Canvas -->
+              <canvas id="audio-visualizer-canvas" width="70" height="20"></canvas>
+
+              <!-- Subtle Volume Control -->
+              <input type="range" id="audio-volume-slider" min="0" max="1" step="0.05" value="0.65" title="Volume" style="width: 45px; accent-color: var(--gold-500); cursor: pointer;" />
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Frame -->
+          <div class="hero-right reveal-on-scroll">
+            <div class="hero-image-frame">
+              <img 
+                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=90" 
+                alt="High-end Indian model draped in Mahira Select heritage saree" 
+                class="hero-model-img" 
+              />
+              
+              <!-- Floating Urli Badge -->
+              <div class="hero-floating-urli">
+                <span class="urli-icon">🪷</span>
+                <div>
+                  <div class="urli-text-main">Varanasi & Srikalahasti</div>
+                  <div class="urli-text-sub">100% Certified Mulberry Silk Mark</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Vertical Edge Tag -->
+      <div class="hero-vertical-badge">
+        HIGH TASTE DESIGN FOR TOMORROW
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. STATEMENT TICKER / MARQUEE
+         ========================================================================== -->
+    <div id="new-arrivals" class="statement-ticker-section">
+      <div class="ticker-track">
+        <div class="ticker-item">
+          New Collections For Women <span class="ticker-star">✦</span> <span>From silhouettes. Timeless craftsmanship. Made for you.</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-star">✦</span> Tradition Meets Tomorrow <span class="ticker-star">✦</span> <span>Seven generations of master weavers.</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-star">✦</span> Pure Kadwa Zari Weave <span class="ticker-star">✦</span> <span>Authentic Srikalahasti Pen Kalamkari.</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-star">✦</span> New Collections For Women <span class="ticker-star">✦</span> <span>From silhouettes. Timeless craftsmanship. Made for you.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         6. DUAL FEATURED SPLIT CARDS ("WOMEN" & "KALAMKARI")
+         ========================================================================== -->
+    <section id="women-section" class="dual-split-section container">
+      <div class="split-cards-grid">
+        
+        <!-- Card 1: WOMEN -->
+        <div class="split-card reveal-on-scroll" onclick="document.getElementById('bestsellers').scrollIntoView({behavior: 'smooth'})">
+          <img 
+            src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85" 
+            alt="Women's Haute Couture Collection" 
+            class="split-card-bg" 
+          />
+          <div class="split-card-overlay">
+            <span class="split-card-subtitle">Heritage Couture</span>
+            <h2 class="split-card-title">WOMEN</h2>
+            <p class="split-card-desc">Elegance in every drape, for every you. Handwoven silhouettes cut with architectural finesse.</p>
+            <div class="split-card-cta">
+              <span>Explore Collection</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: KALAMKARI -->
+        <div class="split-card reveal-on-scroll" onclick="document.getElementById('accordion-section').scrollIntoView({behavior: 'smooth'})">
+          <img 
+            src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85" 
+            alt="Authentic Handcrafted Kalamkari Art" 
+            class="split-card-bg" 
+          />
+          <div class="split-card-overlay">
+            <span class="split-card-subtitle">Ancestral Artistry</span>
+            <h2 class="split-card-title">KALAMKARI</h2>
+            <p class="split-card-desc">Art that tells a story. Ancient mythological epics hand-sketched with bamboo pens in fermented vegetal colors.</p>
+            <div class="split-card-cta">
+              <span>Discover Artistry</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. INTERACTIVE ACCORDION ("ROOTED IN INDIAN ARTISTRY")
+         ========================================================================== -->
+    <section id="accordion-section" class="accordion-showcase-section">
+      <div class="container">
+        
+        <div class="accordion-section-header reveal-on-scroll">
+          <div class="acc-header-left">
+            <div class="acc-header-tag">
+              <span>🪷</span>
+              <span>Rooted in Indian Artistry</span>
+            </div>
+            <h2 class="acc-header-title">
+              A canvas of tradition, for today's world.
+            </h2>
+          </div>
+
+          <a href="#bestsellers" class="gold-outline-btn" style="display: inline-flex;">
+            <span>Explore Kalakaari</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Interactive Expanding Accordion Panels -->
+        <div id="accordion-cards-container" class="accordion-wrapper reveal-on-scroll">
+          <!-- Dynamically populated by js/main.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. BEST SELLERS CURATED SECTION & BENTO GRID
+         ========================================================================== -->
+    <section id="bestsellers" class="bestsellers-section container">
+      
+      <div class="bestsellers-header reveal-on-scroll">
+        <span class="bestsellers-pill">Timeless in Every Thread</span>
+        <h2 class="bestsellers-title">BEST SELLERS</h2>
+        <p class="bestsellers-subtitle">The pieces our patrons reach for most.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="bestsellers-nav reveal-on-scroll">
+        <button class="bestseller-filter-btn active" data-filter="all">All Pieces</button>
+        <button class="bestseller-filter-btn" data-filter="sarees">Sarees</button>
+        <button class="bestseller-filter-btn" data-filter="kurtas">Kurta Sets</button>
+        <button class="bestseller-filter-btn" data-filter="kalakaari">Kalakaari</button>
+        <button class="bestseller-filter-btn" data-filter="dupattas">Dupattas</button>
+      </div>
+
+      <!-- Bento Product Grid -->
+      <div id="bestsellers-grid" class="bestsellers-grid reveal-on-scroll">
+        <!-- Dynamically populated by js/main.js -->
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         9. HERITAGE PILLARS / VALUE PROPOSITIONS
+         ========================================================================== -->
+    <section id="our-story" class="heritage-pillars-section">
+      <div class="container">
+        <div class="pillars-grid reveal-on-scroll">
+          
+          <div class="pillar-item">
+            <div class="pillar-icon-wrap">✦</div>
+            <h3 class="pillar-title">Authentic Craftsmanship</h3>
+            <p class="pillar-desc">Woven directly on pit-looms by master weavers across Varanasi, Chanderi, and Andhra Pradesh.</p>
+          </div>
+
+          <div class="pillar-item">
+            <div class="pillar-icon-wrap">🛡️</div>
+            <h3 class="pillar-title">Premium Quality</h3>
+            <p class="pillar-desc">Every piece is certified with the Silk Mark of India and authenticated with GI-provenance tags.</p>
+          </div>
+
+          <div class="pillar-item">
+            <div class="pillar-icon-wrap">🌿</div>
+            <h3 class="pillar-title">Sustainable Heritage</h3>
+            <p class="pillar-desc">Natural vegetable dyes, river-washed organic fibers, and fair living wages preserving ancestral livelihoods.</p>
+          </div>
+
+          <div class="pillar-item">
+            <div class="pillar-icon-wrap">✂️</div>
+            <h3 class="pillar-title">Bespoke Tailoring</h3>
+            <p class="pillar-desc">Complimentary made-to-measure blouse styling and bespoke fall-pico edging for effortless draping.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       10. GRAND ROYAL FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Top Motto Quote -->
+      <div class="footer-top-motto">
+        <h3 class="footer-motto-text">"Rooted in tradition. Woven for tomorrow."</h3>
+        <p class="footer-motto-sub">Thank you for being an indispensable chapter of our heritage story.</p>
+      </div>
+
+      <!-- Main Footer Grid -->
+      <div class="footer-main-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand-col">
+          <a href="#" class="nav-brand-center" style="align-items: flex-start;">
+            <span class="brand-text-name">MAHIRA</span>
+            <span class="brand-text-sub">SELECT</span>
+          </a>
+          <p class="footer-brand-desc">
+            Thoughtfully curated sarees, kurtas, and timeless pieces — bringing India's finest craftsmanship to your everyday.
+          </p>
+          <div class="footer-tradition-script">Tradition Lives Beautifully</div>
+        </div>
+
+        <!-- Shop Links -->
+        <div>
+          <h4 class="footer-col-title">Shop</h4>
+          <ul class="footer-links-list">
+            <li><a href="#new-arrivals">New Arrivals</a></li>
+            <li><a href="#bestsellers">Sarees</a></li>
+            <li><a href="#bestsellers">Kurta Sets</a></li>
+            <li><a href="#accordion-section">Kalakaari</a></li>
+            <li><a href="#bestsellers">Best Sellers</a></li>
+            <li><a href="#bestsellers">All Collections</a></li>
+          </ul>
+        </div>
+
+        <!-- About Links -->
+        <div>
+          <h4 class="footer-col-title">About</h4>
+          <ul class="footer-links-list">
+            <li><a href="#our-story">Our Story</a></li>
+            <li><a href="#our-story">Craftsmanship</a></li>
+            <li><a href="#our-story">Sustainability</a></li>
+            <li><a href="#our-story">Artisan Clusters</a></li>
+            <li><a href="#our-story">Care Guide</a></li>
+            <li><a href="#our-story">Contact Atelier</a></li>
+          </ul>
+        </div>
+
+        <!-- Help Links -->
+        <div>
+          <h4 class="footer-col-title">Help</h4>
+          <ul class="footer-links-list">
+            <li><a href="#our-story">Track Your Order</a></li>
+            <li><a href="#our-story">Shipping & Delivery</a></li>
+            <li><a href="#our-story">Returns & Exchanges</a></li>
+            <li><a href="#our-story">Size & Drape Guide</a></li>
+            <li><a href="#our-story">Client FAQs</a></li>
+            <li><a href="#our-story">Concierge Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Stay in Touch / Newsletter -->
+        <div class="footer-newsletter-wrap">
+          <h4 class="footer-col-title">Stay in Touch</h4>
+          <p>Be the first to receive atelier invitations, rare loom releases, and stories from our artisans.</p>
+          
+          <form id="newsletter-form" class="footer-newsletter-form">
+            <input type="email" id="newsletter-email" placeholder="Enter your email address" required />
+            <button type="submit" class="newsletter-submit-btn" aria-label="Subscribe">➔</button>
+          </form>
+
+          <!-- Social Circles -->
+          <div class="footer-social-links">
+            <a href="#" class="social-circle-link" aria-label="Instagram">IG</a>
+            <a href="#" class="social-circle-link" aria-label="Pinterest">PIN</a>
+            <a href="#" class="social-circle-link" aria-label="Facebook">FB</a>
+            <a href="#" class="social-circle-link" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div>© 2026 Mahira Select Couture. All rights reserved. Registered Handloom Mark #IND-6842</div>
+        <div>Currency: <strong>INR (₹) India</strong> • Worldwide Insured Shipping</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       11. INTERACTIVE SLIDE-OVER CART DRAWER
+       ========================================================================== -->
+  <div id="cart-overlay" class="cart-drawer-overlay"></div>
+  <aside id="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-head">
+      <h3 class="cart-head-title">Your Royal Bag</h3>
+      <button id="cart-close-btn" class="cart-close-btn" aria-label="Close Bag">×</button>
+    </div>
+
+    <!-- Free Delivery Progress Tracker -->
+    <div class="free-shipping-card">
+      <div id="free-shipping-text" class="free-shipping-text">
+        Add <strong>₹3,000</strong> more to unlock Complimentary White-Glove Worldwide Delivery.
+      </div>
+      <div class="free-shipping-track">
+        <div id="free-shipping-progress" class="free-shipping-fill"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll List -->
+    <div id="cart-items-list" class="cart-items-wrap">
+      <!-- Injected by js/cart.js -->
+    </div>
+
+    <!-- Cart Footer & Checkout -->
+    <div class="cart-footer">
+      <div class="cart-promo-box">
+        <input type="text" id="promo-code-input" class="cart-promo-input" placeholder="Privilege Code (try MAHIRA10)" />
+        <button id="apply-promo-btn" class="cart-promo-btn">Apply</button>
+      </div>
+      <div id="promo-feedback-msg" class="promo-msg"></div>
+
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹ 21,500</span>
+      </div>
+      <div id="cart-discount-row" class="cart-summary-line" style="display: none; color: #8ee59d;">
+        <span>Heritage Privilege Discount</span>
+        <span id="cart-discount">-₹ 0</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>White-Glove Shipping</span>
+        <span style="color: #8ee59d;">Complimentary</span>
+      </div>
+      <div class="cart-summary-line total">
+        <span>Estimated Total</span>
+        <span id="cart-total">₹ 21,500</span>
+      </div>
+
+      <button id="checkout-btn" class="cart-checkout-btn">
+        Proceed to Secure Checkout ✦
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       12. QUICK VIEW PRODUCT MODAL
+       ========================================================================== -->
+  <div id="modal-overlay" class="modal-overlay"></div>
+  <div id="quick-view-modal" role="dialog" aria-modal="true">
+    <button id="modal-close-btn" class="modal-close-btn" aria-label="Close Quick View">×</button>
+    <div id="modal-body-content" class="modal-inner">
+      <!-- Populated dynamically by js/main.js -->
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       13. LIVE SEARCH DRAWER
+       ========================================================================== -->
+  <div id="search-overlay" class="search-overlay"></div>
+  <div id="search-drawer" role="dialog" aria-modal="true">
+    <div class="search-inner">
+      <div class="search-input-wrap">
+        <svg class="search-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input-field" placeholder="Search sarees, weaves, fabrics, motifs..." autocomplete="off" />
+        <button id="search-close-btn" class="search-close-x" aria-label="Close Search">×</button>
+      </div>
+
+      <div class="search-tags-row">
+        <span class="search-tags-label">Trending:</span>
+        <button class="search-tag-chip" data-tag="kalamkari">Kalamkari</button>
+        <button class="search-tag-chip" data-tag="saree">Banarasi Sarees</button>
+        <button class="search-tag-chip" data-tag="chanderi">Chanderi Kurta</button>
+        <button class="search-tag-chip" data-tag="silk">Mulberry Silk</button>
+        <button class="search-tag-chip" data-tag="dupatta">Zari Dupatta</button>
+      </div>
+
+      <div id="search-live-results" class="search-results-area">
+        <div class="search-hint">Type above to search by weave, fabric, collection, or motif...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       14. MOBILE NAVIGATION DRAWER
+       ========================================================================== -->
+  <div id="mobile-nav-overlay" class="mobile-nav-overlay"></div>
+  <div id="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <div class="mobile-nav-head">
+      <div class="brand-text-name" style="font-size: 1.1rem;">MAHIRA SELECT</div>
+      <button id="mobile-nav-close" class="cart-close-btn" aria-label="Close Menu">×</button>
+    </div>
+
+    <div class="mobile-nav-body">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a href="#hero" class="mobile-nav-link">Home</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#women-section" class="mobile-nav-link">Women's Couture</a>
+        </li>
+        <li class="mobile-nav-item">
+          <button class="mobile-nav-accordion-trigger">
+            <span>Kalakaari Edition</span>
+            <span class="mobile-acc-icon">+</span>
+          </button>
+          <ul class="mobile-submenu">
+            <li><a href="#bestsellers">Kalamkari Sarees</a></li>
+            <li><a href="#bestsellers">Kalamkari Fabric</a></li>
+            <li><a href="#bestsellers">Handcrafted Kurtas</a></li>
+            <li><a href="#bestsellers">Artisanal Dupattas</a></li>
+          </ul>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#new-arrivals" class="mobile-nav-link">New Arrivals</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#bestsellers" class="mobile-nav-link">Best Sellers</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#our-story" class="mobile-nav-link">Our Heritage Story</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mobile-nav-footer">
+      <button class="gold-cta-btn mobile-curtain-trigger" onclick="window.redrawCurtain(); document.getElementById('mobile-nav-drawer').classList.remove('open'); document.getElementById('mobile-nav-overlay').classList.remove('open');">
+        Redraw Royal Curtain ✦
+      </button>
+      <div style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+        Currency: INR (₹) • White-Glove Courier
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
+

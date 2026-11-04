@@ -1,0 +1,279 @@
+/* ==========================================================================
+   ROYAL SATIN CURTAIN REVEAL ENGINE
+   Cinematic pleated silk drape, specular lighting folds, and parting animation
+   ========================================================================== */
+
+:root {
+  --curtain-crimson-deep: #2e080e;
+  --curtain-crimson-mid: #5b121c;
+  --curtain-crimson-bright: #8a1f2b;
+  --curtain-crimson-highlight: #b83344;
+  --gold-primary: #d4af37;
+  --gold-light: #f6ecc9;
+  --gold-dark: #8c6d1f;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+}
+
+body.curtain-active {
+  overflow: hidden;
+}
+
+#curtain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  pointer-events: all;
+  user-select: none;
+  background-color: var(--curtain-crimson-deep);
+  transition: visibility 0.4s ease 1.6s, opacity 0.4s ease 1.6s;
+}
+
+#curtain-overlay.is-open {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Curtain Panels */
+.curtain-panel {
+  position: relative;
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      var(--curtain-crimson-deep) 0%,
+      var(--curtain-crimson-mid) 2.5%,
+      var(--curtain-crimson-bright) 5%,
+      var(--curtain-crimson-highlight) 6.5%,
+      var(--curtain-crimson-bright) 8%,
+      var(--curtain-crimson-mid) 10.5%,
+      var(--curtain-crimson-deep) 13%
+    );
+  background-size: 140px 100%;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.85);
+  transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+/* Velvety texture and top valance shadow */
+.curtain-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.2) 15%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(0, 0, 0, 0.3) 85%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  pointer-events: none;
+}
+
+/* Silk Sheen diagonal wave */
+.curtain-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(255, 180, 190, 0.22) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  pointer-events: none;
+}
+
+#curtain-left {
+  transform-origin: left center;
+  border-right: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+#curtain-right {
+  transform-origin: right center;
+  border-left: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+/* Curtain Opening States */
+#curtain-overlay.is-opening #curtain-left {
+  transform: translateX(-102%) scaleX(0.75);
+}
+
+#curtain-overlay.is-opening #curtain-right {
+  transform: translateX(102%) scaleX(0.75);
+}
+
+/* Curtain Closing (Re-draw) */
+#curtain-overlay.is-closing #curtain-left,
+#curtain-overlay.is-closing #curtain-right {
+  transform: translateX(0) scaleX(1);
+}
+
+/* Center Royal Crest & Emblem */
+#curtain-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: all;
+  transition: opacity 0.8s ease 0.1s, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#curtain-overlay.is-opening #curtain-center {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.15);
+  pointer-events: none;
+}
+
+.curtain-crest-wrap {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.7));
+  animation: crestPulse 4s ease-in-out infinite alternate;
+}
+
+.curtain-crest-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.curtain-brand-title {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--gold-light);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), 0 0 35px var(--gold-glow);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.curtain-brand-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.75rem, 1.5vw, 1.05rem);
+  letter-spacing: 0.6em;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.curtain-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: rgba(255, 245, 230, 0.85);
+  margin-bottom: 36px;
+  letter-spacing: 0.08em;
+}
+
+/* Golden Unveil Button */
+.unveil-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #dfba5c 0%, #d4af37 50%, #9e7820 100%);
+  color: #1a0a0d;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 245, 200, 0.6);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 25px var(--gold-glow);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.unveil-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: linear-gradient(135deg, #f7e7b4 0%, #e2be4b 50%, #b08928 100%);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(212, 175, 55, 0.6);
+}
+
+.unveil-btn .sparkle {
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* Floating Re-draw Curtain Button */
+#redraw-curtain-btn {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  background: rgba(18, 35, 28, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 40px;
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+#redraw-curtain-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+#redraw-curtain-btn:hover {
+  background: rgba(28, 52, 42, 0.95);
+  border-color: var(--gold-primary);
+  box-shadow: 0 8px 30px var(--gold-glow);
+}
+
+@keyframes crestPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6)); }
+  100% { transform: scale(1.03); filter: drop-shadow(0 12px 35px var(--gold-glow)); }
+}
+
+@media (max-width: 768px) {
+  .curtain-crest-wrap {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 16px;
+  }
+  .curtain-panel {
+    background-size: 90px 100%;
+  }
+  .unveil-btn {
+    padding: 13px 28px;
+    font-size: 0.75rem;
+  }
+}
+
