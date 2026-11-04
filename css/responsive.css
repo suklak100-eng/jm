@@ -83,21 +83,29 @@
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 48px;
-    padding: 40px 0;
+    padding: 30px 0;
     text-align: center;
   }
   .hero-content {
     align-items: center;
   }
   .hero-poetic-sub {
-    margin: 0 auto 36px;
+    margin: 0 auto 30px;
   }
   .hero-cta-row {
+    justify-content: center;
+  }
+  .hero-accreditation-strip {
+    margin: 0 auto;
     justify-content: center;
   }
   .hero-vitrine-frame {
     aspect-ratio: 4 / 5;
     max-height: 480px;
+    height: auto;
+    max-width: 440px;
+    margin: 0 auto;
+  }
     height: auto;
     max-width: 440px;
     margin: 0 auto;
@@ -150,24 +158,30 @@
 /* Mobile Phones (max-width: 768px) */
 @media (max-width: 768px) {
   .container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
-  .nav-menu {
-    display: none;
+  .nav-inner {
+    padding: 0 6px;
   }
 
-  .nav-hamburger {
-    display: flex;
+  .salon-menu-btn {
+    padding: 6px 12px;
+    font-size: 0.65rem;
+    gap: 7px;
+  }
+
+  .nav-utilities {
+    gap: 12px;
   }
 
   .brand-title-text {
-    font-size: 1.15rem;
-    letter-spacing: 0.32em;
+    font-size: 1.05rem;
+    letter-spacing: 0.28em;
   }
   .brand-sub-text {
-    font-size: 0.48rem;
-    letter-spacing: 0.45em;
+    font-size: 0.44rem;
+    letter-spacing: 0.38em;
   }
 
   /* Hero */
@@ -175,10 +189,10 @@
     padding: 40px 0 60px;
   }
   .hero-title-main {
-    font-size: 2.6rem;
+    font-size: 2.3rem;
   }
   .hero-poetic-sub {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
   .hero-cta-row {
     flex-direction: column;
@@ -187,6 +201,13 @@
   .primary-gold-btn, .ghost-btn {
     width: 100%;
     justify-content: center;
+  }
+  .hero-accreditation-strip {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 14px;
+    gap: 8px;
+    font-size: 0.62rem;
   }
   .hero-vitrine-frame {
     aspect-ratio: 4 / 5;

@@ -456,12 +456,17 @@ function initDossierModal() {
   };
 }
 
-/* ---------------- 6. MOBILE NAVIGATION ---------------- */
+/* ---------------- 6. SALON MENU & MOBILE NAVIGATION ---------------- */
 function initMobileNav() {
-  const burger = document.getElementById('mobile-burger-trigger');
-  const drawer = document.getElementById('mobile-salon-drawer');
-  const overlay = document.getElementById('mobile-drawer-overlay');
-  const closeBtn = document.getElementById('mobile-drawer-close');
+  const triggers = [
+    document.getElementById('salon-menu-trigger'),
+    document.getElementById('mobile-burger-trigger'),
+    document.getElementById('menu-trigger-btn')
+  ].filter(Boolean);
+
+  const drawer = document.getElementById('salon-menu-drawer') || document.getElementById('mobile-salon-drawer');
+  const overlay = document.getElementById('salon-drawer-overlay') || document.getElementById('mobile-drawer-overlay');
+  const closeBtn = document.getElementById('salon-drawer-close') || document.getElementById('mobile-drawer-close');
 
   function openDrawer() {
     drawer?.classList.add('open');
@@ -475,9 +480,15 @@ function initMobileNav() {
     document.body.style.overflow = '';
   }
 
-  if (burger) burger.addEventListener('click', openDrawer);
+  triggers.forEach((btn) => btn.addEventListener('click', openDrawer));
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if (overlay) overlay.addEventListener('click', closeDrawer);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer?.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
 
   drawer?.querySelectorAll('a').forEach((l) => l.addEventListener('click', closeDrawer));
 }

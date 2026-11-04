@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Italiana&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="css/curtain.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/curtain.css?v=2026.4" />
+  <link rel="stylesheet" href="css/main.css?v=2026.4" />
+  <link rel="stylesheet" href="css/responsive.css?v=2026.4" />
 </head>
 <body>
 
@@ -23,16 +23,23 @@
     <span>✦ Complimentary White-Glove Insured Delivery Across India & Worldwide | <strong>BIS 916 Hallmarked Gold</strong> ✦</span>
   </div>
 
-  <!-- Header Navigation -->
+  <!-- Header Navigation (3-Part Balanced Luxury) -->
   <header id="site-header" class="site-header">
     <div class="container nav-inner">
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="shop.html" class="nav-link">Shop Collection</a></li>
-        <li><a href="collections.html" class="nav-link">Lookbook</a></li>
-        <li><a href="index.html#loupe" class="nav-link">4Cs Loupe</a></li>
-      </ul>
+      
+      <!-- Left: Menu Trigger -->
+      <div class="nav-left">
+        <button id="salon-menu-trigger" class="salon-menu-btn" aria-label="Open Salon Menu">
+          <span class="menu-icon-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="menu-btn-text">MENU</span>
+        </button>
+      </div>
 
+      <!-- Center: Brand Emblem -->
       <a href="index.html" class="nav-brand-center" aria-label="Mahira Haute Joaillerie">
         <svg class="brand-emblem-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2.2" fill="none"/>
@@ -42,17 +49,18 @@
         <span class="brand-sub-text">HAUTE JOAILLERIE</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="about.html" class="nav-link">Our Story</a></li>
-        <li><a href="contact.html" class="nav-link">Private Salon</a></li>
-        <li><a href="admin.html" class="nav-link" style="color: var(--gold-400);">Admin Portal</a></li>
-      </ul>
-
+      <!-- Right: Utilities -->
       <div class="nav-utilities">
         <a href="shop.html" class="nav-util-item" title="Search Jewelry" aria-label="Search">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <a href="shop.html" class="nav-util-item" title="Wishlist" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
         </a>
 
@@ -62,14 +70,7 @@
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <path d="M16 10a4 4 0 0 1-8 0"></path>
           </svg>
-          <span id="vault-count-badge" class="badge-counter">1</span>
-        </button>
-
-        <button id="mobile-burger-trigger" class="nav-hamburger" aria-label="Open Navigation">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="4" y1="8" x2="20" y2="8"></line>
-            <line x1="4" y1="16" x2="20" y2="16"></line>
-          </svg>
+          <span id="vault-count-badge" class="badge-counter">0</span>
         </button>
       </div>
     </div>
@@ -274,23 +275,46 @@
     </div>
   </aside>
 
-  <!-- Mobile Drawer Menu -->
-  <div id="mobile-drawer-overlay" class="mobile-nav-overlay"></div>
-  <nav id="mobile-salon-drawer" class="mobile-nav-drawer" aria-label="Mobile Navigation">
-    <div class="mobile-drawer-head">
-      <span class="mobile-brand-name">MAHIRA</span>
-      <button id="mobile-drawer-close" class="mobile-close-btn" aria-label="Close Menu">✕</button>
+  <!-- Unified Luxury Salon Navigation Drawer -->
+  <div id="salon-drawer-overlay" class="salon-drawer-overlay"></div>
+  <aside id="salon-menu-drawer" class="salon-menu-drawer" aria-label="Salon Navigation">
+    <div class="salon-drawer-head">
+      <div class="salon-drawer-brand">
+        <svg class="brand-emblem-svg" viewBox="0 0 80 80" fill="none" style="width: 24px; height: 24px;">
+          <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2.2" fill="none"/>
+          <circle cx="40" cy="40" r="14" stroke="#fbf5e2" stroke-width="1.2"/>
+        </svg>
+        <div>
+          <span class="drawer-brand-title">MAHIRA</span>
+          <span class="drawer-brand-sub">HAUTE JOAILLERIE</span>
+        </div>
+      </div>
+      <button id="salon-drawer-close" class="salon-drawer-close-btn" aria-label="Close Navigation">✕</button>
     </div>
-    <ul class="mobile-menu-links">
-      <li><a href="index.html" class="mobile-link">Home</a></li>
-      <li><a href="shop.html" class="mobile-link">Shop Catalog</a></li>
-      <li><a href="collections.html" class="mobile-link">2026 Lookbook</a></li>
-      <li><a href="about.html" class="mobile-link">Our Heritage & Story</a></li>
-      <li><a href="contact.html" class="mobile-link">Private Salon Viewing</a></li>
-      <li><a href="cart.html" class="mobile-link">Private Vault Bag</a></li>
-      <li><a href="admin.html" class="mobile-link" style="color: var(--gold-400);">⚙ Admin Portal</a></li>
-    </ul>
-  </nav>
+
+    <div class="salon-drawer-body">
+      <span class="drawer-section-label">SALON DIRECTORY</span>
+      <ul class="salon-nav-links">
+        <li><a href="index.html" class="salon-nav-item"><span class="nav-idx">01</span> <span class="nav-lbl">Home Atelier</span></a></li>
+        <li><a href="shop.html" class="salon-nav-item"><span class="nav-idx">02</span> <span class="nav-lbl">Shop Collection</span></a></li>
+        <li><a href="collections.html" class="salon-nav-item"><span class="nav-idx">03</span> <span class="nav-lbl">2026 Lookbook Film</span></a></li>
+        <li><a href="index.html#loupe" class="salon-nav-item"><span class="nav-idx">04</span> <span class="nav-lbl">4Cs Diamond Loupe</span></a></li>
+        <li><a href="about.html" class="salon-nav-item"><span class="nav-idx">05</span> <span class="nav-lbl">Our Heritage & Story</span></a></li>
+        <li><a href="contact.html" class="salon-nav-item"><span class="nav-idx">06</span> <span class="nav-lbl">Private Salon Viewing</span></a></li>
+        <li><a href="cart.html" class="salon-nav-item active"><span class="nav-idx">07</span> <span class="nav-lbl">Private Vault Bag</span></a></li>
+      </ul>
+    </div>
+
+    <div class="salon-drawer-foot">
+      <div class="drawer-foot-locations">
+        <span>Paris • London • Geneva • Mumbai • Dubai</span>
+      </div>
+      <a href="contact.html" class="drawer-whatsapp-btn">
+        <span>Request Private Appointment</span>
+        <span>→</span>
+      </a>
+    </div>
+  </aside>
 
   <canvas id="stardust-canvas"></canvas>
 
@@ -452,12 +476,15 @@
         });
       }
 
-      // Mobile Nav
-      const burger = document.getElementById('mobile-burger-trigger');
-      const drawer = document.getElementById('mobile-salon-drawer');
-      const mobOverlay = document.getElementById('mobile-drawer-overlay');
-      const mobClose = document.getElementById('mobile-drawer-close');
-      if (burger) burger.addEventListener('click', () => { drawer?.classList.add('open'); mobOverlay?.classList.add('open'); });
+      // Salon Menu Navigation
+      const triggers = [
+        document.getElementById('salon-menu-trigger'),
+        document.getElementById('mobile-burger-trigger')
+      ].filter(Boolean);
+      const drawer = document.getElementById('salon-menu-drawer') || document.getElementById('mobile-salon-drawer');
+      const mobOverlay = document.getElementById('salon-drawer-overlay') || document.getElementById('mobile-drawer-overlay');
+      const mobClose = document.getElementById('salon-drawer-close') || document.getElementById('mobile-drawer-close');
+      triggers.forEach(btn => btn.addEventListener('click', () => { drawer?.classList.add('open'); mobOverlay?.classList.add('open'); }));
       if (mobClose) mobClose.addEventListener('click', () => { drawer?.classList.remove('open'); mobOverlay?.classList.remove('open'); });
       if (mobOverlay) mobOverlay.addEventListener('click', () => { drawer?.classList.remove('open'); mobOverlay?.classList.remove('open'); });
     });

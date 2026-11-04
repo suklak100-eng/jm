@@ -15,9 +15,9 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,30 80,95 20,95 5,30' fill='none' stroke='%23e5c47a' stroke-width='4'/></svg>" />
 
   <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="css/curtain.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/curtain.css?v=2026.4" />
+  <link rel="stylesheet" href="css/main.css?v=2026.4" />
+  <link rel="stylesheet" href="css/responsive.css?v=2026.4" />
 </head>
 <body class="curtain-active">
 
@@ -85,19 +85,23 @@
        ========================================================================== -->
   <div id="site-root">
 
-    <!-- 2. MINIMALIST EDITORIAL NAVIGATION -->
+    <!-- 2. MINIMALIST EDITORIAL NAVIGATION (3-PART BALANCED LUXURY) -->
     <header id="site-header" class="site-header">
       <div class="container nav-inner">
         
-        <!-- Left Menu Links -->
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="shop.html" class="nav-link">Shop Collection</a></li>
-          <li><a href="collections.html" class="nav-link">Lookbook</a></li>
-          <li><a href="#loupe" class="nav-link">4Cs Loupe</a></li>
-        </ul>
+        <!-- Left: Luxury Menu Trigger Button -->
+        <div class="nav-left">
+          <button id="salon-menu-trigger" class="salon-menu-btn" aria-label="Open Salon Menu">
+            <span class="menu-icon-bars">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="menu-btn-text">MENU</span>
+          </button>
+        </div>
 
-        <!-- Center Brand Emblem -->
+        <!-- Center: Royal Brand Emblem -->
         <a href="index.html" class="nav-brand-center" aria-label="Mahira Haute Joaillerie">
           <svg class="brand-emblem-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2.2" fill="none"/>
@@ -107,46 +111,28 @@
           <span class="brand-sub-text">HAUTE JOAILLERIE</span>
         </a>
 
-        <!-- Right Menu Links -->
-        <ul class="nav-menu">
-          <li><a href="about.html" class="nav-link">Our Story</a></li>
-          <li><a href="contact.html" class="nav-link">Private Salon</a></li>
-          <li><a href="admin.html" class="nav-link" style="color: var(--gold-400);">Admin Portal</a></li>
-        </ul>
-
-        <!-- Right Utilities -->
+        <!-- Right: Utilities (Search, Wishlist, Vault Bag) -->
         <div class="nav-utilities">
-          <!-- Search Link -->
-          <a href="shop.html" class="nav-util-item" title="Search Jewelry" aria-label="Search">
+          <a href="shop.html" class="nav-util-item" title="Search Jewellery" aria-label="Search">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </a>
 
-          <!-- Wishlist Indicator -->
           <a href="shop.html" class="nav-util-item" title="Wishlist" aria-label="Wishlist">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
           </a>
 
-          <!-- Private Vault Bag Trigger -->
           <button id="vault-trigger-btn" class="nav-btn" aria-label="View Private Vault Bag">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <path d="M16 10a4 4 0 0 1-8 0"></path>
             </svg>
-            <span id="vault-count-badge" class="badge-counter">1</span>
-          </button>
-
-          <!-- Mobile Hamburger -->
-          <button id="mobile-burger-trigger" class="nav-hamburger" aria-label="Open Navigation">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="4" y1="8" x2="20" y2="8"></line>
-              <line x1="4" y1="16" x2="20" y2="16"></line>
-            </svg>
+            <span id="vault-count-badge" class="badge-counter">0</span>
           </button>
         </div>
 
@@ -155,52 +141,64 @@
 
     <main>
       <!-- ==========================================================================
-           3. HERO BANNER: "ELEVATE YOUR STYLE WITH TIMELESS FASHION"
+           3. HERO BANNER: "SCULPTING HEIRLOOMS OF SOVEREIGN ETERNITY"
            ========================================================================== -->
       <section id="hero" class="hero-section">
+        <div class="hero-ambient-glow"></div>
         <div class="container">
           <div class="hero-grid">
             
-            <!-- Left Column: Headline, Trust Badges, CTAs -->
+            <!-- Left Column: Headline, Poetic Subtitle, CTAs & Accreditation Strip -->
             <div class="hero-content reveal-on-scroll">
               <div id="hero-meta-tag" class="hero-meta-tag">
                 HAUTE JOAILLERIE • PLACE VENDÔME & MUMBAI
               </div>
 
               <h1 id="hero-title-main" class="hero-title-main">
-                Elevate Your Style With<br />
-                <em>Timeless Fashion</em>
+                Sculpting Heirlooms<br />
+                <em>of Sovereign Eternity</em>
               </h1>
 
               <p id="hero-poetic-sub" class="hero-poetic-sub">
-                Discover an opulent collection of handcrafted pure gold and certified diamond jewelry created to enrich your style and individuality.
+                Handcrafted in 22K pure hallmarked bullion and certified natural diamonds, our high jewelry ateliers immortalize modern royal heritage.
               </p>
 
-              <!-- Luxury Trust Badges Pills -->
-              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;">
-                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(229,196,122,0.1); border: 1px solid rgba(229,196,122,0.3); border-radius: 20px; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-300);">
-                  💎 Premium Materials
-                </span>
-                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(229,196,122,0.1); border: 1px solid rgba(229,196,122,0.3); border-radius: 20px; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-300);">
-                  ✨ BIS 916 Hallmarked Gold
-                </span>
-                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(229,196,122,0.1); border: 1px solid rgba(229,196,122,0.3); border-radius: 20px; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #f9d984;">
-                  ★ 5.0 Google Rating (250+ Reviews)
-                </span>
-              </div>
-
+              <!-- Luxury Call to Action Buttons -->
               <div class="hero-cta-row">
                 <a href="shop.html" class="primary-gold-btn">
-                  <span>Explore Collection</span>
+                  <span>Explore Masterworks</span>
                   <span>✦</span>
                 </a>
                 <a href="contact.html" class="ghost-btn">
                   <span>Book Private Salon</span>
                 </a>
               </div>
+
+              <!-- Sleek Single-Line Accreditation Strip (Clean, Aligned, Luxury) -->
+              <div class="hero-accreditation-strip">
+                <div class="accred-item">
+                  <span class="accred-icon">✦</span>
+                  <span class="accred-text">BIS 916 Pure Gold</span>
+                </div>
+                <div class="accred-sep">•</div>
+                <div class="accred-item">
+                  <span class="accred-icon">✦</span>
+                  <span class="accred-text">GIA Certified Solitaires</span>
+                </div>
+                <div class="accred-sep">•</div>
+                <div class="accred-item">
+                  <span class="accred-icon">✦</span>
+                  <span class="accred-text">100% Lifetime Buyback</span>
+                </div>
+                <div class="accred-sep">•</div>
+                <div class="accred-item">
+                  <span class="accred-icon">★</span>
+                  <span class="accred-text">5.0 Google Rating</span>
+                </div>
+              </div>
             </div>
 
-            <!-- Right Column: Vitrine Centerpiece -->
+            <!-- Right Column: Vitrine Centerpiece with Floating Jewel & Glow -->
             <div class="hero-vitrine-stage reveal-on-scroll">
               <div class="hero-vitrine-frame">
                 <img 
@@ -210,11 +208,12 @@
                   class="hero-vitrine-img" 
                 />
                 <div class="hero-vitrine-tag">
-                  <div>
+                  <div class="vitrine-tag-left">
+                    <span class="vitrine-tag-edition">MASTERWORK ARCHIVE • 01</span>
                     <div id="hero-tag-title" class="vitrine-tag-title">The Royal Nizam Choker</div>
                     <div id="hero-tag-sub" class="vitrine-tag-sub">Untreated Zambian Royal Emeralds</div>
                   </div>
-                  <span id="hero-tag-carat" class="vitrine-tag-carat">18.40 cts</span>
+                  <span id="hero-tag-carat" class="vitrine-tag-badge">18.40 cts</span>
                 </div>
               </div>
             </div>
@@ -823,28 +822,53 @@
     </div>
   </aside>
 
-  <!-- Mobile Drawer Menu -->
-  <div id="mobile-drawer-overlay" class="mobile-nav-overlay"></div>
-  <nav id="mobile-salon-drawer" class="mobile-nav-drawer" aria-label="Mobile Navigation">
-    <div class="mobile-drawer-head">
-      <span class="mobile-brand-name">MAHIRA</span>
-      <button id="mobile-drawer-close" class="mobile-close-btn" aria-label="Close Menu">✕</button>
+  <!-- ==========================================================================
+       16. UNIFIED LUXURY SALON NAVIGATION DRAWER
+       ========================================================================== -->
+  <div id="salon-drawer-overlay" class="salon-drawer-overlay"></div>
+  <aside id="salon-menu-drawer" class="salon-menu-drawer" aria-label="Salon Navigation">
+    <div class="salon-drawer-head">
+      <div class="salon-drawer-brand">
+        <svg class="brand-emblem-svg" viewBox="0 0 80 80" fill="none" style="width: 24px; height: 24px;">
+          <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2.2" fill="none"/>
+          <circle cx="40" cy="40" r="14" stroke="#fbf5e2" stroke-width="1.2"/>
+        </svg>
+        <div>
+          <span class="drawer-brand-title">MAHIRA</span>
+          <span class="drawer-brand-sub">HAUTE JOAILLERIE</span>
+        </div>
+      </div>
+      <button id="salon-drawer-close" class="salon-drawer-close-btn" aria-label="Close Navigation">✕</button>
     </div>
-    <ul class="mobile-menu-links">
-      <li><a href="index.html" class="mobile-link">Home</a></li>
-      <li><a href="shop.html" class="mobile-link">Shop Catalog</a></li>
-      <li><a href="collections.html" class="mobile-link">2026 Lookbook</a></li>
-      <li><a href="about.html" class="mobile-link">Our Heritage & Story</a></li>
-      <li><a href="contact.html" class="mobile-link">Private Salon Viewing</a></li>
-      <li><a href="cart.html" class="mobile-link">Private Vault Bag</a></li>
-      <li><a href="admin.html" class="mobile-link" style="color: var(--gold-400);">⚙ Admin Portal</a></li>
-    </ul>
-  </nav>
+
+    <div class="salon-drawer-body">
+      <span class="drawer-section-label">SALON DIRECTORY</span>
+      <ul class="salon-nav-links">
+        <li><a href="index.html" class="salon-nav-item active"><span class="nav-idx">01</span> <span class="nav-lbl">Home Atelier</span></a></li>
+        <li><a href="shop.html" class="salon-nav-item"><span class="nav-idx">02</span> <span class="nav-lbl">Shop Collection</span></a></li>
+        <li><a href="collections.html" class="salon-nav-item"><span class="nav-idx">03</span> <span class="nav-lbl">2026 Lookbook Film</span></a></li>
+        <li><a href="index.html#loupe" class="salon-nav-item"><span class="nav-idx">04</span> <span class="nav-lbl">4Cs Diamond Loupe</span></a></li>
+        <li><a href="about.html" class="salon-nav-item"><span class="nav-idx">05</span> <span class="nav-lbl">Our Heritage & Story</span></a></li>
+        <li><a href="contact.html" class="salon-nav-item"><span class="nav-idx">06</span> <span class="nav-lbl">Private Salon Viewing</span></a></li>
+        <li><a href="cart.html" class="salon-nav-item"><span class="nav-idx">07</span> <span class="nav-lbl">Private Vault Bag</span></a></li>
+      </ul>
+    </div>
+
+    <div class="salon-drawer-foot">
+      <div class="drawer-foot-locations">
+        <span>Paris • London • Geneva • Mumbai • Dubai</span>
+      </div>
+      <a href="contact.html" class="drawer-whatsapp-btn">
+        <span>Request Private Appointment</span>
+        <span>→</span>
+      </a>
+    </div>
+  </aside>
 
   <!-- Background Particle Shimmer Canvas -->
   <canvas id="stardust-canvas"></canvas>
 
   <!-- Core JavaScript Architecture -->
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/main.js?v=2026.4"></script>
 </body>
 </html>
