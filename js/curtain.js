@@ -1,61 +1,117 @@
-// Cinematic Satin Curtain Reveal Controller
-// Creates luxurious silk draping physics, audio cue, and reveal mechanics
+// Luxury 3D Silk Curtain Controller with Fluid Scroll & Touch Unveiling
 
 export function initCurtain() {
   const curtainOverlay = document.getElementById('curtain-overlay');
-  const curtainLeft = document.getElementById('curtain-left');
-  const curtainRight = document.getElementById('curtain-right');
-  const curtainCenter = document.getElementById('curtain-center');
   const unveilBtn = document.getElementById('unveil-btn');
-  const redrawBtn = document.getElementById('redraw-curtain-btn');
+  const replayBtn = document.getElementById('replay-curtain-btn');
 
   if (!curtainOverlay) return;
 
   let isUnveiled = false;
+  let isAnimating = false;
 
   function unveil() {
-    if (isUnveiled) return;
-    isUnveiled = true;
+    if (isUnveiled || isAnimating) return;
+    isAnimating = true;
+
+    // Remove window event listeners immediately to prevent re-triggering
+    window.removeEventListener('wheel', onWheel);
+    window.removeEventListener('touchstart', onTouchStart);
+    window.removeEventListener('touchmove', onTouchMove);
+    window.removeEventListener('keydown', onKeyDown);
 
     curtainOverlay.classList.add('is-opening');
+    document.body.classList.remove('curtain-active');
 
-    // Trigger subtle silk swoosh audio effect if audio context permitted
-    playCurtainSwoosh();
+    // Trigger soft royal acoustic chime / swoosh if available
+    playLuxuryRevealSound();
 
-    // After animation finishes, allow full pointer events to website
+    // After the 3D parting animation finishes, cleanly disable overlay
     setTimeout(() => {
-      curtainOverlay.classList.add('is-open');
+      curtainOverlay.classList.add('is-opened');
       curtainOverlay.classList.remove('is-opening');
-      document.body.classList.remove('curtain-active');
+      curtainOverlay.style.display = 'none';
+      isUnveiled = true;
+      isAnimating = false;
 
-      // Show floating replay button
-      if (redrawBtn) {
-        redrawBtn.classList.add('visible');
+      if (replayBtn) {
+        replayBtn.classList.add('visible');
       }
-    }, 1800);
+    }, 1300);
   }
 
   function redraw() {
-    if (!isUnveiled) return;
-    isUnveiled = false;
+    if (!isUnveiled || isAnimating) return;
+    isAnimating = true;
 
-    if (redrawBtn) {
-      redrawBtn.classList.remove('visible');
+    if (replayBtn) {
+      replayBtn.classList.remove('visible');
     }
 
-    curtainOverlay.classList.remove('is-open');
+    curtainOverlay.style.display = 'flex';
+    // Force reflow
+    void curtainOverlay.offsetWidth;
+
+    curtainOverlay.classList.remove('is-opened');
     curtainOverlay.classList.add('is-closing');
     document.body.classList.add('curtain-active');
 
-    // Play gentle draw sound
-    playCurtainSwoosh();
-
     setTimeout(() => {
       curtainOverlay.classList.remove('is-closing');
-    }, 1600);
+      isUnveiled = false;
+      isAnimating = false;
+      bindCurtainTriggers();
+    }, 1200);
   }
 
-  // Click listeners
+  // Mouse wheel scroll trigger
+  function onWheel(e) {
+    if (isUnveiled || isAnimating) return;
+    if (e.deltaY > 10 || e.deltaY < -10) {
+      e.preventDefault();
+      unveil();
+    }
+  }
+
+  // Touch swipe trigger for mobile/trackpad
+  let touchStartY = 0;
+  function onTouchStart(e) {
+    if (e.touches && e.touches[0]) {
+      touchStartY = e.touches[0].clientY;
+    }
+  }
+
+  function onTouchMove(e) {
+    if (isUnveiled || isAnimating) return;
+    if (e.touches && e.touches[0]) {
+      const deltaY = touchStartY - e.touches[0].clientY;
+      if (Math.abs(deltaY) > 20) {
+        e.preventDefault();
+        unveil();
+      }
+    }
+  }
+
+  // Keyboard trigger
+  function onKeyDown(e) {
+    if (isUnveiled || isAnimating) return;
+    if (['ArrowDown', 'ArrowUp', ' ', 'Enter', 'PageDown'].includes(e.key)) {
+      e.preventDefault();
+      unveil();
+    }
+  }
+
+  function bindCurtainTriggers() {
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('keydown', onKeyDown);
+  }
+
+  // Initialize triggers
+  bindCurtainTriggers();
+
+  // Button clicks
   if (unveilBtn) {
     unveilBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -63,73 +119,51 @@ export function initCurtain() {
     });
   }
 
-  // Clicking anywhere on the curtain also unveils it
+  // Clicking anywhere on the curtain center or overlay
   curtainOverlay.addEventListener('click', () => {
-    if (!isUnveiled) unveil();
+    if (!isUnveiled && !isAnimating) {
+      unveil();
+    }
   });
 
-  // Re-draw button
-  if (redrawBtn) {
-    redrawBtn.addEventListener('click', (e) => {
+  // Replay button
+  if (replayBtn) {
+    replayBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       redraw();
     });
   }
 
-  // Keyboard accessibility: Escape or Enter
-  window.addEventListener('keydown', (e) => {
-    if (!isUnveiled && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown')) {
-      unveil();
-    }
-  });
-
-  // Expose methods globally for inspection/testing
   window.unveilCurtain = unveil;
   window.redrawCurtain = redraw;
 }
 
-// Procedural silk fabric swoosh sound using Web Audio API
-function playCurtainSwoosh() {
+// Procedural harmonic crystal chime for jewelry unveiling
+function playLuxuryRevealSound() {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
 
-    // Pink/white noise buffer for soft fabric rustle
-    const bufferSize = ctx.sampleRate * 1.2;
-    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-    const data = buffer.getChannelData(0);
+    // Pure crystalline chime frequencies (C6, E6, G6, B6 harmonic sweep)
+    const freqs = [1046.5, 1318.5, 1567.9, 1975.5];
 
-    let lastOut = 0.0;
-    for (let i = 0; i < bufferSize; i++) {
-      const white = Math.random() * 2 - 1;
-      data[i] = (lastOut + (0.02 * white)) / 1.02; // Pink noise filter
-      lastOut = data[i];
-      data[i] *= 3.5;
-    }
+    freqs.forEach((freq, idx) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
 
-    const noise = ctx.createBufferSource();
-    noise.buffer = buffer;
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
 
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.frequency.setValueAtTime(450, ctx.currentTime);
-    filter.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 1.2);
-    filter.Q.setValueAtTime(1.5, ctx.currentTime);
+      gain.gain.setValueAtTime(0.001, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.06 / (idx + 1), ctx.currentTime + idx * 0.08 + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx * 0.08 + 1.2);
 
-    const gain = ctx.createGain();
-    gain.gain.setValueAtTime(0.001, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.08, ctx.currentTime + 0.3);
-    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.2);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
 
-    noise.connect(filter);
-    filter.connect(gain);
-    gain.connect(ctx.destination);
-
-    noise.start();
-    noise.stop(ctx.currentTime + 1.3);
-  } catch (_) {
-    // Silent fallback
-  }
+      osc.start(ctx.currentTime + idx * 0.08);
+      osc.stop(ctx.currentTime + idx * 0.08 + 1.3);
+    });
+  } catch (_) {}
 }
-
