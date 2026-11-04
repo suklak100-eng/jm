@@ -311,6 +311,52 @@
           </div>
         </div>
 
+        <!-- Curtain Opening Audio Studio -->
+        <div class="settings-group-card">
+          <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 8px;">
+            Curtain Opening Sound Studio
+          </h3>
+          <p style="font-size: 0.8rem; color: var(--admin-text-muted); margin-bottom: 18px;">
+            Choose the sound effect that plays when visitors unveil the boutique showroom, or upload your own audio file.
+          </p>
+
+          <div class="admin-grid-2col">
+            <div class="admin-form-group">
+              <label class="admin-label" for="curtain-audio-mode">Audio Mode / Preset</label>
+              <select id="curtain-audio-mode" class="admin-input">
+                <option value="salon-chime">💎 Royal Salon Chime & Silk (Default)</option>
+                <option value="place-vendome">🔔 Place Vendôme Bell Resonance</option>
+                <option value="celestial-harp">🎼 Celestial Harp Glissando</option>
+                <option value="custom">🎵 Custom Uploaded Audio (MP3 / WAV)</option>
+              </select>
+            </div>
+
+            <div class="admin-form-group" style="display: flex; align-items: flex-end; gap: 10px;">
+              <button type="button" id="test-audio-btn" class="admin-btn admin-btn-secondary" style="height: 48px; width: 100%;">
+                ▶ Test Play Audio
+              </button>
+            </div>
+          </div>
+
+          <!-- Custom Audio Upload Box -->
+          <div id="custom-audio-box" style="margin-top: 10px; display: none; background: var(--admin-bg-card); border: 1px dashed var(--admin-border); border-radius: var(--radius-sm); padding: 18px;">
+            <label class="admin-label">Upload Custom Audio File (MP3, WAV, M4A, OGG)</label>
+            <div style="font-size: 0.74rem; color: var(--admin-text-muted); margin-bottom: 10px;">
+              Select any audio file from your computer or phone to play upon curtain reveal:
+            </div>
+            <label class="file-picker-btn">
+              <span>🎵 Choose Audio File from Computer / Phone</span>
+              <input type="file" id="curtain-audio-file-picker" accept="audio/*" style="display: none;">
+            </label>
+            <div id="custom-audio-filename" style="margin-top: 8px; font-size: 0.76rem; color: var(--admin-gold-400);"></div>
+
+            <div style="margin-top: 14px;">
+              <label class="admin-label" for="curtain-audio-url-input">Or Paste Direct Audio URL</label>
+              <input type="text" id="curtain-audio-url-input" class="admin-input" placeholder="https://example.com/sound.mp3">
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- TAB 3: CONTENT & EDITORIAL -->

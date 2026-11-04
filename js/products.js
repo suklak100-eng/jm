@@ -92,7 +92,10 @@ export const DEFAULT_SITE_SETTINGS = {
   stardustEnabled: true,
   primaryGold: "#e5c47a",
   bgDeep: "#07070a",
-  goldGlow: "#c9a456"
+  goldGlow: "#c9a456",
+  curtainAudioMode: "salon-chime",
+  customCurtainAudio: null,
+  customCurtainAudioName: ""
 };
 
 export const DEFAULT_SITE_CONTENT = {

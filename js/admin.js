@@ -15,6 +15,8 @@ import {
   saveAdminAuth
 } from './products.js';
 
+import { playSynthesizedAudioPreset } from './curtain.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   initAuthSession();
   initTabs();
@@ -458,6 +460,16 @@ function initThemeManager() {
   const resetBtn = document.getElementById('reset-theme-btn');
   const presetBtns = document.querySelectorAll('.palette-chip-btn');
 
+  // Curtain Sound Studio elements
+  const audioModeSelect = document.getElementById('curtain-audio-mode');
+  const testAudioBtn = document.getElementById('test-audio-btn');
+  const customAudioBox = document.getElementById('custom-audio-box');
+  const customAudioFilePicker = document.getElementById('curtain-audio-file-picker');
+  const customAudioFilename = document.getElementById('custom-audio-filename');
+  const customAudioUrlInput = document.getElementById('curtain-audio-url-input');
+
+  let currentUploadedAudioData = null;
+
   function syncPickers(settings) {
     if (toggleCursor) toggleCursor.checked = settings.cursorEnabled !== false;
     if (toggleStardust) toggleStardust.checked = settings.stardustEnabled !== false;
@@ -474,6 +486,79 @@ function initThemeManager() {
       glowPicker.value = settings.goldGlow || '#c9a456';
       glowText.value = settings.goldGlow || '#c9a456';
     }
+
+    // Audio Sync
+    if (audioModeSelect) {
+      audioModeSelect.value = settings.curtainAudioMode || 'salon-chime';
+      toggleCustomAudioBox(audioModeSelect.value);
+    }
+    currentUploadedAudioData = settings.customCurtainAudio || null;
+    if (customAudioUrlInput) {
+      customAudioUrlInput.value = (typeof settings.customCurtainAudio === 'string' && !settings.customCurtainAudio.startsWith('data:')) 
+        ? settings.customCurtainAudio 
+        : '';
+    }
+    if (customAudioFilename) {
+      customAudioFilename.textContent = settings.customCurtainAudioName 
+        ? `Active Custom File: ${settings.customCurtainAudioName}` 
+        : (currentUploadedAudioData ? 'Custom audio file active' : '');
+    }
+  }
+
+  function toggleCustomAudioBox(mode) {
+    if (customAudioBox) {
+      customAudioBox.style.display = mode === 'custom' ? 'block' : 'none';
+    }
+  }
+
+  if (audioModeSelect) {
+    audioModeSelect.addEventListener('change', () => {
+      toggleCustomAudioBox(audioModeSelect.value);
+    });
+  }
+
+  // Custom Audio File Upload
+  if (customAudioFilePicker) {
+    customAudioFilePicker.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        currentUploadedAudioData = event.target.result;
+        if (customAudioFilename) {
+          customAudioFilename.textContent = `Selected: ${file.name} (${Math.round(file.size / 1024)} KB)`;
+        }
+        showAdminToast(`Loaded custom audio "${file.name}" ✦`);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Test Play Audio Button
+  if (testAudioBtn) {
+    testAudioBtn.addEventListener('click', () => {
+      const mode = audioModeSelect ? audioModeSelect.value : 'salon-chime';
+      if (mode === 'custom') {
+        const urlToPlay = (customAudioUrlInput && customAudioUrlInput.value.trim()) || currentUploadedAudioData;
+        if (urlToPlay) {
+          const snd = new Audio(urlToPlay);
+          snd.volume = 0.85;
+          snd.play().then(() => {
+            showAdminToast('Playing custom uploaded audio ✦');
+          }).catch((err) => {
+            showAdminToast(`Could not play audio: ${err.message}`, true);
+          });
+          return;
+        } else {
+          showAdminToast('Please choose an audio file or paste an audio link first.', true);
+          return;
+        }
+      }
+
+      playSynthesizedAudioPreset(mode);
+      showAdminToast(`Playing preset preview: ${audioModeSelect.options[audioModeSelect.selectedIndex].text}`);
+    });
   }
 
   // Two-way sync for color swatches
@@ -514,30 +599,37 @@ function initThemeManager() {
     });
   });
 
-  // Save Theme
+  // Save Theme & Audio
   if (saveBtn) {
     saveBtn.addEventListener('click', () => {
+      const audioMode = audioModeSelect ? audioModeSelect.value : 'salon-chime';
+      const customUrl = (customAudioUrlInput && customAudioUrlInput.value.trim()) || '';
+      const finalAudio = customUrl || currentUploadedAudioData || null;
+
       const newSettings = {
         cursorEnabled: toggleCursor.checked,
         stardustEnabled: toggleStardust.checked,
         primaryGold: goldText.value.trim(),
         bgDeep: bgText.value.trim(),
-        goldGlow: glowText.value.trim()
+        goldGlow: glowText.value.trim(),
+        curtainAudioMode: audioMode,
+        customCurtainAudio: finalAudio,
+        customCurtainAudioName: customAudioFilename ? customAudioFilename.textContent.replace('Selected: ', '').replace('Active Custom File: ', '') : ''
       };
       saveSiteSettings(newSettings);
       refreshAllViews();
-      showAdminToast('Visual experience & theme settings saved ✦');
+      showAdminToast('Visual experience, colors & curtain audio settings saved ✦');
     });
   }
 
-  // Reset Theme
+  // Reset Theme & Audio
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
-      if (confirm('Restore default Place Vendôme gold & obsidian theme?')) {
+      if (confirm('Restore default Place Vendôme gold & curtain audio?')) {
         resetSiteSettings();
         syncPickers(getSiteSettings());
         refreshAllViews();
-        showAdminToast('Theme restored to original Place Vendôme defaults.');
+        showAdminToast('Theme and curtain audio restored to original defaults.');
       }
     });
   }

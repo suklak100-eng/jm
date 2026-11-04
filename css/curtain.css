@@ -1,6 +1,6 @@
 /* ==========================================================================
    ROYAL SILK & VELVET DRAPERY UNVEILING ENGINE
-   Hyper-realistic fabric folds, physical bunching kinematics, zero black void
+   Ultra-Smooth 120FPS GPU Kinematics, Zero Lag, Zero Filter Stutter
    ========================================================================== */
 
 :root {
@@ -20,28 +20,25 @@ body.curtain-active {
   overflow: hidden !important;
 }
 
-/* Base site container starts slightly scaled and softened behind the drapes */
+/* Base site container starts with pure GPU translation & opacity (Zero Blur Filter Stall) */
 #site-root {
   position: relative;
   z-index: 2;
   min-height: 100vh;
-  transform: scale(0.97) translateY(18px);
-  filter: blur(5px) brightness(0.7);
-  opacity: 0.6;
-  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              filter 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 1.1s ease;
-  will-change: transform, filter, opacity;
+  transform: translate3d(0, 16px, 0);
+  opacity: 0.8;
+  transition: transform 1.15s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.95s ease;
+  will-change: transform, opacity;
 }
 
-/* As curtains part, site blooms into view in real-time without ANY black screen */
+/* Instantaneous Butter-Smooth Bloom */
 #site-root.site-revealed {
-  transform: scale(1) translateY(0);
-  filter: blur(0px) brightness(1);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 
-/* Curtain Overlay — Transparent background so site is directly visible behind parting drapes */
+/* Curtain Overlay */
 #curtain-overlay {
   position: fixed;
   inset: 0;
@@ -53,7 +50,7 @@ body.curtain-active {
   user-select: none;
   background: transparent !important;
   overflow: hidden;
-  transition: opacity 0.4s ease 1.25s, visibility 0.4s ease 1.25s;
+  transition: opacity 0.35s ease 1.15s, visibility 0.35s ease 1.15s;
 }
 
 #curtain-overlay.is-opened {
@@ -69,7 +66,6 @@ body.curtain-active {
   width: 50vw;
   height: 100vh;
   overflow: hidden;
-  /* Deep, multi-stage realistic undulating velvet flutes with specular highlights */
   background: 
     radial-gradient(ellipse at 50% 15%, rgba(255, 235, 205, 0.08) 0%, transparent 60%),
     repeating-linear-gradient(
@@ -88,8 +84,9 @@ body.curtain-active {
     );
   background-size: 150px 100%;
   box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.96);
-  transition: transform 1.35s cubic-bezier(0.72, 0, 0.22, 1), filter 1.35s ease;
-  will-change: transform, filter;
+  transition: transform 1.25s cubic-bezier(0.72, 0, 0.22, 1);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 /* Realistic fabric lighting vignette & micro-texture shadow */
@@ -143,22 +140,19 @@ body.curtain-active {
   left: 0;
 }
 
-/* Realistic Fabric Gathering & Bunching Kinematics (Zero Stiff 3D Hinge) */
+/* Realistic Fabric Gathering: 100% Hardware Accelerated GPU translate3d */
 #curtain-overlay.is-opening #curtain-left {
-  transform: translateX(-88%) scaleX(0.12) skewY(-0.8deg);
-  filter: brightness(0.65) contrast(1.1);
+  transform: translate3d(-92%, 0, 0) scale3d(0.12, 1, 1);
 }
 
 #curtain-overlay.is-opening #curtain-right {
-  transform: translateX(88%) scaleX(0.12) skewY(0.8deg);
-  filter: brightness(0.65) contrast(1.1);
+  transform: translate3d(92%, 0, 0) scale3d(0.12, 1, 1);
 }
 
 /* Closing / Re-draw Animation */
 #curtain-overlay.is-closing #curtain-left,
 #curtain-overlay.is-closing #curtain-right {
-  transform: translateX(0) scaleX(1) skewY(0deg);
-  filter: brightness(1) contrast(1);
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
 }
 
 /* Center Diamond Insignia */
@@ -173,13 +167,12 @@ body.curtain-active {
   align-items: center;
   text-align: center;
   pointer-events: all;
-  transition: opacity 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 #curtain-overlay.is-opening #curtain-center {
   opacity: 0;
-  transform: translate(-50%, -62%) scale(1.05);
-  filter: blur(8px);
+  transform: translate(-50%, -58%) scale(1.04);
   pointer-events: none;
 }
 
