@@ -140,6 +140,7 @@
     padding-left: 0;
   }
 
+  .footer-inner,
   .footer-grid-4col {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
@@ -257,6 +258,7 @@
   }
 
   /* Footer */
+  .footer-inner,
   .footer-grid-4col {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -265,6 +267,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .footer-bottom-bar,
   .footer-legal-bar {
     flex-direction: column;
     gap: 12px;
