@@ -6,7 +6,7 @@ import { vault, formatINR, showToast, initVaultDrawer } from './cart.js';
 import { initCurtain } from './curtain.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Curtain Unveiling (Scroll & Click)
+  // 1. Initialize Curtain Unveiling (Scroll & Click with Zero Black Screen)
   initCurtain();
 
   // 2. Initialize Private Vault Cart
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Initialize Custom Luxury Cursor
   initLuxuryCursor();
 
-  // 5. Render Exhibition Salons
+  // 5. Render Exhibition Salons (Pristine, Full Image Clarity)
   renderExhibition();
 
   // 6. Initialize Interactive 4Cs Diamond Loupe
@@ -51,16 +51,16 @@ function initStardustCanvas() {
     height = canvas.height = window.innerHeight;
   });
 
-  const particleCount = window.innerWidth < 768 ? 24 : 55;
+  const particleCount = window.innerWidth < 768 ? 25 : 55;
   const particles = [];
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 2.2 + 0.6,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: -Math.random() * 0.35 - 0.1,
+      size: Math.random() * 2 + 0.6,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: -Math.random() * 0.3 - 0.08,
       alpha: Math.random() * 0.7 + 0.2,
       pulseSpeed: Math.random() * 0.02 + 0.008,
       hue: Math.random() > 0.4 ? 'gold' : 'diamond'
@@ -83,18 +83,18 @@ function initStardustCanvas() {
       p.y += p.vy;
       p.alpha += Math.sin(Date.now() * p.pulseSpeed) * 0.01;
 
-      // Wrap edges
+      // Wrap edges smoothly
       if (p.y < -10) p.y = height + 10;
       if (p.x < -10) p.x = width + 10;
       if (p.x > width + 10) p.x = -10;
 
-      // Soft mouse repel
+      // Subtle mouse interaction
       const dx = mouseX - p.x;
       const dy = mouseY - p.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        p.x -= (dx / dist) * 0.8;
-        p.y -= (dy / dist) * 0.8;
+      if (dist < 100) {
+        p.x -= (dx / dist) * 0.6;
+        p.y -= (dy / dist) * 0.6;
       }
 
       ctx.save();
@@ -145,14 +145,13 @@ function initLuxuryCursor() {
   }
   update();
 
-  // Hover states
-  document.querySelectorAll('a, button, .exhibit-salon-card, .loupe-cut-btn').forEach((el) => {
+  document.querySelectorAll('a, button, .exhibit-image-stage, .loupe-cut-btn').forEach((el) => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
 }
 
-/* ---------------- 3. RENDER EXHIBITION SALONS ---------------- */
+/* ---------------- 3. RENDER EXHIBITION SALONS (NO IMAGE CLIPPING!) ---------------- */
 function renderExhibition() {
   const container = document.getElementById('exhibition-container');
   if (!container) return;
@@ -163,16 +162,11 @@ function renderExhibition() {
       return `
       <section class="exhibit-salon-block ${isReverse} reveal-on-scroll" data-id="${piece.id}">
         
-        <!-- Left Showcase Visual -->
+        <!-- Left Showcase Visual (Full Piece Visible) -->
         <div class="exhibit-visual-col">
           <div class="exhibit-image-stage">
             <span class="exhibit-num-watermark">${piece.num}</span>
             <img src="${piece.image}" alt="${piece.name}" class="exhibit-primary-img" loading="lazy" />
-            <img src="${piece.secondaryImage}" alt="${piece.name} perspective" class="exhibit-alt-img" loading="lazy" />
-            
-            <div class="exhibit-hover-hint">
-              <span>✦ Hover to rotate perspective</span>
-            </div>
           </div>
         </div>
 
@@ -190,12 +184,6 @@ function renderExhibition() {
           <blockquote class="exhibit-curator-quote">
             "${piece.quote}"
           </blockquote>
-
-          <div class="exhibit-specs-pills">
-            <span class="spec-micro-pill">18K Certified Gold</span>
-            <span class="spec-micro-pill">GIA Authenticated</span>
-            <span class="spec-micro-pill">Conflict-Free</span>
-          </div>
 
           <div class="exhibit-actions-row">
             <div class="exhibit-price-val">${piece.priceFormatted}</div>
@@ -228,20 +216,23 @@ function renderExhibition() {
     });
   });
 
-  // 3D Parallax on exhibition stage
+  // Soft Parallax on hover
   container.querySelectorAll('.exhibit-image-stage').forEach((stage) => {
     stage.addEventListener('mousemove', (e) => {
       const rect = stage.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-      stage.querySelector('.exhibit-primary-img').style.transform = `scale(1.05) translate(${x * 14}px, ${y * 14}px)`;
-      stage.querySelector('.exhibit-alt-img').style.transform = `scale(1.05) translate(${x * 14}px, ${y * 14}px)`;
+      const img = stage.querySelector('.exhibit-primary-img');
+      if (img) {
+        img.style.transform = `scale(1.04) translate(${x * 12}px, ${y * 12}px)`;
+      }
     });
 
     stage.addEventListener('mouseleave', () => {
-      stage.querySelector('.exhibit-primary-img').style.transform = 'scale(1) translate(0, 0)';
-      stage.querySelector('.exhibit-alt-img').style.transform = 'scale(1) translate(0, 0)';
+      const img = stage.querySelector('.exhibit-primary-img');
+      if (img) {
+        img.style.transform = 'scale(1) translate(0, 0)';
+      }
     });
   });
 }
@@ -279,8 +270,8 @@ function initDiamondLoupe() {
 
     if (loupeSvg) {
       loupeSvg.setAttribute('points', cut.svgPoints);
-      loupeSvg.classList.add('refracting');
-      setTimeout(() => loupeSvg.classList.remove('refracting'), 400);
+      loupeSvg.style.transform = 'scale(1.06)';
+      setTimeout(() => (loupeSvg.style.transform = 'scale(1)'), 300);
     }
 
     if (cutNameEl) cutNameEl.textContent = cut.name;
@@ -295,7 +286,6 @@ function initDiamondLoupe() {
     btn.addEventListener('click', () => selectCut(btn.dataset.cut));
   });
 
-  // Initial selection
   selectCut('emerald');
 }
 
@@ -328,14 +318,14 @@ function initDossierModal() {
     content.innerHTML = `
       <div class="dossier-inner-grid">
         
-        <div class="dossier-visual-pane">
+        <div>
           <img src="${piece.image}" alt="${piece.name}" class="dossier-img" />
-          <div class="dossier-cert-badge">
-            <span>🛡️</span> ${piece.gemology.report}
+          <div style="margin-top: 14px; font-family: var(--font-sans); font-size: 0.72rem; color: var(--gold-400); letter-spacing: 0.12em;">
+            ✦ ${piece.gemology.report}
           </div>
         </div>
 
-        <div class="dossier-details-pane">
+        <div>
           <div class="dossier-number">${piece.num} • ${piece.provenance}</div>
           <h2 class="dossier-title">${piece.name}</h2>
           <div class="dossier-price-tag">${piece.priceFormatted}</div>
@@ -348,20 +338,16 @@ function initDossierModal() {
               <span class="dossier-val">${piece.gemology.origin}</span>
             </div>
             <div class="dossier-spec-row">
-              <span class="dossier-key">Carat & Diamond Weight</span>
+              <span class="dossier-key">Carat & Weight</span>
               <span class="dossier-val">${piece.carat}</span>
             </div>
             <div class="dossier-spec-row">
-              <span class="dossier-key">Color & Clarity Grade</span>
+              <span class="dossier-key">Clarity & Color</span>
               <span class="dossier-val">${piece.gemology.clarity}</span>
             </div>
             <div class="dossier-spec-row">
-              <span class="dossier-key">Precious Metal Hallmarking</span>
+              <span class="dossier-key">Metal Hallmarking</span>
               <span class="dossier-val">${piece.gemology.metalPurity}</span>
-            </div>
-            <div class="dossier-spec-row">
-              <span class="dossier-key">Gemological Certification</span>
-              <span class="dossier-val">${piece.gemology.report}</span>
             </div>
           </div>
 
@@ -369,7 +355,7 @@ function initDossierModal() {
             <button class="primary-gold-btn" id="dossier-acquire-action" style="flex: 1; justify-content: center;">
               Acquire into Private Vault ✦
             </button>
-            <button class="ghost-btn" onclick="showToast('Salon Concierge notified for private viewing'); closeModal();">
+            <button class="ghost-btn" onclick="showToast('Salon Concierge notified for private viewing'); document.getElementById('dossier-modal').classList.remove('open'); document.getElementById('dossier-overlay').classList.remove('open'); document.body.style.overflow = '';">
               Book Viewing in Salon
             </button>
           </div>

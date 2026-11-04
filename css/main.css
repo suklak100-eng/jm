@@ -1,18 +1,17 @@
 /* ==========================================================================
    MAHIRA HAUTE JOAILLERIE — PARIS • LONDON • MUMBAI • GENEVA
-   Award-Winning Digital Flagship Salon & Exhibition Architecture
+   Pristine Minimalist Luxury Design System (Zero Clutter, Full Image Optics)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap');
 
 :root {
-  /* Obsidian & High Jewelry Palette */
-  --bg-deep: #060608;
-  --bg-surface: #0c0c11;
-  --bg-card: #121218;
-  --bg-glass: rgba(18, 18, 24, 0.75);
+  /* Obsidian Caviar Palette */
+  --bg-deep: #07070a;
+  --bg-surface: #0e0e14;
+  --bg-card: #13131b;
 
-  /* Warm Royal Champagne Gold */
+  /* Royal Champagne Gold */
   --gold-300: #fbf5e2;
   --gold-400: #e5c47a;
   --gold-500: #c9a456;
@@ -24,7 +23,7 @@
   --diamond-white: #ffffff;
   --text-primary: #f2f2f7;
   --text-secondary: #c2c2cf;
-  --text-muted: #7a7a8c;
+  --text-muted: #808092;
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -32,10 +31,10 @@
   --font-body: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Montserrat', -apple-system, sans-serif;
 
-  /* Spacing */
-  --container-max: 1380px;
-  --header-height: 86px;
-  --transition-fluid: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Layout */
+  --container-max: 1360px;
+  --header-height: 84px;
+  --transition-fluid: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset & Base */
@@ -60,7 +59,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Canvas Background for Stardust & Caustic Shimmer */
+/* Floating Stardust Canvas */
 #stardust-canvas {
   position: fixed;
   inset: 0;
@@ -70,17 +69,17 @@ body {
   z-index: 1;
 }
 
-/* Custom Luxury Ring Cursor (Desktop Only) */
+/* Custom Luxury Ring Cursor */
 #luxury-cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   pointer-events: none;
   z-index: 999999;
   transform: translate3d(-100px, -100px, 0);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  transition: width 0.3s ease, height 0.3s ease;
   will-change: transform;
 }
 
@@ -89,7 +88,7 @@ body {
   height: 100%;
   border: 1px solid var(--gold-400);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(229, 196, 122, 0.4);
+  box-shadow: 0 0 10px rgba(229, 196, 122, 0.45);
   transition: transform 0.25s ease;
 }
 
@@ -108,22 +107,7 @@ body {
 #luxury-cursor.hovering .cursor-ring {
   transform: scale(1.6);
   border-color: #fff;
-  background-color: rgba(229, 196, 122, 0.1);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-deep);
-}
-::-webkit-scrollbar-thumb {
-  background: #202028;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-500);
+  background-color: rgba(229, 196, 122, 0.12);
 }
 
 .container {
@@ -136,7 +120,7 @@ body {
 }
 
 /* ==========================================================================
-   MINIMALIST EDITORIAL NAVIGATION
+   MINIMALIST NAVIGATION BAR
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -144,7 +128,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(6, 6, 8, 0.85);
+  background: rgba(7, 7, 10, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -152,7 +136,7 @@ body {
 }
 
 .site-header.scrolled {
-  background: rgba(6, 6, 8, 0.98);
+  background: rgba(7, 7, 10, 0.98);
   border-bottom: 1px solid var(--gold-border);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
 }
@@ -216,7 +200,7 @@ body {
   width: 28px;
   height: 28px;
   margin-bottom: 2px;
-  filter: drop-shadow(0 0 10px rgba(229, 196, 122, 0.45));
+  filter: drop-shadow(0 0 10px rgba(229, 196, 122, 0.5));
 }
 
 .brand-title-text {
@@ -238,7 +222,7 @@ body {
   margin-top: 4px;
 }
 
-/* Utilities (Right) */
+/* Utilities */
 .nav-utilities {
   display: flex;
   align-items: center;
@@ -268,7 +252,7 @@ body {
   top: -2px;
   right: -5px;
   background: linear-gradient(135deg, var(--gold-300), var(--gold-400));
-  color: #060608;
+  color: #07070a;
   font-family: var(--font-sans);
   font-size: 0.6rem;
   font-weight: 700;
@@ -289,21 +273,21 @@ body {
 }
 
 /* ==========================================================================
-   HERO CHAPTER: "SCULPTING THE STARS"
+   HERO: SCULPTING THE STARS (AIRY & BALANCED)
    ========================================================================== */
 .hero-section {
   position: relative;
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
-  padding: 80px 0 100px;
+  padding: 64px 0 96px;
   overflow: hidden;
-  background: radial-gradient(circle at 65% 50%, #151520 0%, var(--bg-deep) 65%);
+  background: radial-gradient(circle at 65% 45%, #161622 0%, var(--bg-deep) 65%);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   align-items: center;
   gap: 64px;
   position: relative;
@@ -336,9 +320,9 @@ body {
 
 .hero-title-main {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.1;
   color: #fff;
   margin-bottom: 24px;
   letter-spacing: 0.05em;
@@ -353,17 +337,17 @@ body {
 
 .hero-poetic-sub {
   font-family: var(--font-body);
-  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-size: clamp(1.3rem, 1.8vw, 1.6rem);
   color: var(--text-secondary);
-  margin-bottom: 44px;
-  max-width: 520px;
-  line-height: 1.5;
+  margin-bottom: 40px;
+  max-width: 500px;
+  line-height: 1.55;
 }
 
 .hero-cta-row {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -373,7 +357,7 @@ body {
   gap: 12px;
   padding: 16px 36px;
   background: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-400) 50%, var(--gold-600) 100%);
-  color: #060608;
+  color: #07070a;
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
@@ -420,7 +404,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Hero Centerpiece Vitrine Frame (Right) */
+/* Hero Jewelry Stage — Fully Visible, No Cut-Offs! */
 .hero-vitrine-stage {
   position: relative;
   display: flex;
@@ -431,13 +415,16 @@ body {
 .hero-vitrine-frame {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  height: 600px;
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid rgba(229, 196, 122, 0.35);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(229, 196, 122, 0.15);
-  transform-style: preserve-3d;
+  border: 1px solid var(--gold-border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(229, 196, 122, 0.15);
+  background: radial-gradient(circle at center, #1a1a24 0%, #0c0c12 85%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -445,25 +432,25 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1.2s ease, filter 0.8s ease;
+  object-position: center;
+  transition: transform 1.2s ease;
   filter: contrast(1.06) brightness(0.96);
 }
 
 .hero-vitrine-frame:hover .hero-vitrine-img {
-  transform: scale(1.06);
-  filter: contrast(1.08) brightness(1.02);
+  transform: scale(1.04);
 }
 
 .hero-vitrine-tag {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
   background: rgba(12, 12, 17, 0.92);
   border: 1px solid var(--gold-border);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 16px 22px;
+  padding: 14px 20px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -472,20 +459,20 @@ body {
 
 .vitrine-tag-title {
   font-family: var(--font-display);
-  font-size: 0.88rem;
-  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
   color: var(--gold-300);
   text-transform: uppercase;
 }
 
 .vitrine-tag-sub {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
 .vitrine-tag-carat {
   font-family: var(--font-sans);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   color: var(--gold-400);
   border: 1px solid var(--gold-border);
@@ -500,7 +487,7 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   background: #09090d;
-  padding: 20px 0;
+  padding: 18px 0;
   overflow: hidden;
 }
 
@@ -516,7 +503,7 @@ body {
   gap: 36px;
   padding-right: 36px;
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 0.35em;
   color: var(--gold-400);
   text-transform: uppercase;
@@ -533,16 +520,16 @@ body {
 }
 
 /* ==========================================================================
-   THE MASTERWORK EXHIBITION (MUSEUM SALON ARCHITECTURE)
+   THE MASTERWORK EXHIBITION — FULL IMAGE CLARITY & CLEAN AIRY SPACING
    ========================================================================== */
 .exhibition-section {
-  padding: 120px 0 100px;
+  padding: 110px 0 90px;
 }
 
 .section-head-center {
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 80px;
+  max-width: 620px;
+  margin: 0 auto 72px;
 }
 
 .section-kicker {
@@ -557,32 +544,32 @@ body {
 
 .section-serif-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
   font-weight: 400;
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   letter-spacing: 0.04em;
 }
 
 .section-curator-note {
   font-family: var(--font-body);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--text-muted);
 }
 
-/* Exhibition Salons: Alternating Large Editorial Blocks */
+/* Individual Exhibition Showcase Blocks */
 .exhibit-salon-block {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 64px;
-  margin-bottom: 140px;
-  padding-bottom: 80px;
+  gap: 72px;
+  margin-bottom: 110px;
+  padding-bottom: 70px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .exhibit-salon-block.reverse {
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: 1fr 1fr;
 }
 .exhibit-salon-block.reverse .exhibit-visual-col {
   order: 2;
@@ -591,7 +578,7 @@ body {
   order: 1;
 }
 
-/* Visual Stage */
+/* Image Stage: Perfectly Framed, Whole Jewelry Visible! */
 .exhibit-visual-col {
   position: relative;
 }
@@ -599,65 +586,40 @@ body {
 .exhibit-image-stage {
   position: relative;
   width: 100%;
-  height: 540px;
-  border-radius: 4px;
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+  border-radius: 6px;
   overflow: hidden;
-  border: 1px solid rgba(229, 196, 122, 0.25);
+  border: 1px solid var(--gold-border);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
-  background: #09090e;
+  background: radial-gradient(circle at center, #181822 0%, #0a0a0f 80%);
 }
 
 .exhibit-num-watermark {
   position: absolute;
-  top: 20px;
-  left: 24px;
+  top: 18px;
+  left: 22px;
   font-family: var(--font-display);
-  font-size: 3.8rem;
-  color: rgba(229, 196, 122, 0.12);
+  font-size: 3.2rem;
+  color: rgba(229, 196, 122, 0.15);
   line-height: 1;
   pointer-events: none;
   z-index: 2;
 }
 
-.exhibit-primary-img,
-.exhibit-alt-img {
-  position: absolute;
-  inset: 0;
+.exhibit-primary-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.exhibit-alt-img {
-  opacity: 0;
+  object-position: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .exhibit-image-stage:hover .exhibit-primary-img {
-  opacity: 0;
+  transform: scale(1.04);
 }
 
-.exhibit-image-stage:hover .exhibit-alt-img {
-  opacity: 1;
-}
-
-.exhibit-hover-hint {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  z-index: 3;
-  background: rgba(6, 6, 8, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: var(--gold-400);
-  text-transform: uppercase;
-}
-
-/* Text Column */
+/* Clean, Non-Messy Text Column */
 .exhibit-text-col {
   display: flex;
   flex-direction: column;
@@ -667,7 +629,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .exhibit-tag-pill {
@@ -680,77 +642,59 @@ body {
 
 .exhibit-num-label {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--gold-300);
 }
 
 .exhibit-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-size: clamp(2rem, 3vw, 2.6rem);
   font-weight: 500;
   color: #fff;
   margin-bottom: 8px;
-  line-height: 1.15;
+  line-height: 1.18;
 }
 
 .exhibit-stone-line {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--gold-300);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .exhibit-carat-badge {
   display: inline-block;
-  padding: 6px 14px;
+  padding: 5px 14px;
   background: rgba(229, 196, 122, 0.08);
   border: 1px solid var(--gold-border);
   border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   color: var(--gold-400);
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   max-width: max-content;
 }
 
 .exhibit-curator-quote {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--text-secondary);
   border-left: 2px solid var(--gold-400);
-  padding-left: 20px;
+  padding-left: 18px;
   margin-bottom: 28px;
-  line-height: 1.6;
-}
-
-.exhibit-specs-pills {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 36px;
-}
-
-.spec-micro-pill {
-  padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
+  line-height: 1.55;
 }
 
 .exhibit-actions-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 24px;
+  padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 18px;
 }
 
 .exhibit-price-val {
@@ -766,10 +710,10 @@ body {
 }
 
 /* ==========================================================================
-   INTERACTIVE 4Cs DIAMOND LOUPE (AWWWARDS FEATURE)
+   THE 4Cs DIAMOND LOUPE (CLEAN & ELEGANT)
    ========================================================================== */
 .loupe-section {
-  padding: 100px 0 120px;
+  padding: 96px 0 110px;
   background: radial-gradient(circle at 40% 50%, #151520 0%, #07070a 70%);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -777,21 +721,19 @@ body {
 
 .loupe-workstation {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.15fr;
   align-items: center;
   gap: 64px;
   background: rgba(14, 14, 20, 0.85);
   border: 1px solid var(--gold-border);
   border-radius: 8px;
-  padding: 56px;
+  padding: 48px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
-/* Loupe Left: Magnifier Ring & Refractive Facet Stage */
 .loupe-stage-col {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -799,33 +741,23 @@ body {
 
 .loupe-magnifier-ring {
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: 290px;
+  height: 290px;
   border-radius: 50%;
   border: 2px solid var(--gold-400);
   box-shadow: 
-    0 0 50px rgba(229, 196, 122, 0.25),
-    inset 0 0 40px rgba(0, 0, 0, 0.8);
+    0 0 45px rgba(229, 196, 122, 0.25),
+    inset 0 0 35px rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, rgba(229, 196, 122, 0.05) 0%, rgba(6, 6, 8, 0.95) 80%);
-}
-
-.loupe-magnifier-ring::before {
-  content: '10X LOUPE MAGNIFICATION • OPTICAL EXCELLENCE';
-  position: absolute;
-  bottom: -32px;
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  color: var(--gold-400);
+  background: radial-gradient(circle, rgba(229, 196, 122, 0.06) 0%, rgba(6, 6, 8, 0.95) 80%);
 }
 
 .diamond-facets-svg {
-  width: 180px;
-  height: 180px;
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5));
+  width: 160px;
+  height: 160px;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.45));
 }
 
 #loupe-facets-polygon {
@@ -835,12 +767,6 @@ body {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#loupe-facets-polygon.refracting {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.9));
-}
-
-/* Loupe Right: Cut Controls & Gemological Dossier */
 .loupe-info-col {
   display: flex;
   flex-direction: column;
@@ -852,36 +778,35 @@ body {
   letter-spacing: 0.35em;
   color: var(--gold-400);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .loupe-main-title {
   font-family: var(--font-display);
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .loupe-subtitle {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--gold-300);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-/* Cut Selector Pills */
 .loupe-cuts-selector {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .loupe-cut-btn {
   display: flex;
   flex-direction: column;
-  padding: 12px 18px;
+  padding: 12px 16px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
@@ -898,8 +823,8 @@ body {
 
 .cut-btn-name {
   font-family: var(--font-display);
-  font-size: 0.88rem;
-  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
   color: #fff;
   text-transform: uppercase;
 }
@@ -913,8 +838,8 @@ body {
 .loupe-desc-copy {
   font-size: 1.15rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 24px;
+  line-height: 1.55;
+  margin-bottom: 20px;
 }
 
 .loupe-gem-metrics {
@@ -922,7 +847,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 20px;
+  padding-top: 18px;
 }
 
 .gem-metric-box {
@@ -933,7 +858,7 @@ body {
 .metric-label {
   font-family: var(--font-sans);
   font-size: 0.68rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   color: var(--text-muted);
   text-transform: uppercase;
   margin-bottom: 4px;
@@ -946,10 +871,10 @@ body {
 }
 
 /* ==========================================================================
-   THE SOVEREIGN UNIVERSE (EDITORIAL MAGAZINE SPREAD)
+   SOVEREIGN UNIVERSE & PRIVATE SALON
    ========================================================================== */
 .universe-section {
-  padding: 120px 0;
+  padding: 100px 0;
 }
 
 .universe-editorial-grid {
@@ -961,8 +886,9 @@ body {
 
 .universe-portrait-frame {
   position: relative;
-  height: 640px;
-  border-radius: 4px;
+  aspect-ratio: 4 / 5;
+  max-height: 560px;
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--gold-border);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
@@ -972,10 +898,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .universe-narrative-col {
-  padding-left: 24px;
+  padding-left: 20px;
 }
 
 .universe-kicker {
@@ -990,95 +917,59 @@ body {
 
 .universe-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.18;
   color: #fff;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .universe-text {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 32px;
+  line-height: 1.65;
+  margin-bottom: 30px;
 }
 
-.universe-pillars-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 40px;
-}
-
-.universe-pillar-item {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
-
-.pillar-bullet {
-  color: var(--gold-400);
-  font-size: 1rem;
-}
-
-.pillar-heading {
-  font-family: var(--font-display);
-  font-size: 0.92rem;
-  color: var(--gold-300);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-right: 8px;
-}
-
-.pillar-body {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   PRIVATE SALON CONCIERGE BANNER
-   ========================================================================== */
 .salon-booking-section {
-  padding: 100px 0;
-  background: radial-gradient(circle at center, #161622 0%, var(--bg-deep) 70%);
+  padding: 90px 0;
+  background: radial-gradient(circle at center, #151520 0%, var(--bg-deep) 70%);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
 }
 
 .salon-booking-inner {
-  max-width: 680px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
 .salon-emblem {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--gold-400);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .salon-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-size: clamp(2rem, 3.6vw, 3rem);
   font-weight: 400;
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   letter-spacing: 0.06em;
 }
 
 .salon-body {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--text-muted);
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   line-height: 1.6;
 }
 
 .concierge-booking-form {
   display: flex;
-  max-width: 500px;
-  margin: 0 auto 20px;
+  max-width: 480px;
+  margin: 0 auto 18px;
   border-bottom: 1px solid var(--gold-400);
 }
 
@@ -1086,7 +977,7 @@ body {
   flex: 1;
   background: none;
   border: none;
-  padding: 14px 18px 14px 0;
+  padding: 12px 16px 12px 0;
   color: #fff;
   font-family: var(--font-sans);
   font-size: 0.85rem;
@@ -1115,7 +1006,7 @@ body {
    ========================================================================== */
 .site-footer {
   background: #040406;
-  padding: 80px 0 36px;
+  padding: 72px 0 32px;
   border-top: 1px solid rgba(229, 196, 122, 0.15);
 }
 
@@ -1123,11 +1014,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 48px;
+  padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  margin-bottom: 56px;
+  margin-bottom: 48px;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 20px;
 }
 
 .footer-salons-list {
@@ -1141,35 +1032,35 @@ body {
 .footer-grid-4col {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 56px;
-  margin-bottom: 64px;
+  gap: 48px;
+  margin-bottom: 56px;
 }
 
 .footer-bio-text {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 360px;
+  line-height: 1.65;
+  max-width: 340px;
 }
 
 .footer-col-header {
   font-family: var(--font-display);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   letter-spacing: 0.25em;
   color: var(--gold-400);
   text-transform: uppercase;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .footer-links-col {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .footer-links-col a {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.25s ease;
@@ -1183,7 +1074,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 32px;
+  padding-top: 28px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   font-family: var(--font-sans);
   font-size: 0.72rem;
@@ -1192,14 +1083,14 @@ body {
 }
 
 /* ==========================================================================
-   GEMOLOGICAL DOSSIER MODAL
+   DOSSIER MODAL & PRIVATE VAULT DRAWER
    ========================================================================== */
 #dossier-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -46%) scale(0.96);
-  width: 960px;
+  width: 920px;
   max-width: 92vw;
   max-height: 88vh;
   background: #0a0a0f;
@@ -1221,8 +1112,8 @@ body {
 
 .dossier-close-x {
   position: absolute;
-  top: 20px;
-  right: 24px;
+  top: 18px;
+  right: 22px;
   background: none;
   border: none;
   color: var(--text-muted);
@@ -1238,66 +1129,46 @@ body {
 .dossier-inner-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 40px;
-  padding: 44px;
-}
-
-.dossier-visual-pane {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  gap: 36px;
+  padding: 40px;
 }
 
 .dossier-img {
   width: 100%;
-  height: 440px;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dossier-cert-badge {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  background: rgba(229, 196, 122, 0.08);
-  border: 1px solid var(--gold-border);
-  border-radius: 4px;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: var(--gold-300);
-}
-
 .dossier-number {
   font-family: var(--font-sans);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   letter-spacing: 0.25em;
   color: var(--gold-400);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .dossier-title {
   font-family: var(--font-serif);
-  font-size: 2.1rem;
+  font-size: 2rem;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   line-height: 1.15;
 }
 
 .dossier-price-tag {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   color: var(--gold-300);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .dossier-description {
   font-size: 1.15rem;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   line-height: 1.6;
 }
 
@@ -1305,22 +1176,22 @@ body {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 4px;
-  padding: 16px 20px;
-  margin-bottom: 28px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
 }
 
 .dossier-spec-row {
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
-  font-size: 0.95rem;
+  padding: 7px 0;
+  font-size: 0.92rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 .dossier-spec-row:last-child { border-bottom: none; }
 
 .dossier-key {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -1332,17 +1203,15 @@ body {
 
 .dossier-actions-pane {
   display: flex;
-  gap: 14px;
+  gap: 12px;
 }
 
-/* ==========================================================================
-   SLIDE-OVER PRIVATE VAULT BAG DRAWER
-   ========================================================================== */
+/* Slide-Over Private Vault Bag */
 #cart-drawer {
   position: fixed;
   top: 0;
   right: 0;
-  width: 460px;
+  width: 440px;
   max-width: 95vw;
   height: 100vh;
   background: #09090d;
@@ -1382,14 +1251,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 28px;
+  padding: 22px 26px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .cart-title {
   font-family: var(--font-display);
-  font-size: 1.05rem;
-  letter-spacing: 0.24em;
+  font-size: 1rem;
+  letter-spacing: 0.22em;
   color: var(--gold-300);
   text-transform: uppercase;
 }
@@ -1410,19 +1279,19 @@ body {
 .cart-items-scroll {
   flex: 1;
   overflow-y: auto;
-  padding: 24px 28px;
+  padding: 22px 26px;
 }
 
 .cart-item-row {
   display: flex;
-  gap: 18px;
-  padding: 18px 0;
+  gap: 16px;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .cart-item-thumb {
-  width: 76px;
-  height: 92px;
+  width: 72px;
+  height: 88px;
   object-fit: cover;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1436,15 +1305,15 @@ body {
 
 .cart-item-title {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #fff;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .cart-item-metal {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .cart-item-foot {
@@ -1476,7 +1345,7 @@ body {
 }
 
 .cart-drawer-foot {
-  padding: 24px 28px;
+  padding: 22px 26px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: #0f0f14;
 }
@@ -1485,20 +1354,20 @@ body {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .cart-checkout-action {
   width: 100%;
-  padding: 16px;
+  padding: 15px;
   background: linear-gradient(135deg, var(--gold-300), var(--gold-400));
-  color: #060608;
+  color: #07070a;
   border: none;
   border-radius: 4px;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -1506,32 +1375,30 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
 }
 
-/* ==========================================================================
-   TOAST NOTIFICATION
-   ========================================================================== */
+/* Toast */
 #toast-container {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
+  bottom: 28px;
+  right: 28px;
   z-index: 100000;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   pointer-events: none;
 }
 
 .luxury-toast {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: rgba(14, 14, 20, 0.95);
   border: 1px solid var(--gold-400);
   border-radius: 40px;
-  padding: 14px 26px;
+  padding: 12px 22px;
   color: var(--gold-300);
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.15em;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 196, 122, 0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -1545,7 +1412,7 @@ body {
 
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(25px);
   transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

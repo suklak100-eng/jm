@@ -1,7 +1,8 @@
-// Luxury 3D Silk Curtain Controller with Fluid Scroll & Touch Unveiling
+// Luxury 3D Silk Curtain Controller with Real-Time Site Reveal Bloom
 
 export function initCurtain() {
   const curtainOverlay = document.getElementById('curtain-overlay');
+  const siteRoot = document.getElementById('site-root');
   const unveilBtn = document.getElementById('unveil-btn');
   const replayBtn = document.getElementById('replay-curtain-btn');
 
@@ -14,19 +15,23 @@ export function initCurtain() {
     if (isUnveiled || isAnimating) return;
     isAnimating = true;
 
-    // Remove window event listeners immediately to prevent re-triggering
+    // Remove window event listeners immediately
     window.removeEventListener('wheel', onWheel);
     window.removeEventListener('touchstart', onTouchStart);
     window.removeEventListener('touchmove', onTouchMove);
     window.removeEventListener('keydown', onKeyDown);
 
+    // CRITICAL: At the exact moment curtain starts opening, bloom site-root into full clarity
     curtainOverlay.classList.add('is-opening');
+    if (siteRoot) {
+      siteRoot.classList.add('site-revealed');
+    }
     document.body.classList.remove('curtain-active');
 
-    // Trigger soft royal acoustic chime / swoosh if available
+    // Chime sound
     playLuxuryRevealSound();
 
-    // After the 3D parting animation finishes, cleanly disable overlay
+    // After curtains have fully parted, cleanly disable overlay
     setTimeout(() => {
       curtainOverlay.classList.add('is-opened');
       curtainOverlay.classList.remove('is-opening');
@@ -37,7 +42,7 @@ export function initCurtain() {
       if (replayBtn) {
         replayBtn.classList.add('visible');
       }
-    }, 1300);
+    }, 1250);
   }
 
   function redraw() {
@@ -48,9 +53,12 @@ export function initCurtain() {
       replayBtn.classList.remove('visible');
     }
 
+    if (siteRoot) {
+      siteRoot.classList.remove('site-revealed');
+    }
+
     curtainOverlay.style.display = 'flex';
-    // Force reflow
-    void curtainOverlay.offsetWidth;
+    void curtainOverlay.offsetWidth; // Force reflow
 
     curtainOverlay.classList.remove('is-opened');
     curtainOverlay.classList.add('is-closing');
@@ -61,7 +69,7 @@ export function initCurtain() {
       isUnveiled = false;
       isAnimating = false;
       bindCurtainTriggers();
-    }, 1200);
+    }, 1150);
   }
 
   // Mouse wheel scroll trigger
@@ -73,7 +81,7 @@ export function initCurtain() {
     }
   }
 
-  // Touch swipe trigger for mobile/trackpad
+  // Touch swipe trigger
   let touchStartY = 0;
   function onTouchStart(e) {
     if (e.touches && e.touches[0]) {
@@ -85,7 +93,7 @@ export function initCurtain() {
     if (isUnveiled || isAnimating) return;
     if (e.touches && e.touches[0]) {
       const deltaY = touchStartY - e.touches[0].clientY;
-      if (Math.abs(deltaY) > 20) {
+      if (Math.abs(deltaY) > 15) {
         e.preventDefault();
         unveil();
       }
@@ -108,10 +116,9 @@ export function initCurtain() {
     window.addEventListener('keydown', onKeyDown);
   }
 
-  // Initialize triggers
   bindCurtainTriggers();
 
-  // Button clicks
+  // Button click
   if (unveilBtn) {
     unveilBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -119,7 +126,7 @@ export function initCurtain() {
     });
   }
 
-  // Clicking anywhere on the curtain center or overlay
+  // Click on curtain
   curtainOverlay.addEventListener('click', () => {
     if (!isUnveiled && !isAnimating) {
       unveil();
@@ -138,16 +145,14 @@ export function initCurtain() {
   window.redrawCurtain = redraw;
 }
 
-// Procedural harmonic crystal chime for jewelry unveiling
+// Procedural harmonic crystal chime
 function playLuxuryRevealSound() {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
 
-    // Pure crystalline chime frequencies (C6, E6, G6, B6 harmonic sweep)
     const freqs = [1046.5, 1318.5, 1567.9, 1975.5];
-
     freqs.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -156,7 +161,7 @@ function playLuxuryRevealSound() {
       osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
 
       gain.gain.setValueAtTime(0.001, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.06 / (idx + 1), ctx.currentTime + idx * 0.08 + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.05 / (idx + 1), ctx.currentTime + idx * 0.08 + 0.05);
       gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx * 0.08 + 1.2);
 
       osc.connect(gain);
