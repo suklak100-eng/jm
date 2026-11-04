@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahira Haute Joaillerie — Atelier Sovereign Console</title>
+  <meta name="description" content="Private Atelier Console for catalog, visual experience, and content orchestration.">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. SECURE ATELIER LOGIN SCREEN
+       ========================================================================== -->
+  <section id="login-screen" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-crest">
+        <svg width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2.5" fill="none"/>
+          <circle cx="40" cy="40" r="14" stroke="#fbf5e2" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <h1 class="login-brand-title">MAHIRA</h1>
+      <div class="login-brand-sub">Atelier Sovereign Console</div>
+      <p class="login-note">Authenticate to manage exhibition pieces, visual theme, and house curation.</p>
+
+      <form id="admin-login-form">
+        <div class="admin-form-group">
+          <label class="admin-label" for="login-username">Admin Identifier</label>
+          <input 
+            type="text" 
+            id="login-username" 
+            class="admin-input" 
+            placeholder="Enter Admin ID" 
+            autocomplete="username" 
+            required 
+          />
+        </div>
+
+        <div class="admin-form-group">
+          <label class="admin-label" for="login-password">Secret Key / Password</label>
+          <div class="admin-input-wrap">
+            <input 
+              type="password" 
+              id="login-password" 
+              class="admin-input" 
+              placeholder="Enter Password" 
+              autocomplete="current-password" 
+              required 
+            />
+            <button type="button" id="toggle-login-pass" class="admin-input-toggle" aria-label="Toggle password visibility">
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <div id="login-error-msg" style="display: none; color: var(--admin-danger); font-size: 0.78rem; margin-bottom: 14px; text-align: left;"></div>
+
+        <button type="submit" class="admin-btn admin-btn-primary">
+          Enter Sovereign Console ✦
+        </button>
+      </form>
+
+      <div class="admin-auth-hints">
+        <strong>Default Credentials:</strong><br>
+        Admin ID: <code style="color: var(--admin-gold-300);">admin</code> &nbsp;|&nbsp; 
+        Password: <code style="color: var(--admin-gold-300);">mahira@admin2026</code>
+      </div>
+
+      <a href="index.html" class="login-back-link">← Return to Public Exhibition</a>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       2. DASHBOARD MAIN APP CONSOLE
+       ========================================================================== -->
+  <div id="dashboard-screen" class="dashboard-wrapper">
+    
+    <!-- Navigation Bar -->
+    <header class="admin-navbar">
+      <div class="admin-nav-brand">
+        <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2.5" fill="none"/>
+          <circle cx="40" cy="40" r="14" stroke="#fbf5e2" stroke-width="1.5"/>
+        </svg>
+        <span class="admin-nav-brand-title">MAHIRA</span>
+        <span class="admin-nav-badge">Sovereign Atelier</span>
+      </div>
+
+      <div class="admin-nav-actions">
+        <a href="index.html" target="_blank" class="admin-btn admin-btn-secondary" style="padding: 8px 14px; font-size: 0.74rem;">
+          View Storefront ↗
+        </a>
+        <div style="font-size: 0.76rem; color: var(--admin-text-secondary); display: flex; align-items: center; gap: 6px;">
+          <span>👤</span>
+          <span id="active-user-badge">admin</span>
+        </div>
+        <button id="admin-logout-btn" class="action-icon-btn delete-btn" title="Sign Out">
+          Sign Out
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="admin-main">
+      
+      <!-- Statistics Overview Cards -->
+      <section class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Exhibition Pieces</span>
+            <span class="stat-icon">💎</span>
+          </div>
+          <div class="stat-val" id="stat-total-pieces">4</div>
+          <div class="stat-sub">Active museum masterworks</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Vault Valuation</span>
+            <span class="stat-icon">👑</span>
+          </div>
+          <div class="stat-val" id="stat-total-valuation">₹1.24 Cr</div>
+          <div class="stat-sub">Cumulative catalog value</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Luxury Ring Cursor</span>
+            <span class="stat-icon">✨</span>
+          </div>
+          <div class="stat-val" id="stat-cursor-status" style="font-size: 1.3rem;">Active</div>
+          <div class="stat-sub">Golden glow follower</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Stardust Caustic</span>
+            <span class="stat-icon">🌌</span>
+          </div>
+          <div class="stat-val" id="stat-stardust-status" style="font-size: 1.3rem;">Active</div>
+          <div class="stat-sub">Ambient diamond shimmer</div>
+        </div>
+      </section>
+
+      <!-- Navigation Tabs -->
+      <nav class="admin-tabs-nav" role="tablist">
+        <button class="admin-tab-btn active" data-tab="catalog" role="tab">
+          <span>💎</span> Masterwork Catalog
+        </button>
+        <button class="admin-tab-btn" data-tab="theme" role="tab">
+          <span>🎨</span> Visual & Theme
+        </button>
+        <button class="admin-tab-btn" data-tab="content" role="tab">
+          <span>✍️</span> Content & Editorial
+        </button>
+        <button class="admin-tab-btn" data-tab="security" role="tab">
+          <span>🔐</span> Password & Security
+        </button>
+        <button class="admin-tab-btn" data-tab="backup" role="tab">
+          <span>💾</span> Backup & Export
+        </button>
+      </nav>
+
+      <!-- TAB 1: MASTERWORK CATALOG -->
+      <div id="tab-catalog" class="admin-tab-panel active">
+        <div class="panel-section-header">
+          <div>
+            <h2 class="panel-title">Masterwork Jewelry Catalog</h2>
+            <p class="panel-desc">Add new high jewelry pieces, upload photos, edit descriptions, or adjust pricing in Indian Rupees (₹).</p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button id="add-piece-trigger-btn" class="admin-btn admin-btn-primary" style="width: auto; margin-top: 0;">
+              ✦ Add New Masterpiece
+            </button>
+            <button id="reset-catalog-btn" class="admin-btn admin-btn-secondary" style="font-size: 0.72rem; padding: 10px 14px;">
+              Reset Catalog
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter / Search -->
+        <div class="catalog-actions-bar">
+          <div class="search-box-wrap">
+            <input 
+              type="text" 
+              id="catalog-search-input" 
+              class="admin-input" 
+              placeholder="Search by piece name, stone, or provenance..." 
+            />
+          </div>
+          <div id="catalog-count-note" style="font-size: 0.8rem; color: var(--admin-text-muted);">
+            Showing 4 masterpieces
+          </div>
+        </div>
+
+        <!-- Catalog Grid -->
+        <div id="catalog-cards-grid" class="catalog-cards-grid">
+          <!-- Injected dynamically by js/admin.js -->
+        </div>
+      </div>
+
+      <!-- TAB 2: VISUAL EXPERIENCE & THEME -->
+      <div id="tab-theme" class="admin-tab-panel">
+        <div class="panel-section-header">
+          <div>
+            <h2 class="panel-title">Visual Experience & Theme Engine</h2>
+            <p class="panel-desc">Control interactive cursor behavior, ambient stardust particle physics, and royal color palettes.</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button id="save-theme-btn" class="admin-btn admin-btn-primary" style="width: auto; margin-top: 0;">
+              Save Theme Settings ✦
+            </button>
+            <button id="reset-theme-btn" class="admin-btn admin-btn-secondary" style="font-size: 0.72rem; padding: 10px 14px;">
+              Reset to Defaults
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Toggles Card -->
+        <div class="settings-group-card">
+          <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 8px;">
+            Interactive Micro-Animations
+          </h3>
+          <p style="font-size: 0.8rem; color: var(--admin-text-muted); margin-bottom: 16px;">
+            Toggle special visual effects on or off for desktop visitors.
+          </p>
+
+          <!-- Toggle: Custom Cursor -->
+          <div class="toggle-row">
+            <div class="toggle-meta">
+              <div class="toggle-title">Custom Golden Ring Cursor</div>
+              <div class="toggle-sub">
+                A custom fluid follower cursor with champagne gold halo and magnetic attraction on jewelry images and buttons. Turn off to restore native browser mouse cursor.
+              </div>
+            </div>
+            <label class="switch-input-wrap">
+              <input type="checkbox" id="toggle-cursor" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <!-- Toggle: Stardust Particles -->
+          <div class="toggle-row">
+            <div class="toggle-meta">
+              <div class="toggle-title">Ambient Diamond Stardust Shimmer</div>
+              <div class="toggle-sub">
+                Floating diamond & gold dust particles drifting softly across the obsidian background, gently responding to mouse proximity.
+              </div>
+            </div>
+            <label class="switch-input-wrap">
+              <input type="checkbox" id="toggle-stardust" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Color Palette Card -->
+        <div class="settings-group-card">
+          <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 8px;">
+            Haute Joaillerie Color Palette
+          </h3>
+          <p style="font-size: 0.8rem; color: var(--admin-text-muted); margin-bottom: 16px;">
+            Fine-tune primary royal gold hues and velvet background tone.
+          </p>
+
+          <div class="color-picker-row">
+            <div class="color-input-item">
+              <input type="color" id="theme-gold-picker" class="color-input-swatch" value="#e5c47a">
+              <div>
+                <label class="admin-label" style="margin-bottom: 2px;">Primary Royal Gold</label>
+                <input type="text" id="theme-gold-text" class="admin-input" style="padding: 4px 8px; font-size: 0.78rem; width: 95px;" value="#e5c47a">
+              </div>
+            </div>
+
+            <div class="color-input-item">
+              <input type="color" id="theme-bg-picker" class="color-input-swatch" value="#07070a">
+              <div>
+                <label class="admin-label" style="margin-bottom: 2px;">Obsidian Background</label>
+                <input type="text" id="theme-bg-text" class="admin-input" style="padding: 4px 8px; font-size: 0.78rem; width: 95px;" value="#07070a">
+              </div>
+            </div>
+
+            <div class="color-input-item">
+              <input type="color" id="theme-glow-picker" class="color-input-swatch" value="#c9a456">
+              <div>
+                <label class="admin-label" style="margin-bottom: 2px;">Accent Glow Hue</label>
+                <input type="text" id="theme-glow-text" class="admin-input" style="padding: 4px 8px; font-size: 0.78rem; width: 95px;" value="#c9a456">
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <label class="admin-label">Quick Curator Presets</label>
+            <div class="palette-presets-bar">
+              <button class="palette-chip-btn" data-gold="#e5c47a" data-bg="#07070a" data-glow="#c9a456">
+                <span class="chip-dot" style="background: #e5c47a;"></span> Place Vendôme Gold
+              </button>
+              <button class="palette-chip-btn" data-gold="#f3c2b8" data-bg="#0a0709" data-glow="#d9998e">
+                <span class="chip-dot" style="background: #f3c2b8;"></span> Champagne Rose Gold
+              </button>
+              <button class="palette-chip-btn" data-gold="#d8e3ed" data-bg="#07090e" data-glow="#94a8bc">
+                <span class="chip-dot" style="background: #d8e3ed;"></span> Platinum Sovereign
+              </button>
+              <button class="palette-chip-btn" data-gold="#9de2b5" data-bg="#060c08" data-glow="#59b077">
+                <span class="chip-dot" style="background: #9de2b5;"></span> Imperial Emerald
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 3: CONTENT & EDITORIAL -->
+      <div id="tab-content" class="admin-tab-panel">
+        <div class="panel-section-header">
+          <div>
+            <h2 class="panel-title">Hero Typography & Editorial Text</h2>
+            <p class="panel-desc">Edit headlines, poetic taglines, hero showcase item, and live marquee announcements.</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button id="save-content-btn" class="admin-btn admin-btn-primary" style="width: auto; margin-top: 0;">
+              Save Editorial Content ✦
+            </button>
+            <button id="reset-content-btn" class="admin-btn admin-btn-secondary" style="font-size: 0.72rem; padding: 10px 14px;">
+              Reset to Defaults
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-group-card">
+          <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 16px;">
+            Chapter I: Hero Section
+          </h3>
+
+          <div class="admin-grid-2col">
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-hero-meta">Hero Top Kicker</label>
+              <input type="text" id="edit-hero-meta" class="admin-input" value="L'Empire de la Haute Joaillerie">
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-hero-title">Hero Main Headline (HTML allowed)</label>
+              <input type="text" id="edit-hero-title" class="admin-input" value="Sculpting<br /><em>The Stars</em>">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="edit-hero-sub">Poetic Subtitle Stanza</label>
+            <textarea id="edit-hero-sub" class="admin-textarea" rows="3">Where primordial light crystallizes into wearable eternity. Rare untreated Colombian emeralds, D-Flawless solitaires, and ancestral Basra pearls.</textarea>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="edit-hero-img">Hero Vitrine Showcase Image URL</label>
+            <input type="text" id="edit-hero-img" class="admin-input" value="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85">
+            <div style="font-size: 0.72rem; color: var(--admin-text-muted); margin-top: 4px;">Or upload a photo directly below:</div>
+            <label class="file-picker-btn">
+              <span>📷 Select New Hero Image from Computer/Phone</span>
+              <input type="file" id="hero-file-picker" accept="image/*" style="display: none;">
+            </label>
+            <div id="hero-img-preview" class="image-preview-stage" style="margin-top: 10px;">
+              <img src="" id="hero-preview-img-tag" alt="Hero Preview">
+            </div>
+          </div>
+
+          <div class="admin-grid-2col">
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-hero-tag-title">Vitrine Badge Title</label>
+              <input type="text" id="edit-hero-tag-title" class="admin-input" value="The Royal Nizam Choker">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="edit-hero-tag-carat">Vitrine Carat Badge</label>
+              <input type="text" id="edit-hero-tag-carat" class="admin-input" value="18.40 cts">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="edit-hero-tag-sub">Vitrine Badge Gem Details</label>
+            <input type="text" id="edit-hero-tag-sub" class="admin-input" value="Untreated Zambian Royal Emeralds & Basra Pearls">
+          </div>
+        </div>
+
+        <div class="settings-group-card">
+          <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 16px;">
+            Brand Announcements & Global Salons
+          </h3>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="edit-marquee-text">Haute Marquee Golden Ticker Banner</label>
+            <input type="text" id="edit-marquee-text" class="admin-input" value="✦ RARE NATURAL UNTREATED GEMSTONES ✦ GIA HERITAGE CERTIFIED ✦ BESPOKE PRIVATE COMMISSIONS ✦ PLACE VENDÔME PARIS • LONDON MAYFAIR • GENEVA • MUMBAI">
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="edit-salons-list">Worldwide Atelier Locations (Footer line)</label>
+            <input type="text" id="edit-salons-list" class="admin-input" value="Paris Place Vendôme • London Mayfair • Geneva • Mumbai Taj Mahal • Dubai Mall">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 4: PASSWORD & SECURITY -->
+      <div id="tab-security" class="admin-tab-panel">
+        <div class="panel-section-header">
+          <div>
+            <h2 class="panel-title">Admin Authentication & Security Protocol</h2>
+            <p class="panel-desc">Update your admin username and secret password. Verification of your recent/current password is required.</p>
+          </div>
+        </div>
+
+        <div class="settings-group-card" style="max-width: 580px;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 16px;">
+            Change Admin Credentials
+          </h3>
+
+          <form id="change-password-form">
+            <div class="admin-form-group">
+              <label class="admin-label" for="sec-curr-pass">Current / Recent Password (Verification) *</label>
+              <input 
+                type="password" 
+                id="sec-curr-pass" 
+                class="admin-input" 
+                placeholder="Enter current password to authorize changes" 
+                required 
+              />
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="sec-new-username">Admin Identifier / Username</label>
+              <input 
+                type="text" 
+                id="sec-new-username" 
+                class="admin-input" 
+                placeholder="Keep existing or enter new username" 
+              />
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="sec-new-pass">New Secret Password *</label>
+              <div class="admin-input-wrap">
+                <input 
+                  type="password" 
+                  id="sec-new-pass" 
+                  class="admin-input" 
+                  placeholder="Enter minimum 6 characters" 
+                  required 
+                />
+              </div>
+            </div>
+
+            <div class="admin-form-group">
+              <label class="admin-label" for="sec-confirm-pass">Confirm New Secret Password *</label>
+              <input 
+                type="password" 
+                id="sec-confirm-pass" 
+                class="admin-input" 
+                placeholder="Re-enter new password" 
+                required 
+              />
+            </div>
+
+            <div id="sec-alert-msg" style="display: none; padding: 12px; border-radius: var(--radius-sm); font-size: 0.78rem; margin-bottom: 16px;"></div>
+
+            <button type="submit" class="admin-btn admin-btn-primary" style="width: auto;">
+              Update Security Credentials ✦
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 5: BACKUP & EXPORT -->
+      <div id="tab-backup" class="admin-tab-panel">
+        <div class="panel-section-header">
+          <div>
+            <h2 class="panel-title">Full System Data Portability</h2>
+            <p class="panel-desc">Export your entire catalog, customizations, and settings as a JSON file, or restore from an existing backup.</p>
+          </div>
+        </div>
+
+        <div class="admin-grid-2col">
+          <div class="settings-group-card">
+            <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 8px;">
+              Export Data Archive
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--admin-text-muted); margin-bottom: 18px;">
+              Download a complete JSON snapshot containing all masterpieces, uploaded images, color palettes, and editorial text.
+            </p>
+            <button id="download-backup-btn" class="admin-btn admin-btn-primary" style="width: auto; margin-top: 0;">
+              📥 Download Backup (.json)
+            </button>
+          </div>
+
+          <div class="settings-group-card">
+            <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--admin-gold-300); margin-bottom: 8px;">
+              Restore from Backup
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--admin-text-muted); margin-bottom: 18px;">
+              Restore your catalog and site settings from a previously saved JSON file.
+            </p>
+            <label class="file-picker-btn" style="padding: 12px 20px;">
+              <span>📤 Select Backup File (.json) to Restore</span>
+              <input type="file" id="restore-file-input" accept=".json" style="display: none;">
+            </label>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       3. MODAL: ADD / EDIT MASTERPIECE PIECE
+       ========================================================================== -->
+  <div id="piece-modal-overlay" class="admin-modal-overlay"></div>
+  <div id="piece-modal" class="admin-modal" role="dialog" aria-modal="true">
+    <div class="admin-modal-header">
+      <h3 class="modal-headline" id="piece-modal-title">Add New Haute Joaillerie Masterpiece</h3>
+      <button id="piece-modal-close" class="modal-close-btn" aria-label="Close modal">×</button>
+    </div>
+
+    <form id="piece-form" class="admin-modal-body">
+      <input type="hidden" id="form-piece-id">
+
+      <div class="admin-grid-2col">
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-piece-name">Piece Name *</label>
+          <input type="text" id="form-piece-name" class="admin-input" placeholder="e.g. The Royal Nizam Emerald Choker" required>
+        </div>
+
+        <div class="admin-grid-2col">
+          <div class="admin-form-group">
+            <label class="admin-label" for="form-piece-num">Exhibition # *</label>
+            <input type="text" id="form-piece-num" class="admin-input" placeholder="e.g. N° 05" required>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label" for="form-piece-price">Price (₹ INR) *</label>
+            <input type="number" id="form-piece-price" class="admin-input" placeholder="e.g. 4850000" min="1000" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-grid-2col">
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-piece-provenance">Collection / Provenance</label>
+          <input type="text" id="form-piece-provenance" class="admin-input" placeholder="e.g. Imperial Collection • Place Vendôme">
+        </div>
+
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-piece-stone">Primary Gemstone & Cut</label>
+          <input type="text" id="form-piece-stone" class="admin-input" placeholder="e.g. Untreated Zambian Royal Emeralds">
+        </div>
+      </div>
+
+      <div class="admin-grid-2col">
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-piece-carat">Carat & Diamond Weight</label>
+          <input type="text" id="form-piece-carat" class="admin-input" placeholder="e.g. 18.40 cts Emeralds • 12.20 cts VVS Diamonds">
+        </div>
+
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-piece-metal">Metal & Purity Hallmarking</label>
+          <input type="text" id="form-piece-metal" class="admin-input" placeholder="e.g. 18K Hallmarked Yellow Gold & Natural Basra Pearls">
+        </div>
+      </div>
+
+      <!-- Image Source Selection (Both URL and File Upload!) -->
+      <div class="admin-form-group">
+        <label class="admin-label">Primary Masterpiece Image (URL or Local Upload)</label>
+        <div class="image-upload-wrapper">
+          <input 
+            type="text" 
+            id="form-piece-image" 
+            class="admin-input" 
+            placeholder="Paste Image URL (Unsplash, Google, Pinterest, etc.)..."
+          >
+          <div style="margin: 8px 0; font-size: 0.74rem; color: var(--admin-text-muted);">— OR UPLOAD FILE FROM YOUR DEVICE —</div>
+          <label class="file-picker-btn">
+            <span>📷 Choose Image from Computer / Phone</span>
+            <input type="file" id="form-file-picker" accept="image/*" style="display: none;">
+          </label>
+          <div id="form-img-preview" class="image-preview-stage">
+            <img src="" id="form-preview-img-tag" alt="Piece Preview">
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-form-group">
+        <label class="admin-label" for="form-piece-quote">Curatorial Story / Poetic Quote</label>
+        <textarea id="form-piece-quote" class="admin-textarea" rows="2" placeholder="A brief poetic sentence honoring the rarity and artistic craftsmanship of this piece..."></textarea>
+      </div>
+
+      <!-- Gemological Dossier Specs -->
+      <h4 style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--admin-gold-300); margin: 18px 0 10px;">
+        Gemological Dossier Specification
+      </h4>
+
+      <div class="admin-grid-2col">
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-gem-origin">Mine of Origin</label>
+          <input type="text" id="form-gem-origin" class="admin-input" placeholder="e.g. Kagem Mine, Zambia (Certified Untreated)">
+        </div>
+
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-gem-clarity">Gemstone Clarity</label>
+          <input type="text" id="form-gem-clarity" class="admin-input" placeholder="e.g. Transparent Royal Green with Silk Inclusions">
+        </div>
+      </div>
+
+      <div class="admin-grid-2col">
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-gem-diamonds">Diamond Grade</label>
+          <input type="text" id="form-gem-diamonds" class="admin-input" placeholder="e.g. Colorless (E-F Grade), VVS1 Clarity">
+        </div>
+
+        <div class="admin-form-group">
+          <label class="admin-label" for="form-gem-report">Certification Report #</label>
+          <input type="text" id="form-gem-report" class="admin-input" placeholder="e.g. SSEF & GIA Gemological Dossier #221489">
+        </div>
+      </div>
+
+    </form>
+
+    <div class="admin-modal-footer">
+      <button type="button" id="piece-modal-cancel" class="admin-btn admin-btn-secondary">Cancel</button>
+      <button type="submit" form="piece-form" class="admin-btn admin-btn-primary" style="width: auto; margin-top: 0;">
+        Save Masterpiece ✦
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="admin-toast-container" class="admin-toast-container"></div>
+
+  <!-- JavaScript Module -->
+  <script type="module" src="js/admin.js"></script>
+
+</body>
+</html>

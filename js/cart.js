@@ -1,6 +1,6 @@
 // Luxury Private Vault Bag Controller for Mahira Haute Joaillerie
 
-import { exhibitionPieces } from './products.js';
+import { getExhibitionPieces } from './products.js';
 
 class VaultCart {
   constructor() {
@@ -46,8 +46,9 @@ class VaultCart {
   }
 
   getTotal() {
+    const pieces = getExhibitionPieces();
     return this.items.reduce((sum, item) => {
-      const prod = exhibitionPieces.find((p) => p.id === item.id);
+      const prod = pieces.find((p) => p.id === item.id);
       return sum + (prod ? prod.price * item.quantity : 0);
     }, 0);
   }
@@ -115,9 +116,10 @@ export function renderCartUI() {
     return;
   }
 
+  const pieces = getExhibitionPieces();
   list.innerHTML = vault.items
     .map((item) => {
-      const prod = exhibitionPieces.find((p) => p.id === item.id);
+      const prod = pieces.find((p) => p.id === item.id);
       if (!prod) return '';
 
       return `

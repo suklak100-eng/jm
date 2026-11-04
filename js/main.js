@@ -1,11 +1,14 @@
 // Luxury Haute Joaillerie Exhibition Engine
 // Cartier / Bulgari / Graff Awwwards-Caliber Digital Experience
 
-import { exhibitionPieces, diamondCuts } from './products.js';
+import { getExhibitionPieces, diamondCuts, getSiteSettings, getSiteContent } from './products.js';
 import { vault, formatINR, showToast, initVaultDrawer } from './cart.js';
 import { initCurtain } from './curtain.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Apply Client Customizations (Theme colors, texts, toggles)
+  applySiteCustomizations();
+
   // 1. Initialize Curtain Unveiling (Scroll & Click with Zero Black Screen)
   initCurtain();
 
@@ -37,8 +40,72 @@ document.addEventListener('DOMContentLoaded', () => {
   initConciergeForm();
 });
 
+/* ---------------- 0. CLIENT CUSTOMIZATIONS & LIVE CMS ENGINE ---------------- */
+function applySiteCustomizations() {
+  const settings = getSiteSettings();
+  const content = getSiteContent();
+
+  // Dynamic Theme Variables
+  const root = document.documentElement;
+  if (settings.primaryGold) {
+    root.style.setProperty('--gold-400', settings.primaryGold);
+    root.style.setProperty('--gold-border', `${settings.primaryGold}38`);
+    root.style.setProperty('--gold-glow', `${settings.primaryGold}59`);
+  }
+  if (settings.bgDeep) {
+    root.style.setProperty('--bg-deep', settings.bgDeep);
+  }
+
+  // Cursor Class
+  if (settings.cursorEnabled === false) {
+    document.body.classList.add('cursor-disabled');
+  }
+
+  // Canvas Shimmer Display
+  const canvas = document.getElementById('stardust-canvas');
+  if (canvas && settings.stardustEnabled === false) {
+    canvas.style.display = 'none';
+  }
+
+  // Dynamic Content Bindings
+  const heroMeta = document.getElementById('hero-meta-tag');
+  if (heroMeta && content.heroMetaTag) heroMeta.innerHTML = content.heroMetaTag;
+
+  const heroTitle = document.getElementById('hero-title-main');
+  if (heroTitle && content.heroTitle) heroTitle.innerHTML = content.heroTitle;
+
+  const heroSub = document.getElementById('hero-poetic-sub');
+  if (heroSub && content.heroSubtitle) heroSub.innerHTML = content.heroSubtitle;
+
+  const heroImg = document.getElementById('hero-vitrine-img');
+  if (heroImg && content.heroImage) heroImg.src = content.heroImage;
+
+  const heroTagTitle = document.getElementById('hero-tag-title');
+  if (heroTagTitle && content.heroTagTitle) heroTagTitle.textContent = content.heroTagTitle;
+
+  const heroTagSub = document.getElementById('hero-tag-sub');
+  if (heroTagSub && content.heroTagSub) heroTagSub.textContent = content.heroTagSub;
+
+  const heroTagCarat = document.getElementById('hero-tag-carat');
+  if (heroTagCarat && content.heroTagCarat) heroTagCarat.textContent = content.heroTagCarat;
+
+  const marqueeTrack = document.querySelector('.marquee-track');
+  if (marqueeTrack && content.marqueeText) {
+    marqueeTrack.innerHTML = `
+      <div class="marquee-unit">${content.marqueeText}</div>
+      <div class="marquee-unit">${content.marqueeText}</div>
+    `;
+  }
+
+  const salonsList = document.getElementById('footer-salons-list');
+  if (salonsList && content.salonsList) salonsList.textContent = content.salonsList;
+}
+
 /* ---------------- 1. STARDUST & CAUSTIC SHIMMER CANVAS ---------------- */
 function initStardustCanvas() {
+  const settings = getSiteSettings();
+  if (settings.stardustEnabled === false) return;
+
   const canvas = document.getElementById('stardust-canvas');
   if (!canvas) return;
 
@@ -121,6 +188,8 @@ function initStardustCanvas() {
 
 /* ---------------- 2. CUSTOM LUXURY RING CURSOR ---------------- */
 function initLuxuryCursor() {
+  const settings = getSiteSettings();
+  if (settings.cursorEnabled === false) return;
   if (window.innerWidth < 1024) return; // Desktop only
 
   const cursor = document.createElement('div');
@@ -156,7 +225,8 @@ function renderExhibition() {
   const container = document.getElementById('exhibition-container');
   if (!container) return;
 
-  container.innerHTML = exhibitionPieces
+  const pieces = getExhibitionPieces();
+  container.innerHTML = pieces
     .map((piece, idx) => {
       const isReverse = idx % 2 === 1 ? 'reverse' : '';
       return `
@@ -311,7 +381,8 @@ function initDossierModal() {
   });
 
   window.openDossier = (id) => {
-    const piece = exhibitionPieces.find((p) => p.id === id);
+    const pieces = getExhibitionPieces();
+    const piece = pieces.find((p) => p.id === id);
     if (!piece || !modal) return;
 
     const content = document.getElementById('dossier-content');

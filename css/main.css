@@ -1420,3 +1420,25 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+.footer-portal-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: var(--transition-fluid);
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-portal-link:hover {
+  color: var(--gold-400);
+}
+
+body.cursor-disabled,
+body.cursor-disabled * {
+  cursor: auto !important;
+}
+

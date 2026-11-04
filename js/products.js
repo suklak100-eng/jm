@@ -1,6 +1,6 @@
 // Curated Haute Joaillerie Exhibition & Diamond Spec Catalog
 
-export const exhibitionPieces = [
+export const DEFAULT_EXHIBITION_PIECES = [
   {
     id: "exhibit-01",
     num: "N° 01",
@@ -28,7 +28,7 @@ export const exhibitionPieces = [
     name: "L'Étoile Solitaire Diamond Ring",
     provenance: "Solitaires & Bridal • London Mayfair",
     price: 3200000,
-    priceFormatted: "₹32,000,000",
+    priceFormatted: "₹32,00,000",
     image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1400&q=90",
     secondaryImage: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1400&q=90",
     stone: "D-Flawless Earth-Mined Solitaire",
@@ -86,6 +86,164 @@ export const exhibitionPieces = [
     }
   }
 ];
+
+export const DEFAULT_SITE_SETTINGS = {
+  cursorEnabled: true,
+  stardustEnabled: true,
+  primaryGold: "#e5c47a",
+  bgDeep: "#07070a",
+  goldGlow: "#c9a456"
+};
+
+export const DEFAULT_SITE_CONTENT = {
+  heroMetaTag: "L'Empire de la Haute Joaillerie",
+  heroTitle: "Sculpting<br /><em>The Stars</em>",
+  heroSubtitle: "Where primordial light crystallizes into wearable eternity. Rare untreated Colombian emeralds, D-Flawless solitaires, and ancestral Basra pearls.",
+  heroImage: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85",
+  heroTagTitle: "The Royal Nizam Choker",
+  heroTagSub: "Untreated Zambian Royal Emeralds & Basra Pearls",
+  heroTagCarat: "18.40 cts",
+  marqueeText: "✦ RARE NATURAL UNTREATED GEMSTONES ✦ GIA HERITAGE CERTIFIED ✦ BESPOKE PRIVATE COMMISSIONS ✦ PLACE VENDÔME PARIS • LONDON MAYFAIR • GENEVA • MUMBAI",
+  salonsList: "Paris Place Vendôme • London Mayfair • Geneva • Mumbai Taj Mahal • Dubai Mall"
+};
+
+export const DEFAULT_ADMIN_AUTH = {
+  username: "admin",
+  password: "mahira@admin2026"
+};
+
+/* ---------------- Persistence & Retrieval Functions ---------------- */
+
+export function getExhibitionPieces() {
+  try {
+    const raw = localStorage.getItem('mahira_exhibition_pieces');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.warn('Error reading stored exhibition pieces:', err);
+  }
+  return DEFAULT_EXHIBITION_PIECES;
+}
+
+export function saveExhibitionPieces(pieces) {
+  try {
+    localStorage.setItem('mahira_exhibition_pieces', JSON.stringify(pieces));
+    exhibitionPieces = pieces;
+    return true;
+  } catch (err) {
+    console.error('Error saving exhibition pieces:', err);
+    return false;
+  }
+}
+
+export function resetExhibitionPieces() {
+  try {
+    localStorage.removeItem('mahira_exhibition_pieces');
+    exhibitionPieces = [...DEFAULT_EXHIBITION_PIECES];
+    return true;
+  } catch (err) {
+    console.error('Error resetting exhibition pieces:', err);
+    return false;
+  }
+}
+
+export function getSiteSettings() {
+  try {
+    const raw = localStorage.getItem('mahira_site_settings');
+    if (raw) {
+      return { ...DEFAULT_SITE_SETTINGS, ...JSON.parse(raw) };
+    }
+  } catch (err) {
+    console.warn('Error reading site settings:', err);
+  }
+  return { ...DEFAULT_SITE_SETTINGS };
+}
+
+export function saveSiteSettings(settings) {
+  try {
+    localStorage.setItem('mahira_site_settings', JSON.stringify(settings));
+    return true;
+  } catch (err) {
+    console.error('Error saving site settings:', err);
+    return false;
+  }
+}
+
+export function resetSiteSettings() {
+  try {
+    localStorage.removeItem('mahira_site_settings');
+    return true;
+  } catch (err) {
+    console.error('Error resetting site settings:', err);
+    return false;
+  }
+}
+
+export function getSiteContent() {
+  try {
+    const raw = localStorage.getItem('mahira_site_content');
+    if (raw) {
+      return { ...DEFAULT_SITE_CONTENT, ...JSON.parse(raw) };
+    }
+  } catch (err) {
+    console.warn('Error reading site content:', err);
+  }
+  return { ...DEFAULT_SITE_CONTENT };
+}
+
+export function saveSiteContent(content) {
+  try {
+    localStorage.setItem('mahira_site_content', JSON.stringify(content));
+    return true;
+  } catch (err) {
+    console.error('Error saving site content:', err);
+    return false;
+  }
+}
+
+export function resetSiteContent() {
+  try {
+    localStorage.removeItem('mahira_site_content');
+    return true;
+  } catch (err) {
+    console.error('Error resetting site content:', err);
+    return false;
+  }
+}
+
+export function getAdminAuth() {
+  try {
+    const raw = localStorage.getItem('mahira_admin_auth');
+    if (raw) {
+      return { ...DEFAULT_ADMIN_AUTH, ...JSON.parse(raw) };
+    }
+  } catch (err) {
+    console.warn('Error reading admin auth:', err);
+  }
+  return { ...DEFAULT_ADMIN_AUTH };
+}
+
+export function saveAdminAuth(auth) {
+  try {
+    localStorage.setItem('mahira_admin_auth', JSON.stringify(auth));
+    return true;
+  } catch (err) {
+    console.error('Error saving admin auth:', err);
+    return false;
+  }
+}
+
+// Live mutable export initialized from storage
+export let exhibitionPieces = getExhibitionPieces();
+
+export function refreshExhibitionPieces() {
+  exhibitionPieces = getExhibitionPieces();
+  return exhibitionPieces;
+}
 
 export const diamondCuts = [
   {
