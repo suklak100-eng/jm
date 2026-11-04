@@ -1,6 +1,6 @@
-// Luxury Vault Bag State Management with LocalStorage
+// Luxury Private Vault Bag Controller for Mahira Haute Joaillerie
 
-import { jewelryProducts } from './products.js';
+import { exhibitionPieces } from './products.js';
 
 class VaultCart {
   constructor() {
@@ -15,7 +15,7 @@ class VaultCart {
         this.items = JSON.parse(stored);
       } else {
         // Initial showcase item
-        this.items = [{ id: 'jewel-1', quantity: 1 }];
+        this.items = [{ id: 'exhibit-01', quantity: 1 }];
       }
     } catch (_) {
       this.items = [];
@@ -37,7 +37,7 @@ class VaultCart {
       this.items.push({ id: productId, quantity: 1 });
     }
     this.save();
-    showToast('Piece safely added to your Private Vault Bag ✦');
+    showToast('Piece added to your Private Vault Bag ✦');
   }
 
   removeItem(productId) {
@@ -47,7 +47,7 @@ class VaultCart {
 
   getTotal() {
     return this.items.reduce((sum, item) => {
-      const prod = jewelryProducts.find((p) => p.id === item.id);
+      const prod = exhibitionPieces.find((p) => p.id === item.id);
       return sum + (prod ? prod.price * item.quantity : 0);
     }, 0);
   }
@@ -82,9 +82,9 @@ export function showToast(message) {
 
   setTimeout(() => {
     toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
+    toast.style.transform = 'translateY(15px)';
     setTimeout(() => toast.remove(), 400);
-  }, 3000);
+  }, 3200);
 }
 
 export function renderCartUI() {
@@ -106,10 +106,10 @@ export function renderCartUI() {
 
   if (vault.items.length === 0) {
     list.innerHTML = `
-      <div style="text-align: center; padding: 60px 20px; color: #777785;">
-        <div style="font-size: 2rem; margin-bottom: 14px;">✦</div>
-        <h4 style="font-family: var(--font-display); color: var(--gold-champagne-light); margin-bottom: 8px;">Your Vault is Empty</h4>
-        <p style="font-size: 0.95rem;">Curate your selection from our haute joaillerie masterpieces.</p>
+      <div style="text-align: center; padding: 70px 20px; color: #777785;">
+        <div style="font-size: 2.2rem; margin-bottom: 14px; color: var(--gold-400);">✦</div>
+        <h4 style="font-family: var(--font-display); color: #fff; margin-bottom: 8px; letter-spacing: 0.15em;">Your Vault is Empty</h4>
+        <p style="font-size: 1rem; color: var(--text-muted);">Curate singular heirlooms from our masterwork exhibition.</p>
       </div>
     `;
     return;
@@ -117,7 +117,7 @@ export function renderCartUI() {
 
   list.innerHTML = vault.items
     .map((item) => {
-      const prod = jewelryProducts.find((p) => p.id === item.id);
+      const prod = exhibitionPieces.find((p) => p.id === item.id);
       if (!prod) return '';
 
       return `
@@ -125,7 +125,7 @@ export function renderCartUI() {
           <img src="${prod.image}" alt="${prod.name}" class="cart-item-thumb" />
           <div class="cart-item-info">
             <h4 class="cart-item-title">${prod.name}</h4>
-            <div class="cart-item-metal">${prod.metal}</div>
+            <div class="cart-item-metal">${prod.stone}</div>
             <div class="cart-item-foot">
               <span class="cart-item-price">${formatINR(prod.price * item.quantity)}</span>
               <button class="cart-item-del-btn" data-action="remove">Remove</button>
@@ -170,9 +170,9 @@ export function initVaultDrawer() {
 
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
-      showToast('Initiating Private Concierge Checkout...');
+      showToast('Initiating Private Concierge Acquisition Protocol...');
       setTimeout(() => {
-        alert(`Private Vault Order Value: ${formatINR(vault.getTotal())}\n\nA dedicated Haute Joaillerie Concierge will connect with you.`);
+        alert(`Private Vault Order Value: ${formatINR(vault.getTotal())}\n\nA Senior Haute Joaillerie Concierge will connect with you discretely.`);
       }, 500);
     });
   }

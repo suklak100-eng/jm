@@ -1,145 +1,309 @@
-// Main Luxury Application Controller for Mahira Haute Joaillerie
+// Luxury Haute Joaillerie Exhibition Engine
+// Cartier / Bulgari / Graff Awwwards-Caliber Digital Experience
 
-import { jewelryProducts, jewelrySuites } from './products.js';
+import { exhibitionPieces, diamondCuts } from './products.js';
 import { vault, formatINR, showToast, initVaultDrawer } from './cart.js';
 import { initCurtain } from './curtain.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Curtain Reveal (Scroll & Click)
+  // 1. Initialize Curtain Unveiling (Scroll & Click)
   initCurtain();
 
-  // 2. Initialize Private Vault Cart Drawer
+  // 2. Initialize Private Vault Cart
   initVaultDrawer();
 
-  // 3. Render 3D Interactive Jewelry Cards
-  renderJewelryCards();
+  // 3. Initialize Interactive Diamond Stardust Canvas
+  initStardustCanvas();
 
-  // 4. Render Signature Suites
-  renderSuites();
+  // 4. Initialize Custom Luxury Cursor
+  initLuxuryCursor();
 
-  // 5. Initialize Quick View Modal
-  initQuickViewModal();
+  // 5. Render Exhibition Salons
+  renderExhibition();
 
-  // 6. Initialize Mobile Navigation
+  // 6. Initialize Interactive 4Cs Diamond Loupe
+  initDiamondLoupe();
+
+  // 7. Initialize Gemological Dossier Modal
+  initDossierModal();
+
+  // 8. Mobile Navigation Drawer
   initMobileNav();
 
-  // 7. Initialize Sticky Header & Scroll Reveals
+  // 9. Sticky Header & Scroll Dynamic Reveals
   initScrollDynamics();
 
-  // 8. Newsletter
-  initNewsletter();
+  // 10. Private Salon Concierge Form
+  initConciergeForm();
 });
 
-/* ---------------- 3D TILT JEWELRY CARDS ---------------- */
-function renderJewelryCards() {
-  const grid = document.getElementById('jewel-grid-container');
-  if (!grid) return;
+/* ---------------- 1. STARDUST & CAUSTIC SHIMMER CANVAS ---------------- */
+function initStardustCanvas() {
+  const canvas = document.getElementById('stardust-canvas');
+  if (!canvas) return;
 
-  grid.innerHTML = jewelryProducts
-    .map(
-      (prod) => `
-    <article class="jewel-card reveal-on-scroll" data-id="${prod.id}">
-      <div class="jewel-card-photo-wrap">
-        <img src="${prod.image}" alt="${prod.name}" class="jewel-card-photo" loading="lazy" />
-        <img src="${prod.secondaryImage}" alt="${prod.name} perspective" class="jewel-card-photo-alt" loading="lazy" />
+  const ctx = canvas.getContext('2d');
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const particleCount = window.innerWidth < 768 ? 24 : 55;
+  const particles = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2.2 + 0.6,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: -Math.random() * 0.35 - 0.1,
+      alpha: Math.random() * 0.7 + 0.2,
+      pulseSpeed: Math.random() * 0.02 + 0.008,
+      hue: Math.random() > 0.4 ? 'gold' : 'diamond'
+    });
+  }
+
+  let mouseX = width / 2;
+  let mouseY = height / 2;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha += Math.sin(Date.now() * p.pulseSpeed) * 0.01;
+
+      // Wrap edges
+      if (p.y < -10) p.y = height + 10;
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+
+      // Soft mouse repel
+      const dx = mouseX - p.x;
+      const dy = mouseY - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        p.x -= (dx / dist) * 0.8;
+        p.y -= (dy / dist) * 0.8;
+      }
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+
+      const color =
+        p.hue === 'gold'
+          ? `rgba(229, 196, 122, ${Math.max(0.1, Math.min(0.85, p.alpha))})`
+          : `rgba(255, 255, 255, ${Math.max(0.1, Math.min(0.9, p.alpha))})`;
+
+      ctx.fillStyle = color;
+      ctx.shadowBlur = p.hue === 'gold' ? 8 : 12;
+      ctx.shadowColor = p.hue === 'gold' ? '#e5c47a' : '#ffffff';
+      ctx.fill();
+      ctx.restore();
+    });
+
+    requestAnimationFrame(render);
+  }
+
+  render();
+}
+
+/* ---------------- 2. CUSTOM LUXURY RING CURSOR ---------------- */
+function initLuxuryCursor() {
+  if (window.innerWidth < 1024) return; // Desktop only
+
+  const cursor = document.createElement('div');
+  cursor.id = 'luxury-cursor';
+  cursor.innerHTML = '<div class="cursor-ring"></div><div class="cursor-dot"></div>';
+  document.body.appendChild(cursor);
+
+  let mouseX = -100, mouseY = -100;
+  let currentX = -100, currentY = -100;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function update() {
+    currentX += (mouseX - currentX) * 0.18;
+    currentY += (mouseY - currentY) * 0.18;
+
+    cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+    requestAnimationFrame(update);
+  }
+  update();
+
+  // Hover states
+  document.querySelectorAll('a, button, .exhibit-salon-card, .loupe-cut-btn').forEach((el) => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+  });
+}
+
+/* ---------------- 3. RENDER EXHIBITION SALONS ---------------- */
+function renderExhibition() {
+  const container = document.getElementById('exhibition-container');
+  if (!container) return;
+
+  container.innerHTML = exhibitionPieces
+    .map((piece, idx) => {
+      const isReverse = idx % 2 === 1 ? 'reverse' : '';
+      return `
+      <section class="exhibit-salon-block ${isReverse} reveal-on-scroll" data-id="${piece.id}">
         
-        <span class="jewel-category-tag">${prod.tag}</span>
-
-        <button class="jewel-wishlist-toggle" data-wishlist="${prod.id}" aria-label="Save to Wishlist">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-          </svg>
-        </button>
-      </div>
-
-      <div class="jewel-card-info">
-        <span class="jewel-carat-spec">${prod.carat}</span>
-        <h3 class="jewel-card-title">${prod.name}</h3>
-        <p class="jewel-card-metal">${prod.metal}</p>
-
-        <div class="jewel-card-footer">
-          <span class="jewel-price">${formatINR(prod.price)}</span>
-          <button class="jewel-quick-btn" data-view="${prod.id}">
-            Inspect Piece ✦
-          </button>
+        <!-- Left Showcase Visual -->
+        <div class="exhibit-visual-col">
+          <div class="exhibit-image-stage">
+            <span class="exhibit-num-watermark">${piece.num}</span>
+            <img src="${piece.image}" alt="${piece.name}" class="exhibit-primary-img" loading="lazy" />
+            <img src="${piece.secondaryImage}" alt="${piece.name} perspective" class="exhibit-alt-img" loading="lazy" />
+            
+            <div class="exhibit-hover-hint">
+              <span>✦ Hover to rotate perspective</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </article>
-  `
-    )
+
+        <!-- Right Curatorial Dossier -->
+        <div class="exhibit-text-col">
+          <div class="exhibit-meta-row">
+            <span class="exhibit-tag-pill">${piece.provenance}</span>
+            <span class="exhibit-num-label">${piece.num}</span>
+          </div>
+
+          <h2 class="exhibit-title">${piece.name}</h2>
+          <p class="exhibit-stone-line">${piece.stone}</p>
+          <div class="exhibit-carat-badge">${piece.carat}</div>
+
+          <blockquote class="exhibit-curator-quote">
+            "${piece.quote}"
+          </blockquote>
+
+          <div class="exhibit-specs-pills">
+            <span class="spec-micro-pill">18K Certified Gold</span>
+            <span class="spec-micro-pill">GIA Authenticated</span>
+            <span class="spec-micro-pill">Conflict-Free</span>
+          </div>
+
+          <div class="exhibit-actions-row">
+            <div class="exhibit-price-val">${piece.priceFormatted}</div>
+            
+            <div class="exhibit-btns-group">
+              <button class="primary-gold-btn examine-dossier-btn" data-id="${piece.id}">
+                Examine Dossier ✦
+              </button>
+              <button class="ghost-btn acquire-btn" data-id="${piece.id}">
+                Acquire into Vault
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    `;
+    })
     .join('');
 
-  // Attach 3D Mouse Parallax & Listeners
-  const cards = grid.querySelectorAll('.jewel-card');
+  // Attach Listeners
+  container.querySelectorAll('.examine-dossier-btn').forEach((btn) => {
+    btn.addEventListener('click', () => openDossier(btn.dataset.id));
+  });
 
-  cards.forEach((card) => {
-    // 3D Tilt on Mouse Move
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+  container.querySelectorAll('.acquire-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      vault.addItem(btn.dataset.id);
+      window.openVault();
+    });
+  });
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+  // 3D Parallax on exhibition stage
+  container.querySelectorAll('.exhibit-image-stage').forEach((stage) => {
+    stage.addEventListener('mousemove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      const rotateX = ((y - centerY) / centerY) * -6;
-      const rotateY = ((x - centerX) / centerX) * 6;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      stage.querySelector('.exhibit-primary-img').style.transform = `scale(1.05) translate(${x * 14}px, ${y * 14}px)`;
+      stage.querySelector('.exhibit-alt-img').style.transform = `scale(1.05) translate(${x * 14}px, ${y * 14}px)`;
     });
 
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-    });
-
-    // Quick View Trigger
-    card.querySelector('[data-view]')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openQuickView(card.dataset.id);
-    });
-
-    // Wishlist Toggle
-    card.querySelector('[data-wishlist]')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const btn = e.currentTarget;
-      btn.classList.toggle('active');
-      const isFav = btn.classList.contains('active');
-      showToast(isFav ? 'Piece saved to your Curated Wishlist ♡' : 'Removed from Wishlist');
-    });
-
-    // Clicking card opens quick view
-    card.addEventListener('click', () => {
-      openQuickView(card.dataset.id);
+    stage.addEventListener('mouseleave', () => {
+      stage.querySelector('.exhibit-primary-img').style.transform = 'scale(1) translate(0, 0)';
+      stage.querySelector('.exhibit-alt-img').style.transform = 'scale(1) translate(0, 0)';
     });
   });
 }
 
-/* ---------------- SIGNATURE SUITES ---------------- */
-function renderSuites() {
-  const container = document.getElementById('suites-container');
-  if (!container) return;
+/* ---------------- 4. INTERACTIVE 4Cs DIAMOND LOUPE ---------------- */
+function initDiamondLoupe() {
+  const buttonsContainer = document.getElementById('loupe-cuts-nav');
+  const loupeSvg = document.getElementById('loupe-facets-polygon');
+  const cutNameEl = document.getElementById('loupe-cut-name');
+  const cutSubEl = document.getElementById('loupe-cut-sub');
+  const cutDescEl = document.getElementById('loupe-cut-desc');
+  const cutCaratEl = document.getElementById('loupe-cut-carat');
+  const cutFacetsEl = document.getElementById('loupe-cut-facets');
+  const cutRatioEl = document.getElementById('loupe-cut-ratio');
 
-  container.innerHTML = jewelrySuites
+  if (!buttonsContainer) return;
+
+  buttonsContainer.innerHTML = diamondCuts
     .map(
-      (suite) => `
-    <div class="suite-card reveal-on-scroll">
-      <img src="${suite.image}" alt="${suite.title}" class="suite-card-img" loading="lazy" />
-      <div class="suite-card-overlay">
-        <span class="suite-tag">${suite.tag}</span>
-        <h4 class="suite-name">${suite.title}</h4>
-        <p class="suite-summary">${suite.summary}</p>
-      </div>
-    </div>
+      (cut, idx) => `
+    <button class="loupe-cut-btn ${idx === 0 ? 'active' : ''}" data-cut="${cut.id}">
+      <span class="cut-btn-name">${cut.name}</span>
+      <span class="cut-btn-sub">${cut.subtitle}</span>
+    </button>
   `
     )
     .join('');
+
+  function selectCut(cutId) {
+    const cut = diamondCuts.find((c) => c.id === cutId) || diamondCuts[0];
+
+    buttonsContainer.querySelectorAll('.loupe-cut-btn').forEach((b) => {
+      b.classList.toggle('active', b.dataset.cut === cutId);
+    });
+
+    if (loupeSvg) {
+      loupeSvg.setAttribute('points', cut.svgPoints);
+      loupeSvg.classList.add('refracting');
+      setTimeout(() => loupeSvg.classList.remove('refracting'), 400);
+    }
+
+    if (cutNameEl) cutNameEl.textContent = cut.name;
+    if (cutSubEl) cutSubEl.textContent = cut.subtitle;
+    if (cutDescEl) cutDescEl.textContent = cut.description;
+    if (cutCaratEl) cutCaratEl.textContent = cut.caratSample;
+    if (cutFacetsEl) cutFacetsEl.textContent = `${cut.facets} Facets`;
+    if (cutRatioEl) cutRatioEl.textContent = cut.ratios;
+  }
+
+  buttonsContainer.querySelectorAll('.loupe-cut-btn').forEach((btn) => {
+    btn.addEventListener('click', () => selectCut(btn.dataset.cut));
+  });
+
+  // Initial selection
+  selectCut('emerald');
 }
 
-/* ---------------- QUICK VIEW MODAL ---------------- */
-function initQuickViewModal() {
-  const modal = document.getElementById('quick-view-modal');
-  const overlay = document.getElementById('modal-overlay');
-  const closeBtn = document.getElementById('modal-close-trigger');
+/* ---------------- 5. GEMOLOGICAL DOSSIER MODAL ---------------- */
+function initDossierModal() {
+  const modal = document.getElementById('dossier-modal');
+  const overlay = document.getElementById('dossier-overlay');
+  const closeBtn = document.getElementById('dossier-close-btn');
 
   function closeModal() {
     if (modal) modal.classList.remove('open');
@@ -151,89 +315,97 @@ function initQuickViewModal() {
   if (overlay) overlay.addEventListener('click', closeModal);
 
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
       closeModal();
     }
   });
 
-  window.openQuickView = openQuickView;
-}
+  window.openDossier = (id) => {
+    const piece = exhibitionPieces.find((p) => p.id === id);
+    if (!piece || !modal) return;
 
-function openQuickView(id) {
-  const prod = jewelryProducts.find((p) => p.id === id);
-  if (!prod) return;
-
-  const modal = document.getElementById('quick-view-modal');
-  const overlay = document.getElementById('modal-overlay');
-  const body = document.getElementById('modal-content-area');
-
-  if (!modal || !body) return;
-
-  body.innerHTML = `
-    <div class="modal-inner-grid">
-      <img src="${prod.image}" alt="${prod.name}" class="modal-jewel-img" />
-      
-      <div>
-        <div class="modal-jewel-carat">${prod.carat}</div>
-        <h2 class="modal-jewel-title">${prod.name}</h2>
-        <div class="modal-jewel-price">${formatINR(prod.price)}</div>
-        <p class="modal-jewel-desc">${prod.description}</p>
-
-        <div class="modal-specs-table">
-          <div class="modal-spec-row">
-            <span class="spec-key">Natural Gemstones</span>
-            <span class="spec-val">${prod.specs.gemstones}</span>
-          </div>
-          <div class="modal-spec-row">
-            <span class="spec-key">Diamond Grade</span>
-            <span class="spec-val">${prod.specs.diamonds}</span>
-          </div>
-          <div class="modal-spec-row">
-            <span class="spec-key">Precious Metal</span>
-            <span class="spec-val">${prod.specs.goldPurity}</span>
-          </div>
-          <div class="modal-spec-row">
-            <span class="spec-key">Provenance & Report</span>
-            <span class="spec-val">${prod.specs.certification}</span>
+    const content = document.getElementById('dossier-content');
+    content.innerHTML = `
+      <div class="dossier-inner-grid">
+        
+        <div class="dossier-visual-pane">
+          <img src="${piece.image}" alt="${piece.name}" class="dossier-img" />
+          <div class="dossier-cert-badge">
+            <span>🛡️</span> ${piece.gemology.report}
           </div>
         </div>
 
-        <button class="primary-gold-btn" id="modal-acquire-btn" style="width: 100%; justify-content: center;">
-          Acquire into Vault ✦
-        </button>
+        <div class="dossier-details-pane">
+          <div class="dossier-number">${piece.num} • ${piece.provenance}</div>
+          <h2 class="dossier-title">${piece.name}</h2>
+          <div class="dossier-price-tag">${piece.priceFormatted}</div>
+          
+          <p class="dossier-description">${piece.quote}</p>
+
+          <div class="dossier-specs-table">
+            <div class="dossier-spec-row">
+              <span class="dossier-key">Mine of Origin</span>
+              <span class="dossier-val">${piece.gemology.origin}</span>
+            </div>
+            <div class="dossier-spec-row">
+              <span class="dossier-key">Carat & Diamond Weight</span>
+              <span class="dossier-val">${piece.carat}</span>
+            </div>
+            <div class="dossier-spec-row">
+              <span class="dossier-key">Color & Clarity Grade</span>
+              <span class="dossier-val">${piece.gemology.clarity}</span>
+            </div>
+            <div class="dossier-spec-row">
+              <span class="dossier-key">Precious Metal Hallmarking</span>
+              <span class="dossier-val">${piece.gemology.metalPurity}</span>
+            </div>
+            <div class="dossier-spec-row">
+              <span class="dossier-key">Gemological Certification</span>
+              <span class="dossier-val">${piece.gemology.report}</span>
+            </div>
+          </div>
+
+          <div class="dossier-actions-pane">
+            <button class="primary-gold-btn" id="dossier-acquire-action" style="flex: 1; justify-content: center;">
+              Acquire into Private Vault ✦
+            </button>
+            <button class="ghost-btn" onclick="showToast('Salon Concierge notified for private viewing'); closeModal();">
+              Book Viewing in Salon
+            </button>
+          </div>
+        </div>
+
       </div>
-    </div>
-  `;
+    `;
 
-  body.querySelector('#modal-acquire-btn')?.addEventListener('click', () => {
-    vault.addItem(prod.id);
-    modal.classList.remove('open');
-    if (overlay) overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    window.openVault();
-  });
+    content.querySelector('#dossier-acquire-action')?.addEventListener('click', () => {
+      vault.addItem(piece.id);
+      closeModal();
+      window.openVault();
+    });
 
-  modal.classList.add('open');
-  if (overlay) overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+    modal.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
 }
 
-/* ---------------- MOBILE NAVIGATION ---------------- */
+/* ---------------- 6. MOBILE NAVIGATION ---------------- */
 function initMobileNav() {
-  const burger = document.getElementById('nav-burger-btn');
-  const drawer = document.getElementById('mobile-drawer');
-  const overlay = document.getElementById('mobile-overlay');
+  const burger = document.getElementById('mobile-burger-trigger');
+  const drawer = document.getElementById('mobile-salon-drawer');
+  const overlay = document.getElementById('mobile-drawer-overlay');
   const closeBtn = document.getElementById('mobile-drawer-close');
 
   function openDrawer() {
-    if (drawer) drawer.classList.add('open');
-    if (overlay) overlay.classList.add('open');
+    drawer?.classList.add('open');
+    overlay?.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
-    if (drawer) drawer.classList.remove('open');
-    if (overlay) overlay.classList.remove('open');
+    drawer?.classList.remove('open');
+    overlay?.classList.remove('open');
     document.body.style.overflow = '';
   }
 
@@ -241,17 +413,15 @@ function initMobileNav() {
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if (overlay) overlay.addEventListener('click', closeDrawer);
 
-  drawer?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeDrawer);
-  });
+  drawer?.querySelectorAll('a').forEach((l) => l.addEventListener('click', closeDrawer));
 }
 
-/* ---------------- STICKY NAV & SCROLL REVEALS ---------------- */
+/* ---------------- 7. STICKY NAV & SCROLL REVEALS ---------------- */
 function initScrollDynamics() {
   const header = document.getElementById('site-header');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 50) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
@@ -268,26 +438,26 @@ function initScrollDynamics() {
         }
       });
     },
-    { threshold: 0.12 }
+    { threshold: 0.1 }
   );
 
   reveals.forEach((el) => observer.observe(el));
 }
 
-/* ---------------- NEWSLETTER ---------------- */
-function initNewsletter() {
-  const form = document.getElementById('newsletter-form');
-  const input = document.getElementById('newsletter-input');
+/* ---------------- 8. CONCIERGE FORM ---------------- */
+function initConciergeForm() {
+  const form = document.getElementById('salon-concierge-form');
+  const input = document.getElementById('concierge-email-input');
 
   if (form && input) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const val = input.value.trim();
       if (!val || !val.includes('@')) {
-        showToast('Please enter a valid concierge email.');
+        showToast('Please enter a valid concierge contact.');
         return;
       }
-      showToast('Welcome to the Private Circle of Mahira Connoisseurs ✦');
+      showToast('Private appointment requested. Our Haute Joaillerie Advisor will contact you within 2 hours ✦');
       input.value = '';
     });
   }

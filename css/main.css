@@ -1,39 +1,41 @@
 /* ==========================================================================
-   MAHIRA HAUTE JOAILLERIE — LUXURY FINE JEWELRY
-   Minimalist Aristocracy, 3D Tilt Optics & Breathable Spatial Layout
+   MAHIRA HAUTE JOAILLERIE — PARIS • LONDON • MUMBAI • GENEVA
+   Award-Winning Digital Flagship Salon & Exhibition Architecture
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap');
 
 :root {
   /* Obsidian & High Jewelry Palette */
-  --bg-obsidian: #08080a;
-  --bg-surface: #101014;
-  --bg-card: #15151b;
-  --bg-card-hover: #1b1b24;
+  --bg-deep: #060608;
+  --bg-surface: #0c0c11;
+  --bg-card: #121218;
+  --bg-glass: rgba(18, 18, 24, 0.75);
 
-  /* Champagne & Diamond Gold */
-  --gold-champagne-light: #fbf5e2;
-  --gold-champagne: #e5c47a;
-  --gold-champagne-dark: #a18136;
-  --gold-border: rgba(229, 196, 122, 0.25);
+  /* Warm Royal Champagne Gold */
+  --gold-300: #fbf5e2;
+  --gold-400: #e5c47a;
+  --gold-500: #c9a456;
+  --gold-600: #93732b;
+  --gold-border: rgba(229, 196, 122, 0.22);
   --gold-glow: rgba(229, 196, 122, 0.35);
 
-  /* Diamond Shimmer Whites */
-  --text-pure: #ffffff;
-  --text-silver: #dcdce2;
-  --text-muted: #888894;
+  /* Diamond Shimmer */
+  --diamond-white: #ffffff;
+  --text-primary: #f2f2f7;
+  --text-secondary: #c2c2cf;
+  --text-muted: #7a7a8c;
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-display: 'Cinzel', serif;
-  --font-body: 'Cormorant Garamond', serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Montserrat', -apple-system, sans-serif;
 
-  /* Spacing & Transitions */
-  --container-max: 1360px;
-  --header-height: 84px;
-  --transition-fluid: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Spacing */
+  --container-max: 1380px;
+  --header-height: 86px;
+  --transition-fluid: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset & Base */
@@ -46,31 +48,82 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: var(--bg-obsidian);
+  background-color: var(--bg-deep);
 }
 
 body {
-  background-color: var(--bg-obsidian);
-  color: var(--text-silver);
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Luxury Scrollbar */
+/* Canvas Background for Stardust & Caustic Shimmer */
+#stardust-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Custom Luxury Ring Cursor (Desktop Only) */
+#luxury-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate3d(-100px, -100px, 0);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+.cursor-ring {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--gold-400);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(229, 196, 122, 0.4);
+  transition: transform 0.25s ease;
+}
+
+.cursor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #fff;
+}
+
+#luxury-cursor.hovering .cursor-ring {
+  transform: scale(1.6);
+  border-color: #fff;
+  background-color: rgba(229, 196, 122, 0.1);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-obsidian);
+  background: var(--bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: #252530;
+  background: #202028;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-champagne-dark);
+  background: var(--gold-500);
 }
 
 .container {
@@ -78,10 +131,12 @@ body {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 40px;
+  position: relative;
+  z-index: 2;
 }
 
 /* ==========================================================================
-   MINIMALIST NAVIGATION BAR
+   MINIMALIST EDITORIAL NAVIGATION
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -89,17 +144,17 @@ body {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(8, 8, 10, 0.82);
+  background: rgba(6, 6, 8, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: var(--transition-fluid);
 }
 
 .site-header.scrolled {
-  background: rgba(8, 8, 10, 0.96);
+  background: rgba(6, 6, 8, 0.98);
   border-bottom: 1px solid var(--gold-border);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
 }
 
 .nav-inner {
@@ -109,7 +164,6 @@ body {
   height: var(--header-height);
 }
 
-/* Nav Menu */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -121,9 +175,9 @@ body {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--text-silver);
+  color: var(--text-secondary);
   text-decoration: none;
   position: relative;
   padding: 8px 0;
@@ -138,19 +192,19 @@ body {
   transform: translateX(-50%);
   width: 0;
   height: 1px;
-  background: var(--gold-champagne);
+  background: var(--gold-400);
   transition: width 0.3s ease;
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--gold-champagne-light);
+  color: var(--gold-300);
 }
 
 .nav-link:hover::after, .nav-link.active::after {
   width: 100%;
 }
 
-/* Center Haute Joaillerie Emblem */
+/* Center Brand Identity */
 .nav-brand-center {
   display: flex;
   flex-direction: column;
@@ -159,18 +213,18 @@ body {
 }
 
 .brand-emblem-svg {
-  width: 26px;
-  height: 26px;
-  margin-bottom: 3px;
-  filter: drop-shadow(0 0 8px rgba(229, 196, 122, 0.4));
+  width: 28px;
+  height: 28px;
+  margin-bottom: 2px;
+  filter: drop-shadow(0 0 10px rgba(229, 196, 122, 0.45));
 }
 
 .brand-title-text {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 500;
-  letter-spacing: 0.4em;
-  color: var(--gold-champagne-light);
+  letter-spacing: 0.42em;
+  color: var(--gold-300);
   text-transform: uppercase;
   line-height: 1;
 }
@@ -179,7 +233,7 @@ body {
   font-family: var(--font-sans);
   font-size: 0.52rem;
   letter-spacing: 0.6em;
-  color: var(--gold-champagne);
+  color: var(--gold-400);
   text-transform: uppercase;
   margin-top: 4px;
 }
@@ -188,13 +242,13 @@ body {
 .nav-utilities {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
 }
 
 .nav-btn {
   background: none;
   border: none;
-  color: var(--text-silver);
+  color: var(--text-primary);
   cursor: pointer;
   position: relative;
   display: flex;
@@ -205,7 +259,7 @@ body {
 }
 
 .nav-btn:hover {
-  color: var(--gold-champagne);
+  color: var(--gold-400);
   transform: translateY(-2px);
 }
 
@@ -213,8 +267,8 @@ body {
   position: absolute;
   top: -2px;
   right: -5px;
-  background: linear-gradient(135deg, var(--gold-champagne-light), var(--gold-champagne));
-  color: #09090b;
+  background: linear-gradient(135deg, var(--gold-300), var(--gold-400));
+  color: #060608;
   font-family: var(--font-sans);
   font-size: 0.6rem;
   font-weight: 700;
@@ -230,22 +284,21 @@ body {
   display: none;
   background: none;
   border: none;
-  color: var(--text-pure);
+  color: #fff;
   cursor: pointer;
 }
 
 /* ==========================================================================
-   HERO SECTION — ETERNAL RADIANCE
-   Airy, high negative space, floating 3D jewel centerpiece
+   HERO CHAPTER: "SCULPTING THE STARS"
    ========================================================================== */
 .hero-section {
   position: relative;
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
-  overflow: hidden;
   padding: 80px 0 100px;
-  background: radial-gradient(circle at 60% 45%, #15141c 0%, var(--bg-obsidian) 65%);
+  overflow: hidden;
+  background: radial-gradient(circle at 65% 50%, #151520 0%, var(--bg-deep) 65%);
 }
 
 .hero-grid {
@@ -262,58 +315,55 @@ body {
   flex-direction: column;
 }
 
-.hero-badge-pill {
+.hero-meta-tag {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.38em;
+  color: var(--gold-400);
+  text-transform: uppercase;
   margin-bottom: 24px;
 }
 
-.hero-pill-line {
+.hero-meta-tag::before {
+  content: '';
   width: 32px;
   height: 1px;
-  background: var(--gold-champagne);
+  background: var(--gold-400);
 }
 
-.hero-pill-text {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
-  color: var(--gold-champagne);
-}
-
-.hero-headline {
+.hero-title-main {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-size: clamp(3rem, 6vw, 5.2rem);
   font-weight: 400;
-  line-height: 1.12;
-  color: var(--text-pure);
-  margin-bottom: 20px;
-  letter-spacing: 0.04em;
+  line-height: 1.08;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
 }
 
-.hero-headline em {
+.hero-title-main em {
   font-style: italic;
   font-family: var(--font-serif);
-  color: var(--gold-champagne-light);
+  color: var(--gold-300);
   font-weight: 300;
 }
 
-.hero-narrative {
+.hero-poetic-sub {
   font-family: var(--font-body);
-  font-size: clamp(1.3rem, 1.8vw, 1.6rem);
-  color: var(--text-muted);
-  margin-bottom: 40px;
-  max-width: 480px;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  color: var(--text-secondary);
+  margin-bottom: 44px;
+  max-width: 520px;
   line-height: 1.5;
 }
 
-.hero-actions {
+.hero-cta-row {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
   flex-wrap: wrap;
 }
 
@@ -322,34 +372,36 @@ body {
   align-items: center;
   gap: 12px;
   padding: 16px 36px;
-  background: linear-gradient(135deg, var(--gold-champagne-light) 0%, var(--gold-champagne) 60%, var(--gold-champagne-dark) 100%);
-  color: #08080a;
+  background: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-400) 50%, var(--gold-600) 100%);
+  color: #060608;
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 40px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 196, 122, 0.3);
+  border: 1px solid var(--gold-300);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(229, 196, 122, 0.35);
+  cursor: pointer;
   transition: var(--transition-fluid);
 }
 
 .primary-gold-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 35px rgba(229, 196, 122, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 35px rgba(229, 196, 122, 0.55);
 }
 
-.ghost-atelier-btn {
+.ghost-btn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   padding: 16px 32px;
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--gold-champagne-light);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--gold-300);
   font-family: var(--font-sans);
-  font-size: 0.76rem;
-  font-weight: 400;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   text-decoration: none;
@@ -357,96 +409,97 @@ body {
   border: 1px solid var(--gold-border);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
   transition: var(--transition-fluid);
 }
 
-.ghost-atelier-btn:hover {
-  background: rgba(229, 196, 122, 0.1);
-  border-color: var(--gold-champagne);
+.ghost-btn:hover {
+  background: rgba(229, 196, 122, 0.12);
+  border-color: var(--gold-400);
   color: #fff;
   transform: translateY(-2px);
 }
 
-/* Hero 3D Card Display (Right) */
-.hero-visual-wrap {
+/* Hero Centerpiece Vitrine Frame (Right) */
+.hero-vitrine-stage {
   position: relative;
   display: flex;
   justify-content: center;
   perspective: 1200px;
 }
 
-.hero-jewel-frame {
+.hero-vitrine-frame {
   position: relative;
   width: 100%;
-  max-width: 480px;
-  height: 560px;
+  max-width: 500px;
+  height: 600px;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid rgba(229, 196, 122, 0.3);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(229, 196, 122, 0.35);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(229, 196, 122, 0.15);
   transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.hero-jewel-img {
+.hero-vitrine-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 1.2s ease, filter 0.8s ease;
-  filter: contrast(1.05) brightness(0.95);
+  filter: contrast(1.06) brightness(0.96);
 }
 
-.hero-jewel-frame:hover .hero-jewel-img {
-  transform: scale(1.05);
+.hero-vitrine-frame:hover .hero-vitrine-img {
+  transform: scale(1.06);
   filter: contrast(1.08) brightness(1.02);
 }
 
-.hero-floating-tag {
+.hero-vitrine-tag {
   position: absolute;
   bottom: 24px;
   left: 24px;
   right: 24px;
-  background: rgba(14, 14, 18, 0.88);
+  background: rgba(12, 12, 17, 0.92);
   border: 1px solid var(--gold-border);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 16px 20px;
+  padding: 16px 22px;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.jewel-provenance-name {
+.vitrine-tag-title {
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   letter-spacing: 0.18em;
-  color: var(--gold-champagne-light);
+  color: var(--gold-300);
   text-transform: uppercase;
 }
 
-.jewel-provenance-detail {
-  font-size: 0.8rem;
+.vitrine-tag-sub {
+  font-size: 0.82rem;
   color: var(--text-muted);
 }
 
-.jewel-carat-tag {
+.vitrine-tag-carat {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: var(--gold-champagne);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  color: var(--gold-400);
   border: 1px solid var(--gold-border);
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
 }
 
 /* ==========================================================================
-   REFINED SUBTLE MARQUEE
+   SUBTLE HAUTE MARQUEE
    ========================================================================== */
-.jewel-marquee-bar {
+.haute-marquee-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: #0b0b0e;
+  background: #09090d;
   padding: 20px 0;
   overflow: hidden;
 }
@@ -454,7 +507,7 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marqueeSlide 30s linear infinite;
+  animation: marqueeRoll 32s linear infinite;
 }
 
 .marquee-unit {
@@ -463,353 +516,621 @@ body {
   gap: 36px;
   padding-right: 36px;
   font-family: var(--font-display);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   letter-spacing: 0.35em;
-  color: var(--gold-champagne);
+  color: var(--gold-400);
   text-transform: uppercase;
 }
 
 .marquee-diamond {
-  color: var(--gold-champagne-light);
-  font-size: 0.7rem;
+  color: var(--gold-300);
+  font-size: 0.75rem;
 }
 
-@keyframes marqueeSlide {
+@keyframes marqueeRoll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
 /* ==========================================================================
-   CURATED HIGH JEWELRY PIECES (3D INTERACTIVE CARDS)
+   THE MASTERWORK EXHIBITION (MUSEUM SALON ARCHITECTURE)
    ========================================================================== */
-.jewelry-section {
+.exhibition-section {
   padding: 120px 0 100px;
 }
 
-.section-clean-head {
+.section-head-center {
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto 64px;
+  max-width: 640px;
+  margin: 0 auto 80px;
 }
 
-.section-micro-label {
+.section-kicker {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.35em;
-  color: var(--gold-champagne);
+  letter-spacing: 0.36em;
+  color: var(--gold-400);
   text-transform: uppercase;
   margin-bottom: 14px;
   display: block;
 }
 
-.section-serif-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+.section-serif-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
   font-weight: 400;
-  color: var(--text-pure);
-  margin-bottom: 12px;
-  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
 }
 
-.section-body-sub {
+.section-curator-note {
   font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: var(--text-muted);
 }
 
-/* 4-Item Grid with breathing room */
-.jewel-cards-grid {
+/* Exhibition Salons: Alternating Large Editorial Blocks */
+.exhibit-salon-block {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 64px;
+  margin-bottom: 140px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* 3D Tilt Card */
-.jewel-card {
+.exhibit-salon-block.reverse {
+  grid-template-columns: 1fr 1.15fr;
+}
+.exhibit-salon-block.reverse .exhibit-visual-col {
+  order: 2;
+}
+.exhibit-salon-block.reverse .exhibit-text-col {
+  order: 1;
+}
+
+/* Visual Stage */
+.exhibit-visual-col {
   position: relative;
-  background: var(--bg-surface);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 6px;
-  overflow: hidden;
-  perspective: 1000px;
-  cursor: pointer;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-.jewel-card:hover {
-  border-color: var(--gold-border);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(229, 196, 122, 0.15);
-  transform: translateY(-6px);
-}
-
-.jewel-card-photo-wrap {
+.exhibit-image-stage {
   position: relative;
   width: 100%;
-  height: 440px;
+  height: 540px;
+  border-radius: 4px;
   overflow: hidden;
-  background: #0d0d12;
+  border: 1px solid rgba(229, 196, 122, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  background: #09090e;
 }
 
-.jewel-card-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+.exhibit-num-watermark {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  font-family: var(--font-display);
+  font-size: 3.8rem;
+  color: rgba(229, 196, 122, 0.12);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.jewel-card-photo-alt {
+.exhibit-primary-img,
+.exhibit-alt-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.jewel-card:hover .jewel-card-photo {
+.exhibit-alt-img {
   opacity: 0;
-  transform: scale(1.05);
 }
 
-.jewel-card:hover .jewel-card-photo-alt {
+.exhibit-image-stage:hover .exhibit-primary-img {
+  opacity: 0;
+}
+
+.exhibit-image-stage:hover .exhibit-alt-img {
   opacity: 1;
-  transform: scale(1.05);
 }
 
-/* Floating Badges */
-.jewel-category-tag {
+.exhibit-hover-hint {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  background: rgba(14, 14, 18, 0.85);
-  border: 1px solid var(--gold-border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  bottom: 16px;
+  right: 16px;
+  z-index: 3;
+  background: rgba(6, 6, 8, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 4px 12px;
   border-radius: 20px;
   font-family: var(--font-sans);
   font-size: 0.65rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
+  color: var(--gold-400);
   text-transform: uppercase;
-  color: var(--gold-champagne);
 }
 
-.jewel-wishlist-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(14, 14, 18, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-silver);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition-fluid);
-}
-
-.jewel-wishlist-toggle:hover, .jewel-wishlist-toggle.active {
-  background: var(--gold-champagne);
-  color: #09090b;
-  border-color: var(--gold-champagne);
-}
-
-/* Card Information */
-.jewel-card-info {
-  padding: 28px;
+/* Text Column */
+.exhibit-text-col {
   display: flex;
   flex-direction: column;
 }
 
-.jewel-carat-spec {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  color: var(--gold-champagne);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.jewel-card-title {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 500;
-  color: var(--text-pure);
-  margin-bottom: 8px;
-}
-
-.jewel-card-metal {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-
-.jewel-card-footer {
+.exhibit-meta-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 18px;
-  margin-top: auto;
+  margin-bottom: 16px;
 }
 
-.jewel-price {
+.exhibit-tag-pill {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+
+.exhibit-num-label {
   font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--gold-champagne-light);
+  font-size: 1.1rem;
+  color: var(--gold-300);
 }
 
-.jewel-quick-btn {
-  padding: 10px 22px;
-  background: transparent;
+.exhibit-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+
+.exhibit-stone-line {
+  font-size: 1.25rem;
+  color: var(--gold-300);
+  margin-bottom: 14px;
+}
+
+.exhibit-carat-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(229, 196, 122, 0.08);
   border: 1px solid var(--gold-border);
-  border-radius: 30px;
-  color: var(--gold-champagne-light);
+  border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
+  color: var(--gold-400);
   text-transform: uppercase;
-  cursor: pointer;
-  transition: var(--transition-fluid);
+  margin-bottom: 24px;
+  max-width: max-content;
 }
 
-.jewel-quick-btn:hover {
-  background: var(--gold-champagne);
-  color: #08080a;
-  border-color: var(--gold-champagne);
+.exhibit-curator-quote {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--text-secondary);
+  border-left: 2px solid var(--gold-400);
+  padding-left: 20px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.exhibit-specs-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.spec-micro-pill {
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.exhibit-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.exhibit-price-val {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--gold-300);
+}
+
+.exhibit-btns-group {
+  display: flex;
+  gap: 12px;
 }
 
 /* ==========================================================================
-   SIGNATURE SUITE SHOWCASE
+   INTERACTIVE 4Cs DIAMOND LOUPE (AWWWARDS FEATURE)
    ========================================================================== */
-.suites-section {
+.loupe-section {
   padding: 100px 0 120px;
-  background: linear-gradient(180deg, var(--bg-obsidian) 0%, #0d0d12 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: radial-gradient(circle at 40% 50%, #151520 0%, #07070a 70%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.suites-grid {
+.loupe-workstation {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 64px;
+  background: rgba(14, 14, 20, 0.85);
+  border: 1px solid var(--gold-border);
+  border-radius: 8px;
+  padding: 56px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-.suite-card {
+/* Loupe Left: Magnifier Ring & Refractive Facet Stage */
+.loupe-stage-col {
   position: relative;
-  height: 460px;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.suite-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+.loupe-magnifier-ring {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-400);
+  box-shadow: 
+    0 0 50px rgba(229, 196, 122, 0.25),
+    inset 0 0 40px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(229, 196, 122, 0.05) 0%, rgba(6, 6, 8, 0.95) 80%);
 }
 
-.suite-card:hover .suite-card-img {
-  transform: scale(1.08);
-}
-
-.suite-card-overlay {
+.loupe-magnifier-ring::before {
+  content: '10X LOUPE MAGNIFICATION • OPTICAL EXCELLENCE';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(8, 8, 10, 0.95) 100%);
+  bottom: -32px;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-400);
+}
+
+.diamond-facets-svg {
+  width: 180px;
+  height: 180px;
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5));
+}
+
+#loupe-facets-polygon {
+  stroke: var(--gold-300);
+  stroke-width: 2.2;
+  fill: rgba(229, 196, 122, 0.08);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#loupe-facets-polygon.refracting {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.9));
+}
+
+/* Loupe Right: Cut Controls & Gemological Dossier */
+.loupe-info-col {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 28px;
 }
 
-.suite-tag {
+.loupe-micro-tag {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.25em;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--gold-400);
   text-transform: uppercase;
-  color: var(--gold-champagne);
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
-.suite-name {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  color: var(--text-pure);
+.loupe-main-title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  color: #fff;
   margin-bottom: 8px;
 }
 
-.suite-summary {
-  font-size: 0.95rem;
+.loupe-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--gold-300);
+  margin-bottom: 28px;
+}
+
+/* Cut Selector Pills */
+.loupe-cuts-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.loupe-cut-btn {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition-fluid);
+}
+
+.loupe-cut-btn:hover, .loupe-cut-btn.active {
+  background: rgba(229, 196, 122, 0.12);
+  border-color: var(--gold-400);
+  box-shadow: 0 0 20px rgba(229, 196, 122, 0.2);
+}
+
+.cut-btn-name {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.15em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.cut-btn-sub {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.loupe-desc-copy {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.loupe-gem-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 20px;
+}
+
+.gem-metric-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.metric-val {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--gold-300);
+}
+
+/* ==========================================================================
+   THE SOVEREIGN UNIVERSE (EDITORIAL MAGAZINE SPREAD)
+   ========================================================================== */
+.universe-section {
+  padding: 120px 0;
+}
+
+.universe-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.universe-portrait-frame {
+  position: relative;
+  height: 640px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+}
+
+.universe-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.universe-narrative-col {
+  padding-left: 24px;
+}
+
+.universe-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--gold-400);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.universe-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.universe-text {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.universe-pillars-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.universe-pillar-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.pillar-bullet {
+  color: var(--gold-400);
+  font-size: 1rem;
+}
+
+.pillar-heading {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: var(--gold-300);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.pillar-body {
+  font-size: 1.05rem;
   color: var(--text-muted);
 }
 
 /* ==========================================================================
-   ATELIER PRIVATE CONSULTATION BANNER
+   PRIVATE SALON CONCIERGE BANNER
    ========================================================================== */
-.atelier-banner-section {
-  padding: 90px 0;
+.salon-booking-section {
+  padding: 100px 0;
+  background: radial-gradient(circle at center, #161622 0%, var(--bg-deep) 70%);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: radial-gradient(circle at center, #16151f 0%, var(--bg-obsidian) 70%);
   text-align: center;
 }
 
-.atelier-banner-inner {
-  max-width: 720px;
+.salon-booking-inner {
+  max-width: 680px;
   margin: 0 auto;
 }
 
-.atelier-symbol {
+.salon-emblem {
   font-size: 1.8rem;
-  color: var(--gold-champagne);
-  margin-bottom: 18px;
-}
-
-.atelier-headline {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.8vw, 3rem);
-  font-weight: 400;
-  color: var(--text-pure);
+  color: var(--gold-400);
   margin-bottom: 16px;
-  letter-spacing: 0.08em;
 }
 
-.atelier-desc {
-  font-size: 1.25rem;
+.salon-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 0.06em;
+}
+
+.salon-body {
+  font-size: 1.3rem;
   color: var(--text-muted);
   margin-bottom: 36px;
   line-height: 1.6;
 }
 
+.concierge-booking-form {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  border-bottom: 1px solid var(--gold-400);
+}
+
+.concierge-booking-form input {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 14px 18px 14px 0;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  outline: none;
+}
+
+.concierge-booking-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.concierge-submit-btn {
+  background: none;
+  border: none;
+  color: var(--gold-300);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 /* ==========================================================================
-   MINIMALIST HIGH JEWELRY FOOTER
+   MINIMALIST PARISIAN HAUTE FOOTER
    ========================================================================== */
 .site-footer {
-  background: #060608;
+  background: #040406;
   padding: 80px 0 36px;
   border-top: 1px solid rgba(229, 196, 122, 0.15);
 }
 
-.footer-top-row {
+.footer-top-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   margin-bottom: 56px;
   flex-wrap: wrap;
   gap: 24px;
 }
 
-.footer-boutiques {
+.footer-salons-list {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.28em;
@@ -817,82 +1138,48 @@ body {
   color: var(--text-muted);
 }
 
-.footer-main-grid {
+.footer-grid-4col {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 56px;
-  margin-bottom: 60px;
+  margin-bottom: 64px;
 }
 
-.footer-brand-bio {
-  font-size: 1.05rem;
+.footer-bio-text {
+  font-size: 1.1rem;
   color: var(--text-muted);
   line-height: 1.7;
-  max-width: 320px;
+  max-width: 360px;
 }
 
-.footer-column-title {
+.footer-col-header {
   font-family: var(--font-display);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   letter-spacing: 0.25em;
-  color: var(--gold-champagne);
+  color: var(--gold-400);
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-.footer-nav-links {
+.footer-links-col {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.footer-nav-links a {
-  font-size: 1rem;
+.footer-links-col a {
+  font-size: 1.05rem;
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.25s ease;
 }
 
-.footer-nav-links a:hover {
-  color: var(--gold-champagne-light);
+.footer-links-col a:hover {
+  color: var(--gold-300);
 }
 
-.footer-newsletter-box {
-  display: flex;
-  position: relative;
-  border-bottom: 1px solid var(--gold-border);
-  margin-top: 14px;
-}
-
-.footer-newsletter-box input {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 10px 36px 10px 0;
-  color: #fff;
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  outline: none;
-}
-
-.footer-newsletter-box input::placeholder {
-  color: #555562;
-}
-
-.newsletter-send-btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--gold-champagne);
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.footer-bottom-legal {
+.footer-legal-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -900,12 +1187,156 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  color: #666675;
+  color: #555562;
   letter-spacing: 0.12em;
 }
 
 /* ==========================================================================
-   SLIDE-OVER LUXURY VAULT BAG (CART)
+   GEMOLOGICAL DOSSIER MODAL
+   ========================================================================== */
+#dossier-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%) scale(0.96);
+  width: 960px;
+  max-width: 92vw;
+  max-height: 88vh;
+  background: #0a0a0f;
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  z-index: 10001;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+#dossier-modal.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.dossier-close-x {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.dossier-close-x:hover {
+  color: #fff;
+}
+
+.dossier-inner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  padding: 44px;
+}
+
+.dossier-visual-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dossier-img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dossier-cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(229, 196, 122, 0.08);
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--gold-300);
+}
+
+.dossier-number {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-400);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.dossier-title {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+
+.dossier-price-tag {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--gold-300);
+  margin-bottom: 18px;
+}
+
+.dossier-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.dossier-specs-table {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+}
+
+.dossier-spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.dossier-spec-row:last-child { border-bottom: none; }
+
+.dossier-key {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.dossier-val {
+  color: var(--gold-300);
+}
+
+.dossier-actions-pane {
+  display: flex;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   SLIDE-OVER PRIVATE VAULT BAG DRAWER
    ========================================================================== */
 #cart-drawer {
   position: fixed;
@@ -914,10 +1345,10 @@ body {
   width: 460px;
   max-width: 95vw;
   height: 100vh;
-  background: #0b0b0e;
+  background: #09090d;
   border-left: 1px solid var(--gold-border);
   z-index: 10000;
-  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.9);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.95);
   transform: translateX(105%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -929,13 +1360,12 @@ body {
 }
 
 .cart-overlay,
-.modal-overlay,
-.search-overlay {
+.modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
@@ -943,8 +1373,7 @@ body {
 }
 
 .cart-overlay.open,
-.modal-overlay.open,
-.search-overlay.open {
+.modal-overlay.open {
   opacity: 1;
   visibility: visible;
 }
@@ -959,9 +1388,9 @@ body {
 
 .cart-title {
   font-family: var(--font-display);
-  font-size: 1rem;
-  letter-spacing: 0.22em;
-  color: var(--gold-champagne-light);
+  font-size: 1.05rem;
+  letter-spacing: 0.24em;
+  color: var(--gold-300);
   text-transform: uppercase;
 }
 
@@ -992,8 +1421,8 @@ body {
 }
 
 .cart-item-thumb {
-  width: 72px;
-  height: 88px;
+  width: 76px;
+  height: 92px;
   object-fit: cover;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1007,13 +1436,13 @@ body {
 
 .cart-item-title {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
-  color: var(--text-pure);
+  font-size: 1.1rem;
+  color: #fff;
   margin-bottom: 4px;
 }
 
 .cart-item-metal {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   margin-bottom: 12px;
 }
@@ -1027,15 +1456,15 @@ body {
 
 .cart-item-price {
   font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--gold-champagne);
+  font-size: 1.05rem;
+  color: var(--gold-300);
 }
 
 .cart-item-del-btn {
   background: none;
   border: none;
-  color: #666675;
-  font-size: 0.8rem;
+  color: #777785;
+  font-size: 0.78rem;
   cursor: pointer;
   text-transform: uppercase;
   font-family: var(--font-sans);
@@ -1049,23 +1478,23 @@ body {
 .cart-drawer-foot {
   padding: 24px 28px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: #0f0f13;
+  background: #0f0f14;
 }
 
 .cart-total-line {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-display);
-  font-size: 1.15rem;
-  color: var(--text-pure);
+  font-size: 1.2rem;
+  color: #fff;
   margin-bottom: 20px;
 }
 
 .cart-checkout-action {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, var(--gold-champagne-light), var(--gold-champagne));
-  color: #08080a;
+  background: linear-gradient(135deg, var(--gold-300), var(--gold-400));
+  color: #060608;
   border: none;
   border-radius: 4px;
   font-family: var(--font-sans);
@@ -1074,124 +1503,7 @@ body {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
-}
-
-/* ==========================================================================
-   QUICK VIEW MODAL (4Cs & GEMOLOGICAL SPECS)
-   ========================================================================== */
-#quick-view-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -46%) scale(0.96);
-  width: 900px;
-  max-width: 92vw;
-  max-height: 88vh;
-  background: #0d0d11;
-  border: 1px solid var(--gold-border);
-  border-radius: 6px;
-  z-index: 10001;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow-y: auto;
-}
-
-#quick-view-modal.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.modal-close-trigger {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.modal-close-trigger:hover {
-  color: #fff;
-}
-
-.modal-inner-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 36px;
-  padding: 40px;
-}
-
-.modal-jewel-img {
-  width: 100%;
-  height: 440px;
-  object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-jewel-carat {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  color: var(--gold-champagne);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.modal-jewel-title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  color: var(--text-pure);
-  margin-bottom: 12px;
-}
-
-.modal-jewel-price {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  color: var(--gold-champagne-light);
-  margin-bottom: 18px;
-}
-
-.modal-jewel-desc {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
-
-.modal-specs-table {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 4px;
-  padding: 16px 20px;
-  margin-bottom: 28px;
-}
-
-.modal-spec-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  font-size: 0.95rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-.modal-spec-row:last-child { border-bottom: none; }
-
-.spec-key {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #777785;
-}
-
-.spec-val {
-  color: var(--gold-champagne-light);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
 }
 
 /* ==========================================================================
@@ -1212,29 +1524,29 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(14, 14, 18, 0.95);
-  border: 1px solid var(--gold-champagne);
+  background: rgba(14, 14, 20, 0.95);
+  border: 1px solid var(--gold-400);
   border-radius: 40px;
-  padding: 14px 24px;
-  color: var(--gold-champagne-light);
+  padding: 14px 26px;
+  color: var(--gold-300);
   font-family: var(--font-sans);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   letter-spacing: 0.15em;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 196, 122, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 196, 122, 0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  animation: toastPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: toastSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes toastPop {
-  from { opacity: 0; transform: translateY(15px) scale(0.96); }
+@keyframes toastSlideUp {
+  from { opacity: 0; transform: translateY(18px) scale(0.95); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(30px);
+  transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-on-scroll.is-revealed {

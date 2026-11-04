@@ -1,115 +1,131 @@
-// Curated Haute Joaillerie & Fine Jewelry Collection
+// Curated Haute Joaillerie Exhibition & Diamond Spec Catalog
 
-export const jewelryProducts = [
+export const exhibitionPieces = [
   {
-    id: "jewel-1",
+    id: "exhibit-01",
+    num: "N° 01",
     name: "The Royal Nizam Emerald Choker",
-    collection: "Imperial Heritage",
-    category: "necklaces",
-    price: 485000,
-    originalPrice: 540000,
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=85",
-    tag: "High Jewelry",
-    carat: "18.40 cts Zambian Emeralds • 12.20 cts VVS Diamonds",
-    metal: "18K Hallmarked Yellow Gold",
-    description: "An extraordinary heirloom choker set with untreated Zambian emeralds framed in brilliant-cut diamonds with hand-strung natural Basra pearls.",
-    specs: {
-      gemstones: "Zambian Emeralds (Certified Untreated)",
-      diamonds: "VVS1 Clarity, Colorless (E-F)",
-      goldPurity: "18K (750) Certified Gold",
-      certification: "GIA & IGI Authenticated"
+    provenance: "Imperial Collection • Place Vendôme",
+    price: 4850000,
+    priceFormatted: "₹48,50,000",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1400&q=90",
+    secondaryImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=90",
+    stone: "Untreated Zambian Royal Emeralds",
+    carat: "18.40 cts Emeralds • 12.20 cts VVS Diamonds",
+    metal: "18K Hallmarked Yellow Gold & Natural Basra Pearls",
+    quote: "A symphony of imperial green beryl, framed in brilliance that echoes the courtly jewelry of the Nizams.",
+    gemology: {
+      origin: "Kagem Mine, Zambia (Certified Untreated)",
+      clarity: "Transparent Royal Green with Silk Inclusions",
+      diamonds: "Colorless (E-F Grade), VVS1 Clarity",
+      metalPurity: "18K (750) Pure Hallmarked Gold",
+      report: "SSEF & GIA Gemological Dossier #221489"
     }
   },
   {
-    id: "jewel-2",
+    id: "exhibit-02",
+    num: "N° 02",
     name: "L'Étoile Solitaire Diamond Ring",
-    collection: "Solitaires & Bridal",
-    category: "rings",
-    price: 320000,
-    originalPrice: 365000,
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1200&q=85",
-    tag: "Signature Solitaire",
-    carat: "3.20 ct Oval Diamond (D-Flawless)",
-    metal: "Platinum 950 & 18K White Gold",
-    description: "A breathtaking D-Flawless oval brilliant solitaire diamond nestled on a hidden diamond halo band with tapered pavé shoulders.",
-    specs: {
-      gemstones: "Natural Earth-Mined Solitaire",
-      diamonds: "D Color, Flawless Clarity",
-      goldPurity: "Platinum 950 (High Density)",
-      certification: "GIA Triple Excellent Cut"
+    provenance: "Solitaires & Bridal • London Mayfair",
+    price: 3200000,
+    priceFormatted: "₹32,000,000",
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1400&q=90",
+    secondaryImage: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=1400&q=90",
+    stone: "D-Flawless Earth-Mined Solitaire",
+    carat: "3.20 ct Oval Brilliant • 1.10 ct Pavé Halo",
+    metal: "Platinum 950 & Hidden Diamond Gallery",
+    quote: "An uncut ray of absolute celestial purity, faceted to reflect 98.4% of ambient light back to the beholder.",
+    gemology: {
+      origin: "Jwaneng Mine, Botswana",
+      clarity: "Flawless (FL) • Type IIa Chemical Purity",
+      diamonds: "Color D (Highest Possible Grade)",
+      metalPurity: "Platinum 950 (High-Density Alloy)",
+      report: "GIA Diamond Heritage Report #739410"
     }
   },
   {
-    id: "jewel-3",
+    id: "exhibit-03",
+    num: "N° 03",
     name: "Celestial South Sea Pearl Drops",
-    collection: "Nocturne Pearls",
-    category: "earrings",
-    price: 175000,
-    originalPrice: 198000,
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage: "https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?auto=format&fit=crop&w=1200&q=85",
-    tag: "Masterpiece",
-    carat: "14mm Golden South Sea Pearls • 4.60 cts Diamonds",
-    metal: "18K Rose Gold",
-    description: "Rare Australian South Sea golden pearls suspended beneath cascading marquise and pear-cut diamonds that capture candlelight in motion.",
-    specs: {
-      gemstones: "Natural Golden South Sea Pearls (14mm)",
-      diamonds: "VVS Marquise & Pear Diamonds",
-      goldPurity: "18K Rose Gold",
-      certification: "GIA Pearl Report"
+    provenance: "Nocturne Pearls • Geneva Atelier",
+    price: 1750000,
+    priceFormatted: "₹17,50,000",
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1400&q=90",
+    secondaryImage: "https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?auto=format&fit=crop&w=1400&q=90",
+    stone: "Natural Golden South Sea Pearls",
+    carat: "14.2mm Pearls • 4.60 cts Marquise Diamonds",
+    metal: "18K Rose Gold & Platinum Prongs",
+    quote: "Harvested from the pristine deep waters of the Kimberley coast, radiating a warm liquid golden sheen.",
+    gemology: {
+      origin: "Broome, Western Australia",
+      clarity: "Mirror Luster, Flawless Surface Grade AAA",
+      diamonds: "Marquise & Pear-Cut F-G Color VVS",
+      metalPurity: "18K Warm Champagne Rose Gold",
+      report: "Gubelin Gem Lab Authenticated #41029"
     }
   },
   {
-    id: "jewel-4",
-    name: "Aura Diamond Eternity Cuff",
-    collection: "Modern Sovereign",
-    category: "bracelets",
-    price: 260000,
-    originalPrice: 295000,
-    image: "https://images.unsplash.com/photo-1611591475152-47775438f7c4?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85",
-    tag: "Bespoke Cuff",
-    carat: "8.80 cts Baguette & Brilliant Diamonds",
-    metal: "18K Champagne Gold",
-    description: "An architectural articulated cuff featuring alternating rows of custom channel-set baguette diamonds and hand-micro-pavé contours.",
-    specs: {
-      gemstones: "Calibrated Baguette Diamonds",
-      diamonds: "VVS-VS Clarity, F-G Color",
-      goldPurity: "18K Champagne Gold",
-      certification: "IGI Vault Certificate"
+    id: "exhibit-04",
+    num: "N° 04",
+    name: "Aura Baguette Eternity Cuff",
+    provenance: "Modern Sovereign • Mumbai Atelier",
+    price: 2600000,
+    priceFormatted: "₹26,00,000",
+    image: "https://images.unsplash.com/photo-1611591475152-47775438f7c4?auto=format&fit=crop&w=1400&q=90",
+    secondaryImage: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1400&q=90",
+    stone: "Calibrated Baguette & Brilliant Diamonds",
+    carat: "8.80 cts Diamonds (Total Weight)",
+    metal: "18K Sculpted White & Yellow Gold",
+    quote: "Precision channel-set baguettes form an unbroken circle of brilliance with micro-articulated hinges for supreme comfort.",
+    gemology: {
+      origin: "Kimberley Process Certified",
+      clarity: "VVS-VS Grade, E-F Colorless",
+      diamonds: "Custom Lapidary Tapered Baguettes",
+      metalPurity: "18K (750) Two-Tone Gold Alloy",
+      report: "IGI Master Vault Certificate #59012"
     }
   }
 ];
 
-export const jewelrySuites = [
+export const diamondCuts = [
   {
-    id: "suite-diamonds",
-    title: "The Solitaire Suite",
-    tag: "Flawless Cuts",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=85",
-    summary: "Rare D-Flawless diamonds set in liquid platinum."
+    id: "emerald",
+    name: "Emerald Cut",
+    subtitle: "Hall of Mirrors",
+    caratSample: "4.10 Carats",
+    ratios: "1.45 Ratio • Step Cut",
+    description: "Long, lean step facets that create a sophisticated optical interplay of light and dark reflection.",
+    facets: 57,
+    svgPoints: "30,10 70,10 90,30 90,70 70,90 30,90 10,70 10,30"
   },
   {
-    id: "suite-emeralds",
-    title: "The Royal Emeralds",
-    tag: "Imperial Green",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85",
-    summary: "Untreated Colombian and Zambian royal gems."
+    id: "oval",
+    name: "Oval Brilliant",
+    subtitle: "Fire & Softness",
+    caratSample: "3.20 Carats",
+    ratios: "1.38 Ratio • Brilliant Cut",
+    description: "An elongated profile that maximizes carat surface area while generating dazzling scintillation.",
+    facets: 58,
+    svgPoints: "50,8 78,20 92,50 78,80 50,92 22,80 8,50 22,20"
   },
   {
-    id: "suite-pearls",
-    title: "South Sea Pearls",
-    tag: "Deep Ocean Luster",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85",
-    summary: "Lustrous golden and silvery-white natural pearls."
+    id: "pear",
+    name: "Pear Brilliant",
+    subtitle: "The Teardrop Sovereign",
+    caratSample: "3.80 Carats",
+    ratios: "1.55 Ratio • Modified Cut",
+    description: "Tapering to a dramatic point, combining the round brilliant fire with an aristocratic silhouette.",
+    facets: 58,
+    svgPoints: "50,5 75,25 90,55 75,85 50,95 25,85 10,55 25,25"
   },
   {
-    id: "suite-haute",
-    title: "Haute Chokers",
-    tag: "Museum Pieces",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=85",
-    summary: "Handcrafted polki and diamond collared statements."
+    id: "cushion",
+    name: "Cushion Cut",
+    subtitle: "Antique Romance",
+    caratSample: "5.00 Carats",
+    ratios: "1.08 Ratio • Pillow Cut",
+    description: "Rounded corners and larger pavilion facets reminiscent of 19th-century candlelight brilliance.",
+    facets: 64,
+    svgPoints: "35,8 65,8 92,35 92,65 65,92 35,92 8,65 8,35"
   }
 ];
