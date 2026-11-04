@@ -3194,10 +3194,13 @@ body.cursor-disabled * {
 }
 
 @media (max-width: 480px) {
+  /* Maintain luxury 2-column format on small mobile screens */
   .products-display-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
   }
   .promise-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
   }
 }

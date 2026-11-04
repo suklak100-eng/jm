@@ -78,11 +78,13 @@
    BREAKPOINTS
    ========================================================================== */
 
-/* Laptops & Tablets (max-width: 1024px) */
+/* ==========================================================================
+   BREAKPOINTS: LAPTOPS & TABLETS (max-width: 1024px)
+   ========================================================================== */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
     padding: 30px 0;
     text-align: center;
   }
@@ -90,7 +92,7 @@
     align-items: center;
   }
   .hero-poetic-sub {
-    margin: 0 auto 30px;
+    margin: 0 auto 28px;
   }
   .hero-cta-row {
     justify-content: center;
@@ -101,48 +103,42 @@
   }
   .hero-vitrine-frame {
     aspect-ratio: 4 / 5;
-    max-height: 480px;
+    max-height: 440px;
     height: auto;
-    max-width: 440px;
-    margin: 0 auto;
-  }
-    height: auto;
-    max-width: 440px;
+    max-width: 400px;
     margin: 0 auto;
   }
 
   .exhibit-salon-block,
   .exhibit-salon-block.reverse {
     grid-template-columns: 1fr;
-    gap: 40px;
-    margin-bottom: 90px;
-    padding-bottom: 60px;
+    gap: 36px;
+    margin-bottom: 70px;
+    padding-bottom: 50px;
   }
-  .exhibit-salon-block.reverse .exhibit-visual-col {
-    order: 0;
-  }
+  .exhibit-salon-block.reverse .exhibit-visual-col,
   .exhibit-salon-block.reverse .exhibit-text-col {
     order: 0;
   }
   .exhibit-image-stage {
     width: 100%;
     aspect-ratio: 4 / 5;
-    max-height: 480px;
+    max-height: 440px;
     height: auto;
   }
 
   .loupe-workstation {
     grid-template-columns: 1fr;
-    gap: 48px;
-    padding: 36px;
+    gap: 40px;
+    padding: 32px;
   }
 
   .universe-editorial-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .universe-portrait-frame {
-    height: 480px;
+    height: 440px;
   }
   .universe-narrative-col {
     padding-left: 0;
@@ -151,152 +147,693 @@
   .footer-inner,
   .footer-grid-4col {
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 36px;
   }
 }
 
-/* Mobile Phones (max-width: 768px) */
+/* ==========================================================================
+   MOBILE PHONES & SMALL SCREENS (max-width: 768px)
+   Ultra-Airy, Prestigious Haute Joaillerie Mobile UX
+   ========================================================================== */
 @media (max-width: 768px) {
   .container {
     padding: 0 16px;
   }
 
+  /* 1. Sleek Announcement Marquee */
+  .site-announce-bar {
+    padding: 6px 10px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* 2. Compact 58px High-Fashion Mobile Header */
+  .site-header {
+    height: 58px;
+    background: rgba(6, 6, 9, 0.96);
+  }
+
   .nav-inner {
-    padding: 0 6px;
+    height: 58px;
+    padding: 0 12px;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
   }
 
   .salon-menu-btn {
-    padding: 6px 12px;
-    font-size: 0.65rem;
-    gap: 7px;
+    padding: 6px 11px;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    gap: 6px;
   }
 
-  .nav-utilities {
-    gap: 12px;
+  .menu-icon-bars {
+    width: 13px;
+    height: 9px;
+  }
+
+  .brand-emblem-svg {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 1px;
   }
 
   .brand-title-text {
     font-size: 1.05rem;
     letter-spacing: 0.28em;
   }
+
   .brand-sub-text {
-    font-size: 0.44rem;
-    letter-spacing: 0.38em;
+    font-size: 0.42rem;
+    letter-spacing: 0.4em;
+    margin-top: 1px;
   }
 
-  /* Hero */
-  .hero-section {
-    padding: 40px 0 60px;
-  }
-  .hero-title-main {
-    font-size: 2.3rem;
-  }
-  .hero-poetic-sub {
-    font-size: 1.1rem;
-  }
-  .hero-cta-row {
-    flex-direction: column;
-    width: 100%;
-  }
-  .primary-gold-btn, .ghost-btn {
-    width: 100%;
-    justify-content: center;
-  }
-  .hero-accreditation-strip {
-    width: 100%;
-    justify-content: center;
-    padding: 12px 14px;
+  .nav-utilities {
     gap: 8px;
-    font-size: 0.62rem;
-  }
-  .hero-vitrine-frame {
-    aspect-ratio: 4 / 5;
-    max-height: 420px;
-    height: auto;
-    max-width: 360px;
-    margin: 0 auto;
   }
 
-  /* Exhibition */
-  .exhibit-image-stage {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    max-height: 400px;
-    height: auto;
-  }
-  .exhibit-title {
-    font-size: 1.8rem;
-  }
-  .exhibit-curator-quote {
-    font-size: 1.2rem;
-  }
-  .exhibit-actions-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .exhibit-btns-group {
-    flex-direction: column;
-  }
-  .exhibit-btns-group button {
-    width: 100%;
-    justify-content: center;
+  .nav-util-item,
+  .nav-btn {
+    padding: 6px;
   }
 
-  /* Loupe Mobile */
-  .loupe-workstation {
-    padding: 24px 18px;
-  }
-  .loupe-magnifier-ring {
-    width: 240px;
-    height: 240px;
-  }
-  .diamond-facets-svg {
-    width: 130px;
-    height: 130px;
-  }
-  .loupe-main-title {
-    font-size: 2rem;
-  }
-  .loupe-cuts-selector {
-    grid-template-columns: 1fr;
-  }
-  .loupe-gem-metrics {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .nav-util-item svg,
+  .nav-btn svg {
+    width: 17px;
+    height: 17px;
   }
 
-  /* Dossier Modal Mobile */
-  .dossier-inner-grid {
+  .badge-counter {
+    min-width: 15px;
+    height: 15px;
+    font-size: 0.55rem;
+    top: 1px;
+    right: 0;
+  }
+
+  /* 3. Airy, Balanced Hero Section */
+  .hero-section {
+    padding: 28px 0 40px;
+    min-height: auto;
+    background: radial-gradient(circle at 50% 30%, #151522 0%, var(--bg-deep) 75%);
+  }
+
+  .hero-ambient-glow {
+    width: 280px;
+    height: 280px;
+    top: 25%;
+    right: 10%;
+  }
+
+  .hero-grid {
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 24px 18px;
-  }
-  .dossier-img {
-    height: 320px;
-  }
-  .dossier-actions-pane {
-    flex-direction: column;
-  }
-
-  /* Footer */
-  .footer-inner,
-  .footer-grid-4col {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .footer-top-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .footer-bottom-bar,
-  .footer-legal-bar {
-    flex-direction: column;
-    gap: 12px;
     text-align: center;
   }
 
-  /* Cart Drawer */
-  #cart-drawer {
-    width: 100vw;
+  .hero-content {
+    align-items: center;
+    padding: 0 4px;
+  }
+
+  .hero-meta-tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.24em;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+
+  .hero-meta-tag::before {
+    width: 18px;
+  }
+
+  .hero-title-main {
+    font-size: clamp(1.85rem, 7.8vw, 2.35rem);
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+  }
+
+  .hero-poetic-sub {
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0 auto 20px;
+    max-width: 330px;
+  }
+
+  /* Sleek Horizontal CTAs on Mobile */
+  .hero-cta-row {
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .primary-gold-btn {
+    flex: 1.2;
+    padding: 12px 14px;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    justify-content: center;
+  }
+
+  .ghost-btn {
+    flex: 1;
+    padding: 12px 10px;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    justify-content: center;
+  }
+
+  /* Compact Clean Accreditation Ribbon */
+  .hero-accreditation-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 10px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .accred-item {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .accred-sep {
+    font-size: 0.55rem;
+  }
+
+  /* Compact High-Jewelry Arched Vitrine */
+  .hero-vitrine-stage {
+    padding: 0 8px;
+  }
+
+  .hero-vitrine-frame {
+    max-width: 300px;
+    aspect-ratio: 1 / 1.05;
+    border-radius: 10px;
+    margin: 0 auto;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(229, 196, 122, 0.15);
+  }
+
+  .hero-vitrine-tag {
+    padding: 12px 14px;
+  }
+
+  .vitrine-tag-edition {
+    font-size: 0.52rem;
+    margin-bottom: 2px;
+  }
+
+  .vitrine-tag-title {
+    font-size: 0.88rem;
+  }
+
+  .vitrine-tag-sub {
+    font-size: 0.62rem;
+  }
+
+  .vitrine-tag-badge {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+
+  /* 4. Instagram-Style Smooth Category Stories Carousel */
+  .category-stories-section {
+    padding: 24px 0 16px;
+  }
+
+  .category-stories-scroll {
+    justify-content: flex-start !important;
+    padding: 8px 16px 12px !important;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-stories-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .story-circle-item {
+    width: 68px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  .story-circle-avatar {
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+  }
+
+  .story-circle-label {
+    font-size: 0.62rem;
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+  }
+
+  /* 5. Swipeable Horizontal Promotional Cards */
+  .promo-split-section {
+    padding: 30px 0 20px;
+  }
+
+  .promo-split-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding: 4px 16px 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .promo-split-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .promo-card {
+    flex: 0 0 82vw;
+    max-width: 320px;
+    height: 240px;
+    scroll-snap-align: center;
+    border-radius: 8px;
+    padding: 18px 16px;
+  }
+
+  .promo-card-tag {
+    font-size: 0.58rem;
+    margin-bottom: 4px;
+  }
+
+  .promo-card-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .promo-card-link {
+    font-size: 0.68rem;
+  }
+
+  /* 6. Pristine 2-Column Product Catalog on Mobile */
+  .catalog-section {
+    padding: 30px 0;
+  }
+
+  .catalog-header-wrap {
+    margin-bottom: 18px;
+  }
+
+  .catalog-subtitle {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+  }
+
+  .catalog-title {
+    font-size: 1.55rem;
+    margin-bottom: 14px;
+  }
+
+  /* Smooth Single-Line Horizontal Filter Strip */
+  .catalog-filter-bar {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    gap: 8px;
+    padding: 4px 16px 12px;
+    margin-bottom: 20px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .catalog-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .catalog-filter-pill {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  /* Enforce 2-Column Luxury Mobile Grid */
+  .products-display-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 0 14px;
+  }
+
+  .jewel-card {
+    border-radius: 6px;
+  }
+
+  .jewel-card-media {
+    aspect-ratio: 1 / 1.05;
+  }
+
+  .jewel-badge {
+    font-size: 0.56rem;
+    padding: 2px 6px;
+    top: 6px;
+    left: 6px;
+  }
+
+  .jewel-wishlist-btn {
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .jewel-wishlist-btn svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .jewel-card-body {
+    padding: 8px 8px 10px;
+  }
+
+  .jewel-card-cat {
+    font-size: 0.54rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 3px;
+  }
+
+  .jewel-card-name {
+    font-size: 0.8rem;
+    line-height: 1.25;
+    min-height: 32px;
+    margin-bottom: 4px;
+  }
+
+  .jewel-card-stone {
+    font-size: 0.6rem;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .jewel-card-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-top: 6px;
+  }
+
+  .jewel-card-price {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .jewel-card-add-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 6px 6px;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* 7. Value Pillars & Lookbook Banner */
+  .lookbook-cinematic-section {
+    padding: 25px 14px;
+  }
+
+  .lookbook-banner-stage {
+    height: 270px;
+    padding: 20px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  .lookbook-headline {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+  }
+
+  .lookbook-subtext {
+    font-size: 0.74rem;
+    margin-bottom: 14px;
+    max-width: 90%;
+  }
+
+  .split-cta-btn {
+    padding: 9px 16px;
+    font-size: 0.66rem;
+  }
+
+  /* 2x2 Value Pillars Grid */
+  .lookbook-pillars-strip {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+    padding: 14px 10px;
+    border-radius: 8px;
+  }
+
+  .pillar-col {
+    padding: 8px;
+    gap: 6px;
+    border: 1px solid rgba(229, 196, 122, 0.12) !important;
+    border-radius: 6px;
+    background: rgba(14, 14, 20, 0.6);
+  }
+
+  .pillar-icon-box {
+    font-size: 1.15rem;
+  }
+
+  .pillar-title {
+    font-size: 0.72rem;
+    margin-bottom: 2px;
+  }
+
+  .pillar-desc {
+    font-size: 0.6rem;
+    line-height: 1.35;
+  }
+
+  /* 8. Dual Collection Banners & Promise 2x2 */
+  .dual-collection-section {
+    padding: 25px 14px;
+  }
+
+  .collection-split-banner {
+    height: 220px;
+    padding: 18px 14px;
+    border-radius: 8px;
+  }
+
+  .split-tag {
+    font-size: 0.56rem;
+  }
+
+  .split-title {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+  }
+
+  .split-desc {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    max-width: 95%;
+  }
+
+  .promise-section {
+    margin-top: 30px;
+  }
+
+  .promise-header {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .promise-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+
+  .promise-card {
+    padding: 12px 8px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .promise-card-icon {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+  }
+
+  .promise-card-title {
+    font-size: 0.74rem;
+    margin-bottom: 3px;
+  }
+
+  .promise-card-text {
+    font-size: 0.6rem;
+    line-height: 1.35;
+  }
+
+  /* 9. 4Cs Loupe Studio */
+  .loupe-section {
+    padding: 25px 14px;
+  }
+
+  .loupe-interactive-stage {
+    padding: 18px 12px;
+    border-radius: 8px;
+  }
+
+  .loupe-magnifier-ring,
+  .loupe-magnifier-lens {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 16px;
+  }
+
+  .diamond-facets-svg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .loupe-cut-name {
+    font-size: 1.35rem;
+  }
+
+  .loupe-cut-desc {
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
+
+  .loupe-dossier-metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .metric-label {
+    font-size: 0.56rem;
+  }
+
+  .metric-val {
+    font-size: 0.72rem;
+  }
+
+  /* 10. Salon Concierge & Forms */
+  .salon-section {
+    padding: 25px 14px;
+  }
+
+  .salon-inner-box {
+    padding: 20px 14px;
+    border-radius: 8px;
+  }
+
+  .salon-headline {
+    font-size: 1.5rem;
+  }
+
+  .salon-desc {
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+
+  .salon-locations-list {
+    gap: 5px;
+  }
+
+  .location-chip {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-input {
+    height: 44px;
+    font-size: 0.78rem;
+  }
+
+  /* 11. Clean, Structured Footer on Mobile */
+  .site-footer {
+    padding: 40px 0 24px;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 16px;
+  }
+
+  .footer-col.brand-col {
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-bio {
+    max-width: 100%;
+    text-align: center;
+    font-size: 0.76rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .footer-salons-tag {
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+  }
+
+  .footer-col-title {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.16em;
+  }
+
+  .footer-link {
+    font-size: 0.76rem;
+  }
+
+  .footer-bottom-bar {
+    padding-top: 20px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .copyright-text {
+    font-size: 0.64rem;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.66rem;
+  }
+
+  /* 12. Cart Drawer on Mobile */
+  #cart-drawer,
+  .salon-menu-drawer {
+    width: 86vw;
+    max-width: 330px;
   }
 }
