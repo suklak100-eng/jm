@@ -148,6 +148,7 @@ function initCatalogManager() {
       document.getElementById('form-piece-num').value = piece.num || '';
       document.getElementById('form-piece-price').value = piece.price || '';
       document.getElementById('form-piece-provenance').value = piece.provenance || '';
+      document.getElementById('form-piece-category').value = piece.category || 'rings';
       document.getElementById('form-piece-stone').value = piece.stone || '';
       document.getElementById('form-piece-carat').value = piece.carat || '';
       document.getElementById('form-piece-metal').value = piece.metal || '';
@@ -233,6 +234,7 @@ function initCatalogManager() {
       const num = document.getElementById('form-piece-num').value.trim();
       const priceVal = parseFloat(document.getElementById('form-piece-price').value) || 0;
       const provenance = document.getElementById('form-piece-provenance').value.trim();
+      const category = document.getElementById('form-piece-category').value || 'rings';
       const stone = document.getElementById('form-piece-stone').value.trim();
       const carat = document.getElementById('form-piece-carat').value.trim();
       const metal = document.getElementById('form-piece-metal').value.trim();
@@ -258,6 +260,7 @@ function initCatalogManager() {
             price: priceVal,
             priceFormatted,
             provenance,
+            category,
             stone,
             carat,
             metal,
@@ -283,6 +286,7 @@ function initCatalogManager() {
           price: priceVal,
           priceFormatted,
           provenance,
+          category,
           stone,
           carat,
           metal,
@@ -405,6 +409,7 @@ function renderCatalogGrid(filterQuery = '') {
         document.getElementById('form-piece-num').value = piece.num || '';
         document.getElementById('form-piece-price').value = piece.price || '';
         document.getElementById('form-piece-provenance').value = piece.provenance || '';
+        document.getElementById('form-piece-category').value = piece.category || 'rings';
         document.getElementById('form-piece-stone').value = piece.stone || '';
         document.getElementById('form-piece-carat').value = piece.carat || '';
         document.getElementById('form-piece-metal').value = piece.metal || '';

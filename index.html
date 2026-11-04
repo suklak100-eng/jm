@@ -2,35 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAHIRA HAUTE JOAILLERIE — Sculpting the Stars | Rare Gems & Solitaires</title>
-  
-  <meta name="description" content="Welcome to Mahira Haute Joaillerie: Masterwork exhibition of D-Flawless diamonds, untreated Zambian emeralds, and bespoke royal suites." />
-  <meta name="theme-color" content="#07070a" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>MAHIRA Haute Joaillerie — High Jewelry Atelier & Sovereign Gold</title>
+  <meta name="description" content="Discover Mahira Haute Joaillerie. Sovereign 22K hallmarked gold, GIA certified solitaires, and museum-grade masterworks crafted with timeless perfection." />
 
-  <!-- Google Fonts: Cinzel, Cormorant Garamond, Montserrat, Playfair Display -->
+  <!-- Google Fonts: Cormorant Garamond (Aristocratic Serif), Italiana, Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Italiana&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Stylesheets -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,30 80,95 20,95 5,30' fill='none' stroke='%23e5c47a' stroke-width='4'/></svg>" />
+
+  <!-- Core Stylesheets -->
   <link rel="stylesheet" href="css/curtain.css" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-
-  <!-- Favicon SVG -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,10 90,38 75,90 25,90 10,38' fill='none' stroke='%23e5c47a' stroke-width='4'/><polygon points='50,22 80,44 68,82 32,82 20,44' fill='%2307070a' stroke='%23fbf5e2' stroke-width='2'/></svg>" />
 </head>
-
 <body class="curtain-active">
 
   <!-- ==========================================================================
-       0. CAUSTIC STARDUST CANVAS (FLOATING DIAMOND REFLECTIONS)
+       TOP ANNOUNCEMENT MARQUEE
        ========================================================================== -->
-  <canvas id="stardust-canvas"></canvas>
+  <div class="site-announce-bar">
+    <span>✦ Complimentary White-Glove Insured Delivery Across India & Worldwide | <strong>BIS 916 Hallmarked Gold</strong> ✦</span>
+  </div>
 
   <!-- ==========================================================================
-       1. ROYAL 3D SILK CURTAIN OVERLAY (SCROLL & CLICK UNVEIL)
+       1. PHOTOREALISTIC ROYAL SILK CURTAIN OVERLAY
+       (Zero Main-Thread Stall, Synchronized Sound & Instant Opening)
        ========================================================================== -->
   <div id="curtain-overlay" role="dialog" aria-modal="true" aria-label="Haute Joaillerie Curtain">
     <div id="curtain-left" class="curtain-panel"></div>
@@ -59,7 +59,7 @@
       <h1 class="curtain-brand-title">MAHIRA</h1>
       <p class="curtain-brand-sub">HAUTE JOAILLERIE</p>
 
-      <!-- Scroll Hint Trigger with Mouse Wheel Animation -->
+      <!-- Scroll / Click Hint Trigger -->
       <div class="curtain-scroll-hint" id="curtain-scroll-trigger">
         <div class="mouse-pill">
           <div class="mouse-wheel-dot"></div>
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-  <!-- Floating Replay Curtain Button -->
+  <!-- Floating Replay Curtain Pill Button -->
   <button id="replay-curtain-btn" aria-label="Re-draw Royal Silk Curtain">
     <span>✦</span>
     <span>Curtain View</span>
@@ -82,7 +82,6 @@
 
   <!-- ==========================================================================
        SITE ROOT WRAPPER: BLOOMS INTO SHARP VIEW BEHIND PARTING CURTAINS
-       (ELIMINATES THE BLACK VOID GAP COMPLETELY)
        ========================================================================== -->
   <div id="site-root">
 
@@ -92,13 +91,14 @@
         
         <!-- Left Menu Links -->
         <ul class="nav-menu">
-          <li><a href="#exhibition" class="nav-link">Exhibition</a></li>
-          <li><a href="#loupe" class="nav-link">The 4Cs Loupe</a></li>
-          <li><a href="#universe" class="nav-link">The Universe</a></li>
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="shop.html" class="nav-link">Shop Collection</a></li>
+          <li><a href="collections.html" class="nav-link">Lookbook</a></li>
+          <li><a href="#loupe" class="nav-link">4Cs Loupe</a></li>
         </ul>
 
         <!-- Center Brand Emblem -->
-        <a href="#" class="nav-brand-center" aria-label="Mahira Haute Joaillerie">
+        <a href="index.html" class="nav-brand-center" aria-label="Mahira Haute Joaillerie">
           <svg class="brand-emblem-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2.2" fill="none"/>
             <circle cx="40" cy="40" r="14" stroke="#fbf5e2" stroke-width="1.2"/>
@@ -109,13 +109,28 @@
 
         <!-- Right Menu Links -->
         <ul class="nav-menu">
-          <li><a href="#salon" class="nav-link">Private Salon</a></li>
-          <li><a href="#footer" class="nav-link">Provenance</a></li>
-          <li><a href="#footer" class="nav-link">Bespoke</a></li>
+          <li><a href="about.html" class="nav-link">Our Story</a></li>
+          <li><a href="contact.html" class="nav-link">Private Salon</a></li>
+          <li><a href="admin.html" class="nav-link" style="color: var(--gold-400);">Admin Portal</a></li>
         </ul>
 
         <!-- Right Utilities -->
         <div class="nav-utilities">
+          <!-- Search Link -->
+          <a href="shop.html" class="nav-util-item" title="Search Jewelry" aria-label="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </a>
+
+          <!-- Wishlist Indicator -->
+          <a href="shop.html" class="nav-util-item" title="Wishlist" aria-label="Wishlist">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </a>
+
           <!-- Private Vault Bag Trigger -->
           <button id="vault-trigger-btn" class="nav-btn" aria-label="View Private Vault Bag">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -138,45 +153,60 @@
       </div>
     </header>
 
-    <!-- 3. CHAPTER I: HERO — "SCULPTING THE STARS" -->
     <main>
+      <!-- ==========================================================================
+           3. HERO BANNER: "ELEVATE YOUR STYLE WITH TIMELESS FASHION"
+           ========================================================================== -->
       <section id="hero" class="hero-section">
         <div class="container">
           <div class="hero-grid">
             
-            <!-- Left Column: Typography & CTAs -->
+            <!-- Left Column: Headline, Trust Badges, CTAs -->
             <div class="hero-content reveal-on-scroll">
               <div id="hero-meta-tag" class="hero-meta-tag">
-                HAUTE JOAILLERIE • PLACE VENDÔME
+                HAUTE JOAILLERIE • PLACE VENDÔME & MUMBAI
               </div>
 
               <h1 id="hero-title-main" class="hero-title-main">
-                Sculpting<br />
-                <em>The Stars</em>
+                Elevate Your Style With<br />
+                <em>Timeless Fashion</em>
               </h1>
 
               <p id="hero-poetic-sub" class="hero-poetic-sub">
-                Where primordial light crystallizes into timeless wearable art.
+                Discover an opulent collection of handcrafted pure gold and certified diamond jewelry created to enrich your style and individuality.
               </p>
 
+              <!-- Luxury Trust Badges Pills -->
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;">
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(229,196,122,0.1); border: 1px solid rgba(229,196,122,0.3); border-radius: 20px; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-300);">
+                  💎 Premium Materials
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(229,196,122,0.1); border: 1px solid rgba(229,196,122,0.3); border-radius: 20px; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-300);">
+                  ✨ BIS 916 Hallmarked Gold
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(229,196,122,0.1); border: 1px solid rgba(229,196,122,0.3); border-radius: 20px; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #f9d984;">
+                  ★ 5.0 Google Rating (250+ Reviews)
+                </span>
+              </div>
+
               <div class="hero-cta-row">
-                <a href="#exhibition" class="primary-gold-btn">
-                  <span>Explore Exhibition</span>
+                <a href="shop.html" class="primary-gold-btn">
+                  <span>Explore Collection</span>
                   <span>✦</span>
                 </a>
-                <a href="#salon" class="ghost-btn">
-                  <span>Private Salon</span>
+                <a href="contact.html" class="ghost-btn">
+                  <span>Book Private Salon</span>
                 </a>
               </div>
             </div>
 
-            <!-- Right Column: Vitrine Frame Centerpiece (Fully Visible & Spacious) -->
+            <!-- Right Column: Vitrine Centerpiece -->
             <div class="hero-vitrine-stage reveal-on-scroll">
               <div class="hero-vitrine-frame">
                 <img 
                   id="hero-vitrine-img"
                   src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85" 
-                  alt="The Royal Nizam Emerald Choker" 
+                  alt="High Jewelry Showcase" 
                   class="hero-vitrine-img" 
                 />
                 <div class="hero-vitrine-tag">
@@ -193,276 +223,628 @@
         </div>
       </section>
 
-      <!-- 4. HAUTE MARQUEE TICKER (SUBTLE DIVIDER) -->
-      <div class="haute-marquee-bar">
-        <div class="marquee-track">
-          <div class="marquee-unit">
-            HAUTE JOAILLERIE <span class="marquee-diamond">✦</span> D-FLAWLESS SOLITAIRES <span class="marquee-diamond">✦</span> NATURAL UNTREATED GEMSTONES <span class="marquee-diamond">✦</span> PLACE VENDÔME • LONDON • GENEVA • MUMBAI <span class="marquee-diamond">✦</span> GIA HERITAGE CERTIFIED
-          </div>
-          <div class="marquee-unit">
-            <span class="marquee-diamond">✦</span> HAUTE JOAILLERIE <span class="marquee-diamond">✦</span> D-FLAWLESS SOLITAIRES <span class="marquee-diamond">✦</span> NATURAL UNTREATED GEMSTONES <span class="marquee-diamond">✦</span> PLACE VENDÔME • LONDON • GENEVA • MUMBAI <span class="marquee-diamond">✦</span> GIA HERITAGE CERTIFIED
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. CHAPTER II: THE MASTERWORK EXHIBITION (MUSEUM SALON) -->
-      <section id="exhibition" class="exhibition-section container">
-        
-        <div class="section-head-center reveal-on-scroll">
-          <span class="section-kicker">Curated Salons</span>
-          <h2 class="section-serif-headline">The Exhibition</h2>
-          <p class="section-curator-note">
-            Archival High Jewelry Masterworks
-          </p>
-        </div>
-
-        <!-- Populated dynamically by js/main.js -->
-        <div id="exhibition-container"></div>
-
-      </section>
-
-      <!-- 6. CHAPTER III: THE 4Cs INTERACTIVE DIAMOND LOUPE -->
-      <section id="loupe" class="loupe-section">
+      <!-- ==========================================================================
+           4. CIRCULAR CATEGORY SHOWCASE (STORIES REELS — MATCHING VIDEO 00:02)
+           ========================================================================== -->
+      <section class="category-stories-section">
         <div class="container">
-          
-          <div class="section-head-center reveal-on-scroll">
-            <span class="section-kicker">Gemological Precision</span>
-            <h2 class="section-serif-headline">The Diamond Loupe</h2>
-            <p class="section-curator-note">
-              Interactive 10x optical facet precision.
-            </p>
+          <div style="text-align: center; margin-bottom: 18px;">
+            <span style="font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-400);">Curated Master Categories</span>
           </div>
 
-          <div class="loupe-workstation reveal-on-scroll">
-            
-            <!-- Left: Magnifier Ring with SVG Facet Geometry -->
-            <div class="loupe-stage-col">
-              <div class="loupe-magnifier-ring">
-                <svg class="diamond-facets-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Outer Facet Boundary -->
-                  <polygon id="loupe-facets-polygon" points="30,10 70,10 90,30 90,70 70,90 30,90 10,70 10,30"/>
-                  <!-- Internal Facet Geometry Lines -->
-                  <line x1="30" y1="10" x2="30" y2="90" stroke="rgba(229,196,122,0.5)" stroke-width="0.8"/>
-                  <line x1="70" y1="10" x2="70" y2="90" stroke="rgba(229,196,122,0.5)" stroke-width="0.8"/>
-                  <line x1="10" y1="30" x2="90" y2="30" stroke="rgba(229,196,122,0.5)" stroke-width="0.8"/>
-                  <line x1="10" y1="70" x2="90" y2="70" stroke="rgba(229,196,122,0.5)" stroke-width="0.8"/>
-                  <circle cx="50" cy="50" r="1.5" fill="#fff" filter="drop-shadow(0 0 4px #fff)"/>
-                  <line x1="50" y1="20" x2="50" y2="80" stroke="rgba(255,255,255,0.7)" stroke-width="0.7"/>
-                  <line x1="20" y1="50" x2="80" y2="50" stroke="rgba(255,255,255,0.7)" stroke-width="0.7"/>
-                </svg>
+          <div class="category-stories-scroll" id="stories-scroll-container">
+            <!-- Story Item 1: Rings -->
+            <a href="shop.html?cat=rings" class="story-circle-item">
+              <div class="story-circle-avatar">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=300&q=80" alt="Rings" />
               </div>
-            </div>
+              <span class="story-circle-label">Rings</span>
+            </a>
 
-            <!-- Right: Cut Selector & Gemological Metrics -->
-            <div class="loupe-info-col">
-              <span class="loupe-micro-tag">Optics & Symmetry Analysis</span>
-              <h3 id="loupe-cut-name" class="loupe-main-title">Emerald Cut</h3>
-              <p id="loupe-cut-sub" class="loupe-subtitle">Hall of Mirrors</p>
-
-              <!-- Cut Selection Buttons -->
-              <div id="loupe-cuts-nav" class="loupe-cuts-selector">
-                <!-- Populated dynamically by js/main.js -->
+            <!-- Story Item 2: Necklaces -->
+            <a href="shop.html?cat=necklaces" class="story-circle-item">
+              <div class="story-circle-avatar">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=300&q=80" alt="Necklaces" />
               </div>
+              <span class="story-circle-label">Necklaces</span>
+            </a>
 
-              <div class="loupe-gem-metrics">
-                <div class="gem-metric-box">
-                  <span class="metric-label">Sample Carat</span>
-                  <span id="loupe-cut-carat" class="metric-val">4.10 Carats</span>
-                </div>
-                <div class="gem-metric-box">
-                  <span class="metric-label">Facet Count</span>
-                  <span id="loupe-cut-facets" class="metric-val">57 Facets</span>
-                </div>
-                <div class="gem-metric-box">
-                  <span class="metric-label">L/W Proportions</span>
-                  <span id="loupe-cut-ratio" class="metric-val">1.45 Ratio</span>
-                </div>
+            <!-- Story Item 3: Earrings -->
+            <a href="shop.html?cat=earrings" class="story-circle-item">
+              <div class="story-circle-avatar">
+                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=300&q=80" alt="Earrings" />
               </div>
-            </div>
+              <span class="story-circle-label">Earrings</span>
+            </a>
 
-          </div>
+            <!-- Story Item 4: Bracelets -->
+            <a href="shop.html?cat=bracelets" class="story-circle-item">
+              <div class="story-circle-avatar">
+                <img src="https://images.unsplash.com/photo-1611591475152-47775438f7c4?auto=format&fit=crop&w=300&q=80" alt="Bracelets & Cuffs" />
+              </div>
+              <span class="story-circle-label">Bracelets</span>
+            </a>
 
-        </div>
-      </section>
+            <!-- Story Item 5: Men's Gold -->
+            <a href="shop.html?cat=men" class="story-circle-item">
+              <div class="story-circle-avatar">
+                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=300&q=80" alt="Men's Gold" />
+              </div>
+              <span class="story-circle-label">For Men</span>
+            </a>
 
-      <!-- 7. CHAPTER IV: THE SOVEREIGN UNIVERSE (EDITORIAL SPREAD) -->
-      <section id="universe" class="universe-section container">
-        <div class="universe-editorial-grid">
-          
-          <div class="universe-portrait-frame reveal-on-scroll">
-            <img 
-              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=85" 
-              alt="The Sovereign Editorial" 
-              class="universe-portrait-img" 
-            />
-          </div>
+            <!-- Story Item 6: Bridal Heirlooms -->
+            <a href="shop.html?cat=bridal" class="story-circle-item">
+              <div class="story-circle-avatar">
+                <img src="https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?auto=format&fit=crop&w=300&q=80" alt="Bridal Sets" />
+              </div>
+              <span class="story-circle-label">Bridal</span>
+            </a>
 
-          <div class="universe-narrative-col reveal-on-scroll">
-            <span class="universe-kicker">The Lapidary Art</span>
-            <h2 class="universe-title">"Where precious metal dissolves, allowing pure celestial brilliance to reign."</h2>
-            
-            <p class="universe-text">
-              Over two hundred hours of ancestral forging dedicated to every single high jewel.
-            </p>
-
-            <a href="#salon" class="ghost-btn">
-              <span>Reserve Private Salon</span>
-              <span>→</span>
+            <!-- Story Item 7: Solitaires -->
+            <a href="shop.html?cat=rings" class="story-circle-item">
+              <div class="story-circle-avatar">
+                <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=300&q=80" alt="Solitaires" />
+              </div>
+              <span class="story-circle-label">Solitaires</span>
             </a>
           </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           5. PROMOTIONAL SPLIT COLLECTION CARDS (MATCHING VIDEO 00:03)
+           ========================================================================== -->
+      <section class="promo-split-section container">
+        <div class="promo-split-grid">
+          
+          <!-- Card 1: Bold Rings Collection -->
+          <a href="shop.html?cat=rings" class="promo-card reveal-on-scroll">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=85" alt="Bold Rings" class="promo-card-bg" />
+            <div class="promo-card-overlay"></div>
+            <div class="promo-card-content">
+              <div class="promo-card-tag">Artisan Gold • Solitaires</div>
+              <h3 class="promo-card-title">Bold Rings Collection</h3>
+              <div class="promo-card-link">View Collection <span>→</span></div>
+            </div>
+          </a>
+
+          <!-- Card 2: Golden Elegance For Men -->
+          <a href="shop.html?cat=men" class="promo-card reveal-on-scroll">
+            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=85" alt="Men's Gold" class="promo-card-bg" />
+            <div class="promo-card-overlay"></div>
+            <div class="promo-card-content">
+              <div class="promo-card-tag">Solid 22K Hallmarked Gold</div>
+              <h3 class="promo-card-title">Golden Elegance For Men</h3>
+              <div class="promo-card-link">View Collection <span>→</span></div>
+            </div>
+          </a>
+
+          <!-- Card 3: Chic Necklaces For Her -->
+          <a href="shop.html?cat=necklaces" class="promo-card reveal-on-scroll">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=85" alt="Chic Necklaces" class="promo-card-bg" />
+            <div class="promo-card-overlay"></div>
+            <div class="promo-card-content">
+              <div class="promo-card-tag">Imperial Gems & Polki</div>
+              <h3 class="promo-card-title">Chic Necklaces For Her</h3>
+              <div class="promo-card-link">View Collection <span>→</span></div>
+            </div>
+          </a>
 
         </div>
       </section>
 
-      <!-- 8. CHAPTER V: PRIVATE SALON CONCIERGE APPOINTMENTS -->
-      <section id="salon" class="salon-booking-section">
-        <div class="container salon-booking-inner reveal-on-scroll">
-          <div class="salon-emblem">✦</div>
-          <h2 class="salon-title">Private Salon Viewing</h2>
-          <p class="salon-body">
-            By private invitation in Paris, London, Geneva, and Mumbai.
+      <!-- ==========================================================================
+           6. SIGNATURE JEWELLERY PIECES PRODUCT GRID (MATCHING VIDEO 00:04 - 00:06)
+           ========================================================================== -->
+      <section id="signature-catalog" class="catalog-section container">
+        <div class="catalog-header-wrap reveal-on-scroll">
+          <div class="catalog-subtitle">FEATURED CREATIONS</div>
+          <h2 class="catalog-title">Explore Our Signature Jewellery Pieces</h2>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="catalog-filter-bar reveal-on-scroll">
+          <button class="catalog-filter-pill active" data-category="all">All Pieces</button>
+          <button class="catalog-filter-pill" data-category="rings">Rings</button>
+          <button class="catalog-filter-pill" data-category="necklaces">Necklaces</button>
+          <button class="catalog-filter-pill" data-category="earrings">Earrings</button>
+          <button class="catalog-filter-pill" data-category="bracelets">Bracelets</button>
+          <button class="catalog-filter-pill" data-category="men">Men’s Gold</button>
+          <button class="catalog-filter-pill" data-category="bridal">Bridal Heirlooms</button>
+        </div>
+
+        <!-- Dynamic Product Cards Grid (Rendered by JS) -->
+        <div id="home-products-grid" class="products-display-grid"></div>
+
+        <div style="text-align: center; margin-top: 50px;">
+          <a href="shop.html" class="primary-gold-btn" style="padding: 14px 38px;">
+            <span>Browse Complete Boutique Catalog (14+ Pieces)</span>
+            <span>✦</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           7. CINEMATIC LOOKBOOK & 4 VALUE PROPOSITION PILLARS (MATCHING VIDEO 00:06 - 00:08)
+           ========================================================================== -->
+      <section class="lookbook-cinematic-section container">
+        <!-- Cinematic Banner Stage -->
+        <div class="lookbook-banner-stage reveal-on-scroll">
+          <img 
+            src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=90" 
+            alt="Mahira Haute Joaillerie Atelier" 
+            class="lookbook-bg-image" 
+          />
+          <div class="split-overlay"></div>
+          <div class="lookbook-center-content">
+            <button class="lookbook-play-btn" id="lookbook-play-trigger" aria-label="Watch Atelier Film">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+            <h2 class="lookbook-headline">Where Artistry Meets Pure Gold</h2>
+            <p class="lookbook-subtext">Step behind the velvet curtain into our sovereign ateliers in Paris, Geneva & Mumbai.</p>
+            <a href="collections.html" class="split-cta-btn">
+              <span>View 2026 High Jewelry Film</span>
+              <span>✦</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Value Proposition Pillars Strip (Directly From Video) -->
+        <div class="lookbook-pillars-strip reveal-on-scroll">
+          <!-- Pillar 1 -->
+          <div class="pillar-col">
+            <div class="pillar-icon-box">💎</div>
+            <div>
+              <div class="pillar-title">Jewellery Exchange</div>
+              <div class="pillar-desc">Guaranteed 100% gold value buyback & seamless lifetime exchange policy.</div>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-col">
+            <div class="pillar-icon-box">🛡️</div>
+            <div>
+              <div class="pillar-title">100% Purity Guarantee</div>
+              <div class="pillar-desc">Govt. BIS 916 hallmarked pure bullion and conflict-free natural diamonds.</div>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-col">
+            <div class="pillar-icon-box">🔍</div>
+            <div>
+              <div class="pillar-title">Complete Transparency</div>
+              <div class="pillar-desc">Authentic GIA, IGI & SGL lab certificates issued with every single piece.</div>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-col">
+            <div class="pillar-icon-box">🔧</div>
+            <div>
+              <div class="pillar-title">Lifetime Maintenance</div>
+              <div class="pillar-desc">Complimentary laser ultrasonic cleaning, stone tightening & resizing for life.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           8. DUAL COLLECTION BANNERS & CRAFTSMANSHIP PROMISE (MATCHING VIDEO 00:08 - 00:12)
+           ========================================================================== -->
+      <section class="dual-collection-section container">
+        <div class="dual-collection-grid">
+          
+          <!-- Banner Left: Men's Collection -->
+          <div class="collection-split-banner reveal-on-scroll">
+            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=85" alt="New Collection For Men" class="split-bg-img" />
+            <div class="split-overlay"></div>
+            <div class="split-text-box">
+              <div class="split-tag">SOVEREIGN ATELIER</div>
+              <h3 class="split-title">New Collection For Men</h3>
+              <p class="split-desc">Solid 22K bullion chains, heavyweight signet rings, and sculptural kadas reflecting strength and royal presence.</p>
+              <a href="shop.html?cat=men" class="split-cta-btn">Shop Now <span>→</span></a>
+            </div>
+          </div>
+
+          <!-- Banner Right: Women's Collection -->
+          <div class="collection-split-banner reveal-on-scroll">
+            <img src="https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?auto=format&fit=crop&w=900&q=85" alt="New Collection For Women" class="split-bg-img" />
+            <div class="split-overlay"></div>
+            <div class="split-text-box">
+              <div class="split-tag">HAUTE JOAILLERIE</div>
+              <h3 class="split-title">New Collection For Women</h3>
+              <p class="split-desc">Our latest feminine jewelry creations, sculpted to reflect light, grace, and modern sovereign individuality.</p>
+              <a href="shop.html?cat=necklaces" class="split-cta-btn">Shop Now <span>→</span></a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- The Promise of Perfection (4 Feature Columns) -->
+        <div class="promise-section">
+          <h3 class="promise-header reveal-on-scroll">The Promise of Perfection</h3>
+          <div class="promise-grid reveal-on-scroll">
+            <div class="promise-card">
+              <div class="promise-card-icon">💎</div>
+              <h4 class="promise-card-title">Conflict-Free Diamonds</h4>
+              <p class="promise-card-text">Every gem adheres strictly to the Kimberley Process, mined ethically with full traceability.</p>
+            </div>
+            <div class="promise-card">
+              <div class="promise-card-icon">👑</div>
+              <h4 class="promise-card-title">Certified 22K/18K Gold</h4>
+              <p class="promise-card-text">Hallmarked purity laser-engraved onto every jewel, guaranteeing highest sovereign carat weight.</p>
+            </div>
+            <div class="promise-card">
+              <div class="promise-card-icon">🔄</div>
+              <h4 class="promise-card-title">14-Day Vault Returns</h4>
+              <p class="promise-card-text">Experience your heirloom at home with complete peace of mind and no-questions-asked exchanges.</p>
+            </div>
+            <div class="promise-card">
+              <div class="promise-card-icon">✈️</div>
+              <h4 class="promise-card-title">Insured White-Glove Transit</h4>
+              <p class="promise-card-text">Delivered directly to your door in tamper-proof reinforced armored vault packaging.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           9. CHAPTER II: THE MASTERWORK ARCHIVES (MUSEUM SALONS)
+           ========================================================================== -->
+      <section id="exhibition" class="exhibition-section container">
+        <div class="section-head-center reveal-on-scroll">
+          <span class="section-kicker">Curated Museum Salons</span>
+          <h2 class="section-serif-headline">Archival High Jewelry</h2>
+          <p class="section-curator-note">
+            Singular creations designed for international royalty and connoisseurs.
           </p>
+        </div>
 
-          <form id="salon-concierge-form" class="concierge-booking-form">
-            <input type="email" id="concierge-email-input" placeholder="Enter private concierge email" required />
-            <button type="submit" class="concierge-submit-btn">Request Salon Viewing ✦</button>
-          </form>
+        <!-- Museum Salons Populated dynamically by js/main.js -->
+        <div id="exhibition-container"></div>
+      </section>
 
-          <div style="font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.22em; color: var(--text-muted); text-transform: uppercase;">
-            Discrete • Confidential • By Appointment Only
+      <!-- ==========================================================================
+           10. INTERACTIVE 4Cs DIAMOND LOUPE (AWARD-WINNING INTERACTIVE FEATURE)
+           ========================================================================== -->
+      <section id="loupe" class="loupe-section container">
+        <div class="section-head-center reveal-on-scroll">
+          <span class="section-kicker">Interactive Gemology</span>
+          <h2 class="section-serif-headline">The 4Cs Diamond Loupe</h2>
+          <p class="section-curator-note">
+            Inspect our master lapidary cuts under simulated 40x optical magnification.
+          </p>
+        </div>
+
+        <div class="loupe-interactive-stage reveal-on-scroll">
+          <div class="loupe-cuts-selector" id="loupe-cuts-nav"></div>
+
+          <div class="loupe-inspection-grid">
+            <div class="loupe-lens-col">
+              <div class="loupe-magnifier-lens">
+                <div class="lens-crosshairs"></div>
+                <div class="lens-light-caustic"></div>
+                
+                <svg id="loupe-facets-svg" class="loupe-facets-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon id="loupe-facets-polygon" points="30,10 70,10 90,30 90,70 70,90 30,90 10,70 10,30" stroke="#fbf5e2" stroke-width="1.8" fill="rgba(229,196,122,0.12)"/>
+                  <circle cx="50" cy="50" r="24" stroke="rgba(229,196,122,0.5)" stroke-width="1" stroke-dasharray="2 2"/>
+                  <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(251,245,226,0.4)" stroke-width="1"/>
+                  <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(251,245,226,0.4)" stroke-width="1"/>
+                </svg>
+
+                <div class="lens-magnification-badge">40× MAGNIFICATION</div>
+              </div>
+            </div>
+
+            <div class="loupe-curation-col">
+              <div class="loupe-header-group">
+                <h3 id="loupe-cut-name" class="loupe-cut-name">Emerald Cut</h3>
+                <span id="loupe-cut-sub" class="loupe-cut-sub">Hall of Mirrors</span>
+              </div>
+
+              <p id="loupe-cut-desc" class="loupe-cut-desc">
+                Long, lean step facets that create a sophisticated optical interplay of light and dark reflection.
+              </p>
+
+              <div class="loupe-dossier-metrics">
+                <div class="loupe-metric-item">
+                  <span class="metric-label">Benchmark Weight</span>
+                  <span id="loupe-cut-carat" class="metric-val">4.10 Carats</span>
+                </div>
+                <div class="loupe-metric-item">
+                  <span class="metric-label">Symmetry & Facets</span>
+                  <span id="loupe-cut-facets" class="metric-val">57 Facets</span>
+                </div>
+                <div class="loupe-metric-item">
+                  <span class="metric-label">Length-to-Width Ratio</span>
+                  <span id="loupe-cut-ratio" class="metric-val">1.45 Ratio • Step Cut</span>
+                </div>
+                <div class="loupe-metric-item">
+                  <span class="metric-label">Light Return Velocity</span>
+                  <span class="metric-val">97.8% Scintillation</span>
+                </div>
+              </div>
+
+              <div class="loupe-cta-row">
+                <a href="shop.html" class="primary-gold-btn">
+                  <span>Explore Solitaires in Shop</span>
+                  <span>✦</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           11. FAQ ACCORDION SECTION (MATCHING VIDEO 00:28 - 00:31)
+           ========================================================================== -->
+      <section class="faq-section">
+        <div class="container">
+          <div class="faq-header-wrap reveal-on-scroll">
+            <span style="font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-400);">TRANSPARENCY & ASSURANCE</span>
+            <h2 class="faq-title">Discover Why Customers Love Our Jewellery Collection</h2>
+            <p class="faq-subtitle">Everything you need to know about our sovereign gold purity, diamond grading, and bespoke commissions.</p>
+          </div>
+
+          <div class="faq-list reveal-on-scroll">
+            <!-- FAQ 1 -->
+            <div class="faq-item active">
+              <button class="faq-question-btn">
+                <span>What types of materials and gemstones do you use?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer-panel">
+                <p class="faq-answer-text">
+                  We exclusively work with pure 22K (916) and 18K (750) BIS hallmarked gold, Platinum 950, and 100% natural, untreated earth-mined gemstones. Every diamond is conflict-free, graded for superior cut, polish, and symmetry, and authenticated by GIA, IGI, or SGL dossiers.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button class="faq-question-btn">
+                <span>Are your jewellery pieces certified and authentic?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer-panel">
+                <p class="faq-answer-text">
+                  Yes, absolutely. Every piece carries an official government BIS hallmark laser-engraved onto the precious metal. Solitaires above 0.30 ct come accompanied by individual GIA/IGI grading certificates with matching laser-inscribed girdle serial numbers.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button class="faq-question-btn">
+                <span>Can you do customisation or personalized jewellery?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer-panel">
+                <p class="faq-answer-text">
+                  Our private atelier specializes in bespoke commissions. You can collaborate directly with our Master Goldsmiths to design one-of-a-kind engagement rings, family crest signets, or bridal Polki chokers. Contact our private salon to begin your custom design sketch.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button class="faq-question-btn">
+                <span>What is your return, exchange, and lifetime buyback policy?</span>
+                <span class="faq-toggle-icon">+</span>
+              </button>
+              <div class="faq-answer-panel">
+                <p class="faq-answer-text">
+                  We provide a 14-day hassle-free return and exchange window. Furthermore, all Mahira jewelry is backed by our permanent 100% gold value exchange guarantee and complimentary lifetime cleaning, polishing, and prong inspection services.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           12. CHAPTER IV: PRIVATE SALON APPOINTMENT & CONCIERGE
+           ========================================================================== -->
+      <section id="salon" class="salon-section container">
+        <div class="salon-inner-box reveal-on-scroll">
+          <div class="salon-text-col">
+            <span class="section-kicker">Haute Joaillerie Concierge</span>
+            <h2 class="salon-headline">Request Private Salon Viewing</h2>
+            <p class="salon-desc">
+              Experience our archival high jewelry in person at our flagship salons in Paris, London, Geneva, Mumbai, and Dubai.
+            </p>
+
+            <div class="salon-locations-list">
+              <div class="location-chip">📍 12 Place Vendôme, Paris</div>
+              <div class="location-chip">📍 New Bond Street, London</div>
+              <div class="location-chip">📍 Rue du Rhône, Geneva</div>
+              <div class="location-chip">📍 Taj Mahal Palace, Mumbai</div>
+              <div class="location-chip">📍 Fashion Avenue, The Dubai Mall</div>
+            </div>
+          </div>
+
+          <div class="salon-form-col">
+            <form id="salon-concierge-form" class="concierge-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="concierge-name">Your Full Name</label>
+                  <input type="text" id="concierge-name" class="form-input" placeholder="e.g. Lady Genevieve" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="concierge-phone">Telephone / WhatsApp</label>
+                  <input type="tel" id="concierge-phone" class="form-input" placeholder="+91 98765 43210" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="concierge-salon">Preferred Salon Location</label>
+                <select id="concierge-salon" class="form-input">
+                  <option value="mumbai">Mumbai — The Taj Mahal Palace Salon</option>
+                  <option value="paris">Paris — 12 Place Vendôme</option>
+                  <option value="london">London — Mayfair Atelier</option>
+                  <option value="dubai">Dubai — The Dubai Mall Grand Vault</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="concierge-date">Preferred Viewing Date</label>
+                <input type="date" id="concierge-date" class="form-input" required />
+              </div>
+
+              <button type="submit" class="primary-gold-btn" style="width: 100%; justify-content: center; height: 50px;">
+                <span>Confirm Private Appointment</span>
+                <span>✦</span>
+              </button>
+            </form>
           </div>
         </div>
       </section>
 
     </main>
 
-    <!-- 9. MINIMALIST PARISIAN HAUTE FOOTER -->
+    <!-- ==========================================================================
+         13. ARCHIVAL FOOTER & COPYRIGHT
+         ========================================================================== -->
     <footer id="footer" class="site-footer">
-      <div class="container">
+      <div class="container footer-inner">
         
-        <div class="footer-top-banner">
-          <a href="#" class="nav-brand-center" style="align-items: flex-start;">
-            <span class="brand-title-text">MAHIRA</span>
-            <span class="brand-sub-text">HAUTE JOAILLERIE</span>
-          </a>
-          <div id="footer-salons-list" class="footer-salons-list">
+        <!-- Brand & Heritage -->
+        <div class="footer-col brand-col">
+          <div class="footer-emblem-wrap">
+            <svg width="40" height="40" viewBox="0 0 80 80" fill="none">
+              <polygon points="40,8 72,28 60,70 20,70 8,28" stroke="#e5c47a" stroke-width="2" fill="none"/>
+              <circle cx="40" cy="40" r="14" stroke="#fbf5e2" stroke-width="1"/>
+            </svg>
+            <span class="footer-brand-title">MAHIRA</span>
+          </div>
+          <p class="footer-bio">
+            Haute Joaillerie & Sovereign Gold atelier crafting peerless wearable heirlooms from the world’s most magnificent earth-mined gems.
+          </p>
+          <div class="footer-salons-tag" id="footer-salons-list">
             Paris Place Vendôme • London Mayfair • Geneva • Mumbai Taj Mahal • Dubai Mall
           </div>
         </div>
 
-        <div class="footer-grid-4col">
-          <div>
-            <p class="footer-bio-text">
-              An independent Haute Joaillerie house dedicated to unrepeatable high jewelry masterworks, GIA-certified solitaires, and untreated gemstones.
-            </p>
-          </div>
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">The Collections</h4>
+          <ul class="footer-links-list">
+            <li><a href="shop.html?cat=rings" class="footer-link">Solitaire Rings</a></li>
+            <li><a href="shop.html?cat=necklaces" class="footer-link">Imperial Chokers</a></li>
+            <li><a href="shop.html?cat=earrings" class="footer-link">Sovereign Earrings</a></li>
+            <li><a href="shop.html?cat=men" class="footer-link">Men’s Gold Jewellery</a></li>
+            <li><a href="shop.html?cat=bridal" class="footer-link">Bridal Heirlooms</a></li>
+          </ul>
+        </div>
 
-          <div>
-            <h4 class="footer-col-header">Exhibition</h4>
-            <ul class="footer-links-col">
-              <li><a href="#exhibition">Emerald Chokers</a></li>
-              <li><a href="#exhibition">D-Flawless Solitaires</a></li>
-              <li><a href="#exhibition">South Sea Pearls</a></li>
-              <li><a href="#exhibition">Baguette Cuffs</a></li>
-            </ul>
-          </div>
+        <!-- Boutique Services -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Atelier Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="about.html" class="footer-link">Our Heritage & Story</a></li>
+            <li><a href="collections.html" class="footer-link">2026 Lookbook Film</a></li>
+            <li><a href="contact.html" class="footer-link">Book Private Salon</a></li>
+            <li><a href="shop.html" class="footer-link">Gemological Dossiers</a></li>
+            <li><a href="admin.html" class="footer-portal-link" style="color: var(--gold-400);">⚙ Admin Portal</a></li>
+          </ul>
+        </div>
 
-          <div>
-            <h4 class="footer-col-header">Private Client</h4>
-            <ul class="footer-links-col">
-              <li><a href="#salon">Salon Viewing</a></li>
-              <li><a href="#loupe">4Cs Gemology</a></li>
-              <li><a href="#salon">Vault Delivery</a></li>
-              <li><a href="#footer">Valuation & GIA</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="footer-col-header">Atelier Dossier</h4>
-            <ul class="footer-links-col">
-              <li><a href="#universe">Lapidary Manifesto</a></li>
-              <li><a href="#universe">Ethical Provenance</a></li>
-              <li><a href="#footer">Direct Inquiries</a></li>
-              <li><a href="#footer">Security Protocol</a></li>
-            </ul>
+        <!-- Newsletter & VIP Concierge -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Private Gazette</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">
+            Receive invitations to confidential salon unveils and archival acquisitions.
+          </p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="flex: 1; padding: 10px 14px; background: #13131b; border: 1px solid rgba(229,196,122,0.25); border-radius: 4px; color: #fff; font-family: var(--font-sans); font-size: 0.74rem;" />
+            <button class="primary-gold-btn" style="padding: 10px 18px;" onclick="showToast('Subscribed to Mahira Private Gazette ✦')">Join</button>
           </div>
         </div>
 
-        <div class="footer-legal-bar">
-          <div>© 2026 Mahira Haute Joaillerie. Place Vendôme Registered Atelier #HJ-8402.</div>
-          <div>Armored Vault Delivery • Fully Insured by Lloyd's of London</div>
-          <a href="admin.html" class="footer-portal-link" title="Atelier Portal / Owner Login">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -1px; margin-right: 4px;">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-            Atelier Portal
-          </a>
-        </div>
+      </div>
 
+      <div class="footer-bottom-bar container">
+        <p class="copyright-text">
+          © 2026 MAHIRA HAUTE JOAILLERIE. All rights reserved. Registered High Jewelry Atelier.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#">Ethics & Kimberley Process</a>
+          <a href="#">BIS Hallmarking Guide</a>
+          <a href="admin.html" style="color: var(--gold-400);">Admin Portal</a>
+        </div>
       </div>
     </footer>
 
-  </div> <!-- End #site-root -->
-
-  <!-- ==========================================================================
-       10. GEMOLOGICAL DOSSIER MODAL
-       ========================================================================== -->
-  <div id="dossier-overlay" class="modal-overlay"></div>
-  <div id="dossier-modal" role="dialog" aria-modal="true" aria-label="Gemological Dossier">
-    <button id="dossier-close-btn" class="dossier-close-x" aria-label="Close Dossier">×</button>
-    <div id="dossier-content"></div>
   </div>
 
   <!-- ==========================================================================
-       11. PRIVATE VAULT BAG (CART) SLIDE-OVER DRAWER
+       14. GEMOLOGICAL DOSSIER MODAL
        ========================================================================== -->
-  <div id="cart-overlay" class="cart-overlay"></div>
-  <aside id="cart-drawer" role="dialog" aria-modal="true" aria-label="Private Vault Bag">
-    <div class="cart-drawer-head">
-      <h3 class="cart-title">Private Vault Bag</h3>
-      <button id="cart-close-trigger" class="cart-close-trigger" aria-label="Close Bag">×</button>
-    </div>
+  <div id="dossier-overlay" class="modal-overlay"></div>
+  <div id="dossier-modal" class="modal-window" role="dialog" aria-modal="true">
+    <button id="dossier-close-btn" class="modal-close-btn" aria-label="Close Dossier">✕</button>
+    <div id="dossier-content" class="modal-body-scroll"></div>
+  </div>
 
-    <div id="cart-items-list" class="cart-items-scroll">
-      <!-- Injected by js/cart.js -->
-    </div>
-
-    <div class="cart-drawer-foot">
-      <div class="cart-total-line">
-        <span>Curated Acquisition Value</span>
-        <span id="cart-total-amount">₹0</span>
+  <!-- ==========================================================================
+       15. PRIVATE VAULT BAG SLIDE-OUT DRAWER
+       ========================================================================== -->
+  <div id="cart-drawer-overlay" class="drawer-overlay"></div>
+  <aside id="cart-drawer" class="vault-drawer" aria-label="Private Vault Bag">
+    <div class="drawer-head">
+      <div class="drawer-title-group">
+        <h3 class="drawer-title">Private Vault Bag</h3>
+        <span class="drawer-sub">Mahira Haute Joaillerie</span>
       </div>
-      <button id="checkout-action-btn" class="cart-checkout-action">
-        Request Private Vault Acquisition ✦
-      </button>
+      <button id="cart-drawer-close" class="drawer-close-btn" aria-label="Close Vault">✕</button>
+    </div>
+
+    <!-- Scrollable Items List -->
+    <div id="cart-items-list" class="drawer-items-container"></div>
+
+    <!-- Drawer Footer -->
+    <div class="drawer-foot">
+      <div class="drawer-total-row">
+        <span class="total-label">Estimated Valuation</span>
+        <span id="cart-total-amount" class="total-val">₹0</span>
+      </div>
+      <p class="drawer-shipping-note">
+        Includes white-glove armored transit, transit insurance & GIA certificates.
+      </p>
+      <div style="display: flex; gap: 10px; margin-top: 14px;">
+        <a href="cart.html" class="ghost-btn" style="flex: 1; justify-content: center; text-align: center;">View Bag</a>
+        <button id="vault-checkout-btn" class="vault-checkout-btn" style="flex: 1.4;">Acquire Pieces ✦</button>
+      </div>
     </div>
   </aside>
 
-  <!-- ==========================================================================
-       12. MOBILE SALON DRAWER
-       ========================================================================== -->
-  <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
-  <div id="mobile-salon-drawer" role="dialog" aria-modal="true">
-    <div class="mobile-drawer-top">
-      <div class="brand-title-text" style="font-size: 1.05rem;">MAHIRA JEWELS</div>
-      <button id="mobile-drawer-close" class="cart-close-trigger" aria-label="Close Menu">×</button>
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer-overlay" class="mobile-nav-overlay"></div>
+  <nav id="mobile-salon-drawer" class="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-head">
+      <span class="mobile-brand-name">MAHIRA</span>
+      <button id="mobile-drawer-close" class="mobile-close-btn" aria-label="Close Menu">✕</button>
     </div>
-    <ul class="mobile-drawer-links">
-      <li><a href="#hero">L'Empire de la Lumière</a></li>
-      <li><a href="#exhibition">The Exhibition</a></li>
-      <li><a href="#loupe">4Cs Diamond Loupe</a></li>
-      <li><a href="#universe">The Sovereign Universe</a></li>
-      <li><a href="#salon">Private Salon</a></li>
-      <li style="margin-top: 15px; border-top: 1px solid var(--gold-border); padding-top: 15px;"><a href="admin.html" style="color: var(--gold-400);">✦ Atelier Portal</a></li>
+    <ul class="mobile-menu-links">
+      <li><a href="index.html" class="mobile-link">Home</a></li>
+      <li><a href="shop.html" class="mobile-link">Shop Catalog</a></li>
+      <li><a href="collections.html" class="mobile-link">2026 Lookbook</a></li>
+      <li><a href="about.html" class="mobile-link">Our Heritage & Story</a></li>
+      <li><a href="contact.html" class="mobile-link">Private Salon Viewing</a></li>
+      <li><a href="cart.html" class="mobile-link">Private Vault Bag</a></li>
+      <li><a href="admin.html" class="mobile-link" style="color: var(--gold-400);">⚙ Admin Portal</a></li>
     </ul>
-  </div>
+  </nav>
 
-  <!-- Toast Container -->
-  <div id="toast-container"></div>
+  <!-- Background Particle Shimmer Canvas -->
+  <canvas id="stardust-canvas"></canvas>
 
-  <!-- Main JavaScript Modules -->
+  <!-- Core JavaScript Architecture -->
   <script type="module" src="js/main.js"></script>
-
 </body>
 </html>

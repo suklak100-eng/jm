@@ -21,23 +21,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Initialize Custom Luxury Cursor
   initLuxuryCursor();
 
-  // 5. Render Exhibition Salons (Pristine, Full Image Clarity)
+  // 5. Render Signature Product Showcase & Filter Pills (From Reference Video)
+  renderSignatureProducts('all');
+  initCatalogFilters();
+
+  // 6. Render Archival Museum Exhibition Salons
   renderExhibition();
 
-  // 6. Initialize Interactive 4Cs Diamond Loupe
+  // 7. Initialize Interactive 4Cs Diamond Loupe
   initDiamondLoupe();
 
-  // 7. Initialize Gemological Dossier Modal
+  // 8. Initialize FAQ Accordion (From Reference Video)
+  initFaqAccordion();
+
+  // 9. Initialize Gemological Dossier Modal
   initDossierModal();
 
-  // 8. Mobile Navigation Drawer
+  // 10. Mobile Navigation Drawer
   initMobileNav();
 
-  // 9. Sticky Header & Scroll Dynamic Reveals
+  // 11. Sticky Header & Scroll Dynamic Reveals
   initScrollDynamics();
 
-  // 10. Private Salon Concierge Form
+  // 12. Private Salon Concierge Form
   initConciergeForm();
+
+  // 13. Vault Checkout Action
+  const checkoutBtn = document.getElementById('vault-checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      window.location.href = 'cart.html';
+    });
+  }
 });
 
 /* ---------------- 0. CLIENT CUSTOMIZATIONS & LIVE CMS ENGINE ---------------- */
@@ -495,21 +510,111 @@ function initScrollDynamics() {
   reveals.forEach((el) => observer.observe(el));
 }
 
-/* ---------------- 8. CONCIERGE FORM ---------------- */
+/* ---------------- 8. SIGNATURE PRODUCT SHOWCASE (From Reference Video) ---------------- */
+export function renderSignatureProducts(category = 'all') {
+  const container = document.getElementById('home-products-grid');
+  if (!container) return;
+
+  const pieces = getExhibitionPieces();
+  const filtered = category === 'all' 
+    ? pieces.slice(0, 8) 
+    : pieces.filter((p) => p.category === category);
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; color: var(--text-muted);">
+        <p>No masterworks found in this category.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map((piece) => {
+    return `
+      <div class="jewel-card reveal-on-scroll is-revealed" data-id="${piece.id}">
+        <div class="jewel-card-media">
+          <a href="product.html?id=${piece.id}">
+            <img src="${piece.image}" alt="${piece.name}" class="jewel-img-primary" loading="lazy" />
+            <img src="${piece.secondaryImage || piece.image}" alt="${piece.name}" class="jewel-img-secondary" loading="lazy" />
+          </a>
+          <span class="jewel-badge">${piece.num} • ${piece.metal.split('&')[0]}</span>
+          <button class="jewel-wishlist-btn" data-id="${piece.id}" title="Add to Wishlist" aria-label="Wishlist">
+            ♥
+          </button>
+        </div>
+        <div class="jewel-card-body">
+          <div class="jewel-card-cat">${(piece.category || 'Jewellery').toUpperCase()}</div>
+          <a href="product.html?id=${piece.id}" class="jewel-card-name">${piece.name}</a>
+          <div class="jewel-card-stone">${piece.stone}</div>
+          <div class="jewel-card-foot">
+            <span class="jewel-card-price">${piece.priceFormatted}</span>
+            <button class="jewel-card-add-btn add-to-vault-btn" data-id="${piece.id}">
+              + Add to Bag
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Attach event listeners
+  container.querySelectorAll('.add-to-vault-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      vault.addItem(btn.dataset.id);
+      window.openVault();
+    });
+  });
+
+  container.querySelectorAll('.jewel-wishlist-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      btn.classList.toggle('active');
+      showToast(btn.classList.contains('active') ? 'Added to Wishlist ✦' : 'Removed from Wishlist');
+    });
+  });
+}
+
+function initCatalogFilters() {
+  const filterBtns = document.querySelectorAll('.catalog-filter-pill');
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.category || 'all';
+      renderSignatureProducts(cat);
+    });
+  });
+}
+
+/* ---------------- 9. FAQ ACCORDION (From Reference Video) ---------------- */
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach((item) => {
+    const btn = item.querySelector('.faq-question-btn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach((i) => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+}
+
+/* ---------------- 10. CONCIERGE FORM ---------------- */
 function initConciergeForm() {
   const form = document.getElementById('salon-concierge-form');
-  const input = document.getElementById('concierge-email-input');
-
-  if (form && input) {
+  if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const val = input.value.trim();
-      if (!val || !val.includes('@')) {
-        showToast('Please enter a valid concierge contact.');
-        return;
-      }
-      showToast('Private appointment requested. Our Haute Joaillerie Advisor will contact you within 2 hours ✦');
-      input.value = '';
+      const name = document.getElementById('concierge-name')?.value || 'Guest';
+      const salon = document.getElementById('concierge-salon')?.value || 'Atelier';
+      const date = document.getElementById('concierge-date')?.value || 'Selected Date';
+
+      showToast(`Appointment requested for ${name} at ${salon} on ${date}. Our Master Jeweler will contact you ✦`);
+      form.reset();
     });
   }
 }
