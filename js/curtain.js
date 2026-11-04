@@ -1,21 +1,27 @@
-// Luxury Silk Curtain Controller with Instant 120FPS Opening & Audio Engine
+// Luxury Silk Curtain Controller with Instant 120FPS Opening & Synchronized Audio Engine
 import { getSiteSettings } from './products.js';
 
 // Pre-warmed shared AudioContext and pre-computed buffers
 let sharedAudioCtx = null;
 let prewarmedNoiseBuffer = null;
 
-function getAudioContext() {
+export function getAudioContext() {
   if (!sharedAudioCtx) {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     if (AudioCtx) {
       sharedAudioCtx = new AudioCtx();
     }
   }
-  if (sharedAudioCtx && sharedAudioCtx.state === 'suspended') {
-    sharedAudioCtx.resume();
-  }
   return sharedAudioCtx;
+}
+
+export function unlockAudioContext() {
+  try {
+    const ctx = getAudioContext();
+    if (ctx && ctx.state === 'suspended') {
+      ctx.resume().catch(() => {});
+    }
+  } catch (_) {}
 }
 
 // Pre-generate pink noise buffer once on page load (eliminates main-thread scroll lag)
@@ -45,18 +51,19 @@ export function initCurtain() {
   const siteRoot = document.getElementById('site-root');
   const unveilBtn = document.getElementById('unveil-btn');
   const replayBtn = document.getElementById('replay-curtain-btn');
+  const scrollTrigger = document.getElementById('curtain-scroll-trigger');
 
   if (!curtainOverlay) return;
 
   let isUnveiled = false;
   let isAnimating = false;
 
-  // Prime AudioContext on ANY early touch or pointer activity
-  const primeAudio = () => {
-    getAudioContext();
+  // Unlock AudioContext immediately upon ANY direct physical user interaction
+  const onUserGestureUnlock = () => {
+    unlockAudioContext();
   };
-  ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach((evt) => {
-    window.addEventListener(evt, primeAudio, { once: true, passive: true });
+  ['pointerdown', 'mousedown', 'touchstart', 'touchend', 'click', 'keydown'].forEach((evt) => {
+    window.addEventListener(evt, onUserGestureUnlock, { passive: true });
   });
 
   function unveil() {
@@ -69,14 +76,14 @@ export function initCurtain() {
     window.removeEventListener('touchmove', onTouchMove);
     window.removeEventListener('keydown', onKeyDown);
 
-    // Instant hardware-accelerated class addition
+    // Instant hardware-accelerated class addition (120 FPS GPU kinematics)
     curtainOverlay.classList.add('is-opening');
     if (siteRoot) {
       siteRoot.classList.add('site-revealed');
     }
     document.body.classList.remove('curtain-active');
 
-    // Trigger instant audio playback
+    // Trigger synchronized audio playback with strict latency guard
     playCurtainOpeningSound();
 
     // After curtains have fully parted, cleanly disable overlay
@@ -120,7 +127,7 @@ export function initCurtain() {
     }, 1150);
   }
 
-  // Instant scroll trigger (Fires on the VERY FIRST pixel of scroll!)
+  // Instant scroll trigger (Fires on the VERY FIRST pixel of scroll)
   function onWheel(e) {
     if (isUnveiled || isAnimating) return;
     if (Math.abs(e.deltaY) > 1.2 || Math.abs(e.deltaX) > 1.2) {
@@ -134,6 +141,7 @@ export function initCurtain() {
   let touchStartX = 0;
 
   function onTouchStart(e) {
+    unlockAudioContext();
     if (e.touches && e.touches[0]) {
       touchStartY = e.touches[0].clientY;
       touchStartX = e.touches[0].clientX;
@@ -157,6 +165,7 @@ export function initCurtain() {
     if (isUnveiled || isAnimating) return;
     if (['ArrowDown', 'ArrowUp', ' ', 'Enter', 'PageDown'].includes(e.key)) {
       e.preventDefault();
+      unlockAudioContext();
       unveil();
     }
   }
@@ -170,20 +179,30 @@ export function initCurtain() {
 
   bindCurtainTriggers();
 
-  // Instant click/tap anywhere on curtain or button
+  // Instant click/tap anywhere on curtain, center button, or scroll indicator
   if (unveilBtn) {
     unveilBtn.addEventListener('click', (e) => {
       e.stopPropagation();
+      unlockAudioContext();
+      unveil();
+    });
+  }
+
+  if (scrollTrigger) {
+    scrollTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      unlockAudioContext();
       unveil();
     });
   }
 
   curtainOverlay.addEventListener('pointerdown', () => {
-    primeAudio();
+    unlockAudioContext();
   });
 
   curtainOverlay.addEventListener('click', () => {
     if (!isUnveiled && !isAnimating) {
+      unlockAudioContext();
       unveil();
     }
   });
@@ -191,6 +210,7 @@ export function initCurtain() {
   if (replayBtn) {
     replayBtn.addEventListener('click', (e) => {
       e.stopPropagation();
+      unlockAudioContext();
       redraw();
     });
   }
@@ -203,24 +223,32 @@ export function initCurtain() {
 export function playCurtainOpeningSound() {
   const settings = getSiteSettings();
 
-  // If custom audio file (MP3 / WAV / Base64) is uploaded by Admin
+  // If custom audio file (MP3 / WAV / Base64 / URL) is uploaded by Admin
   if (settings.curtainAudioMode === 'custom' && settings.customCurtainAudio) {
     try {
       const audio = new Audio(settings.customCurtainAudio);
       audio.volume = 0.85;
+      const triggerTime = performance.now();
       const playPromise = audio.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          playSynthesizedAudioPreset(settings.curtainAudioMode || 'salon-chime');
+        playPromise.then(() => {
+          // LATENCY GUARD: If playback started > 350ms after the reveal triggered
+          // (e.g. browser queued it until later click), kill playback immediately!
+          if (performance.now() - triggerTime > 350) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+        }).catch(() => {
+          // Autoplay blocked by browser policy without user gesture
         });
       }
       return;
     } catch (_) {
-      // Fallback to synthesized preset
+      // Fallback
     }
   }
 
-  // Synthesized preset audio
+  // Synthesized preset audio (Chime & Silk Rustle)
   playSynthesizedAudioPreset(settings.curtainAudioMode || 'salon-chime');
 }
 
@@ -228,86 +256,110 @@ export function playSynthesizedAudioPreset(mode = 'salon-chime') {
   try {
     const ctx = getAudioContext();
     if (!ctx) return;
-    const now = ctx.currentTime;
 
-    // 1. SILK / VELVET FABRIC DRAWING RUSTLE (Pre-computed buffer for 0ms lag)
-    const noiseBuf = getNoiseBuffer(ctx);
-    if (noiseBuf) {
-      const noiseSrc = ctx.createBufferSource();
-      noiseSrc.buffer = noiseBuf;
+    // Helper to actually synthesize & route the audio nodes
+    const renderSoundNodes = () => {
+      // STRICT SAFETY: Do NOT run on a suspended context!
+      if (!ctx || ctx.state !== 'running') return;
+      const now = ctx.currentTime;
 
-      const noiseFilter = ctx.createBiquadFilter();
-      noiseFilter.type = 'bandpass';
-      noiseFilter.frequency.setValueAtTime(650, now);
-      noiseFilter.frequency.exponentialRampToValueAtTime(280, now + 1.1);
-      noiseFilter.Q.setValueAtTime(1.6, now);
+      // 1. SILK / VELVET FABRIC DRAWING RUSTLE (Pre-computed buffer for 0ms lag)
+      const noiseBuf = getNoiseBuffer(ctx);
+      if (noiseBuf) {
+        const noiseSrc = ctx.createBufferSource();
+        noiseSrc.buffer = noiseBuf;
 
-      const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.0001, now);
-      noiseGain.gain.linearRampToValueAtTime(0.065, now + 0.18);
-      noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+        const noiseFilter = ctx.createBiquadFilter();
+        noiseFilter.type = 'bandpass';
+        noiseFilter.frequency.setValueAtTime(650, now);
+        noiseFilter.frequency.exponentialRampToValueAtTime(280, now + 1.1);
+        noiseFilter.Q.setValueAtTime(1.6, now);
 
-      noiseSrc.connect(noiseFilter);
-      noiseFilter.connect(noiseGain);
-      noiseGain.connect(ctx.destination);
-      noiseSrc.start(now);
-      noiseSrc.stop(now + 1.25);
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.0001, now);
+        noiseGain.gain.linearRampToValueAtTime(0.065, now + 0.18);
+        noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+
+        noiseSrc.connect(noiseFilter);
+        noiseFilter.connect(noiseGain);
+        noiseGain.connect(ctx.destination);
+        noiseSrc.start(now);
+        noiseSrc.stop(now + 1.25);
+      }
+
+      // 2. CHOSEN CHIME PRESET
+      let chimeNotes = [];
+
+      if (mode === 'place-vendome') {
+        // Deep grand cathedral/palace bell resonance
+        chimeNotes = [
+          { f: 220.00, delay: 0.1, vol: 0.06 },
+          { f: 329.63, delay: 0.15, vol: 0.05 },
+          { f: 440.00, delay: 0.22, vol: 0.045 },
+          { f: 659.25, delay: 0.32, vol: 0.035 }
+        ];
+      } else if (mode === 'celestial-harp') {
+        // Shimmering harp glissando
+        chimeNotes = [
+          { f: 523.25, delay: 0.08, vol: 0.04 },
+          { f: 659.25, delay: 0.14, vol: 0.04 },
+          { f: 783.99, delay: 0.20, vol: 0.04 },
+          { f: 1046.50, delay: 0.26, vol: 0.035 },
+          { f: 1318.51, delay: 0.32, vol: 0.03 }
+        ];
+      } else {
+        // Default: Royal Salon Chime (Warm Major 9th Rhodes Bell)
+        chimeNotes = [
+          { f: 261.63, delay: 0.10, vol: 0.05 },
+          { f: 392.00, delay: 0.16, vol: 0.045 },
+          { f: 493.88, delay: 0.22, vol: 0.04 },
+          { f: 587.33, delay: 0.28, vol: 0.035 },
+          { f: 659.25, delay: 0.35, vol: 0.03 },
+          { f: 783.99, delay: 0.42, vol: 0.025 }
+        ];
+      }
+
+      chimeNotes.forEach(({ f, delay, vol }) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const filter = ctx.createBiquadFilter();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, now + delay);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(3000, now + delay);
+        filter.frequency.exponentialRampToValueAtTime(700, now + delay + 1.8);
+
+        gain.gain.setValueAtTime(0.0001, now + delay);
+        gain.gain.exponentialRampToValueAtTime(vol, now + delay + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 2.1);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now + delay);
+        osc.stop(now + delay + 2.2);
+      });
+    };
+
+    if (ctx.state === 'running') {
+      // AudioContext is already unlocked -> play immediately (0ms latency)
+      renderSoundNodes();
+    } else if (ctx.state === 'suspended') {
+      // AudioContext is suspended. Request resume, but ENFORCE STRICT 350ms GUARD.
+      const triggerTime = performance.now();
+      ctx.resume().then(() => {
+        // If the context took more than 350ms to resume (e.g. Chrome held it until the user
+        // clicked a link 5 seconds later), DO NOT PLAY! Discard immediately to prevent zombie audio!
+        if (performance.now() - triggerTime > 350) {
+          return;
+        }
+        renderSoundNodes();
+      }).catch(() => {
+        // Autoplay blocked by browser policy, do nothing
+      });
     }
-
-    // 2. CHOSEN CHIME PRESET
-    let chimeNotes = [];
-
-    if (mode === 'place-vendome') {
-      // Deep grand cathedral/palace bell resonance
-      chimeNotes = [
-        { f: 220.00, delay: 0.1, vol: 0.06 },
-        { f: 329.63, delay: 0.15, vol: 0.05 },
-        { f: 440.00, delay: 0.22, vol: 0.045 },
-        { f: 659.25, delay: 0.32, vol: 0.035 }
-      ];
-    } else if (mode === 'celestial-harp') {
-      // Shimmering harp glissando
-      chimeNotes = [
-        { f: 523.25, delay: 0.08, vol: 0.04 },
-        { f: 659.25, delay: 0.14, vol: 0.04 },
-        { f: 783.99, delay: 0.20, vol: 0.04 },
-        { f: 1046.50, delay: 0.26, vol: 0.035 },
-        { f: 1318.51, delay: 0.32, vol: 0.03 }
-      ];
-    } else {
-      // Default: Royal Salon Chime (Warm Major 9th Rhodes Bell)
-      chimeNotes = [
-        { f: 261.63, delay: 0.10, vol: 0.05 },
-        { f: 392.00, delay: 0.16, vol: 0.045 },
-        { f: 493.88, delay: 0.22, vol: 0.04 },
-        { f: 587.33, delay: 0.28, vol: 0.035 },
-        { f: 659.25, delay: 0.35, vol: 0.03 },
-        { f: 783.99, delay: 0.42, vol: 0.025 }
-      ];
-    }
-
-    chimeNotes.forEach(({ f, delay, vol }) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(f, now + delay);
-
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(3000, now + delay);
-      filter.frequency.exponentialRampToValueAtTime(700, now + delay + 1.8);
-
-      gain.gain.setValueAtTime(0.0001, now + delay);
-      gain.gain.exponentialRampToValueAtTime(vol, now + delay + 0.04);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 2.1);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(now + delay);
-      osc.stop(now + delay + 2.2);
-    });
   } catch (_) {}
 }
